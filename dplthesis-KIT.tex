@@ -1,0 +1,734 @@
+%##################################################################################\textbf{}
+
+\documentclass[12pt,a4paper,twoside,varwidth = false , border = 2pt]{report}
+%\documentclass[varwidth=false, border=2pt]{standalone}
+%\documentclass[12pt,a4paper,oneside]{report}
+%\documentclass[tikz, border=3mm]{standalone}
+\usepackage{graphicx}
+%\usepackage[ngerman, english]{babel} %-- uncomment this to get english titles
+\usepackage[ngerman]{babel}
+\usepackage{german,a4}
+%\usepackage{picins}
+%\usepackage{epsfig}
+\usepackage{fancyhdr}			% for nice header and footer
+\usepackage{hyperref}			% references in pdf
+\usepackage[sf]{titlesec}	%customization of \chapter Titles for appendices
+\usepackage{textcomp}
+\usepackage{makeidx}
+\usepackage{ngerman}			% german Umlauts
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs}                               % necessary for tabulars
+\usepackage[squaren]{SIunits}
+\usepackage[numbers,square]{natbib}
+\usepackage{tikz}
+\usetikzlibrary{matrix,chains,positioning,decorations.pathreplacing,arrows,backgrounds}
+\usepackage{pgfplots}
+\usepackage{float}
+
+
+%\usetikzlibrary{matrix,chains,positioning,decorations.pathreplacing,arrows}
+
+
+
+
+%\usepackage{wrapfig} 
+%\usepackage[pdftex]{graphicx}
+%\usepackage{ifthen}  
+%\usepackage{booktabs} % fancy tables
+%\usepackage[titletoc]{appendix} % custom naming of appendices
+\usepackage{amssymb, amsmath, amsthm} % for equations & eqref
+%\usepackage{listings} \lstset{basicstyle=\tiny\ttfamily, numbers=left, escapeinside={(*}{*)}, captionpos=b}
+%\usepackage{dirtree}
+
+%get bigger \par with one empty line
+\newcommand{\mypar}{\par\medskip}
+
+%TODO line
+\newcommand{\writeTodo}{1}
+\newcommand{\todo}[1]{
+	\ifdefined \writeTodo
+		\mypar\textbf{\textcolor{KITgreen}{TODO: }\textcolor{red}{#1}}\mypar
+	\fi
+} 
+ 
+%\theoremstyle{plain}% default
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+% Abbkürzungsverzeichnis einfügen
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\usepackage{nomencl}
+\let\abbrev\nomenclature
+\renewcommand{\nomname}{Abkürzungsverzeichnis}
+\setlength{\nomlabelwidth}{.25\hsize}
+\renewcommand{\nomlabel}[1]{#1 }%\dotfill}
+\setlength{\nomitemsep}{-\parsep}
+\makenomenclature
+\newcommand{\markup}[1]{\underline{#1}} 
+
+% Farben
+\usepackage{color}
+\definecolor{KITgreen}{rgb}{0, .61, .51} 
+\definecolor{KITbluegrey}{rgb}{.27, .39, .67} 
+\definecolor{KITgrey}{rgb}{.49, .49, .49} 
+
+% =====================================================
+% Dokumenten-Platzhalter
+% =====================================================
+\input{00_special_pages/platzhalter-titel}
+
+% ====================================================
+% Formatierung des Dokuments
+% ====================================================
+\input{00_special_pages/formats}
+
+% =====================================================
+% Inhalt der Titelseite definieren
+% =====================================================
+
+\makeindex
+\newcommand{\Idx}[1]{#1 \index{#1}}
+
+\hyphenation{
+EVITA
+}
+
+% =====================================================
+% Zeichen für Copyright, Trademark, Registerd, ...
+% =====================================================
+\def\TReg{\textsuperscript{\textregistered}}
+\def\TCop{\textsuperscript{\textcopyright}}
+\def\TTra{\textsuperscript{\texttrademark}}
+
+% =====================================================
+% selbs definierte Zeichen
+% =====================================================
+\def\zB{z.\,B. }
+\def\uvm{u.\,v.\,m.}
+\begin{document}
+
+% =====================================================
+% Put Titel in English
+% ===================================================== 
+%\input{00_special_pages/titelseite_en}
+%    \parindent=0pt
+%    %\sloppypar
+%    \linespread{1.2}
+%    \thispagestyle{plain}
+%    %\frontmatter
+%    %\maketitle
+
+% =====================================================
+% Put Titel in Deutsch
+% ===================================================== 
+\input{00_special_pages/titelseite}
+    \parindent=0pt
+    %\sloppypar
+    \linespread{1.2}
+    \thispagestyle{plain}
+    %\frontmatter
+    %\maketitle
+    \cleardoublepage
+    
+% =====================================================
+% Abstract
+% =====================================================     
+	\begin{abstract}
+		\input{00_special_pages/zusammenfassung}
+		
+	\end{abstract}
+	\cleardoublepage
+% =====================================================
+% Signaturepage
+% ===================================================== 
+    \input{00_special_pages/erklaerung}
+	\cleardoublepage
+% =====================================================
+% TOC
+% ===================================================== 
+    \tableofcontents
+    %\clearpage
+    \cleardoublepage
+
+% =====================================================
+% Main Chapters
+% ===================================================== 
+    %\mainmatter
+    \pagenumbering{arabic}
+    \setcounter{page}{1}
+    \pagestyle{fancy}
+ \normalsize
+
+    
+
+    \chapter{Einleitung}
+    \label{ch:Einleitung} 
+    \section{Motivation}\label{sec:?}   
+    	%\input{01_einleitung/bsp-chapter.tex}
+    
+    %\cleardoublepage   
+    Neue innovative Projekte wie autonomes Fahren oder auch selbstfliegende Autos in der Zukunft und industrielle Automatisierung  müssen immer mehr mit umfangreichenden Datenmenge umgehen. ML-Methoden werden in solchen Anwendungen häufig verwendet, damit die Daten analysiert werden können bzw. die Maschinen etwas neues aus Daten ohne explizite Programmierung lernen. Insbesondere im Kontext von Echtzeitsystemen stellt sich die Latenz während der Datenverarbeitung als Flaschenhals dar.\\
+    \\
+    Die CPU-Hardwarearchitektur kann dieses Problem leider nicht lösen, da CPUs für allgemeinen Gebrauch vorgesehen sind. GPU (graphics processing unit) ist für solchen rechenintensiven Anwendungen besser geeignet, um die Datenverarbeitung zu beschleunigen. Aber sie verbrauchen viel Energie und für mobile Geräte und Embedded Systems nicht einsetzbar. Eine spezielle Hardwarearchitektur soll für diesen Zweck eingesetzt werden. Es soll wenig Strom verbrauchen und trotz dieser Anforderung auch schnell und mehrfache vorkommende Multiplikation-und Addition Operationen bearbeiten. \\
+    \\
+	Das \textbf{FPGA} (field-programable gate array) kann diese Anforderungen erfüllen. Das FPGA besteht aus internen Hardware-Blöcken, die mit anderen von einem Fachperson programiert werden können, um eine spezielle Anforderungen zu erfüllen. Der Hauptvorteil von FPGA im Gegensatz zu den anderen Hardwarearchiteckturen ist, dass die Verbindungen von internen Hardware-Blöcken leicht umprogrammiert und während dem Einsatz Änderungen oder Verbesserungen vorgenommen werden. Verschiedene ML-Algorithmen können damit implementiert und evaluiert werden.  
+    
+    
+    \section{Zielsetzung}\label{sec:Zielsetzung}
+    In der vorliegenden Arbeit geht es um eine Entwicklung von Systolic Array Architektur, damit es auf einem FPGA implementiert wird. Das FPGA ist klein, verbraucht wenig Energie und ermöglicht dem ML-Modell eine höhere Rechenleistung und somit eine schnelle Ausführung. 
+    
+    \section{Das Mooresche Gesetz}\label{sec:Das Mooresche Gesetz}
+    Ich möchte an dieser Stelle auch noch das Mooresche Gesetz anmerken. Das Gesetz besagt, dass sich die Anzahl der Transistoren, die auf eine integrierte Schaltung gedrückt werden können ungefähr alle 18 Monate verdoppelt.\footnote{$https://de.wikipedia.org/wiki/Mooresches_Gesetz$} 
+    Das ist kein Naturgesetz, sondern es ist nur eine Beobachtung von dem Mitgründer Gordon Moore der Firma Intel im Jahr 1965.\\ Milliarden von Transistoren auf den neusten Chips sind schon unsichtbar für das menschliche Augen. Wenn man das Mooresche Gesetz ins unendliche betrachten möchte, dann müssen die Transistoren aus Bauteilen hergestellt werden, die kleiner als ein einziges Wasserstoffatom sind. Das ist natürlich unmöglich und die Herstellung von Transistoren physikalisch begrenzt. Die Investitionskosten wird immer teurer für Unternehmen, um mehr Transistoren auf einen winzig kleinen Flächen zu drücken. 
+    
+    \begin{center}
+    	\includegraphics[width=12.5cm, height=10cm]{Bilder/Moore's_Law_Transistor_Count_1971-2018}  
+    	\cleardoublepage
+    \end{center}
+    
+    
+  
+    
+    \chapter{Grundlagen}\label{ch:Grundlagen}
+    \section{Matrix-Matrix Multiplikation}\label{sec:Matrix Multiplikation}
+    Bei der Matrix-Matrix Multiplikation geht es um zwei Matrizen, die miteinander multipliziert werden. Aber nicht jede Matrizen sind miteinander multiplizierbar. D.h die Spaltenmatrix der ersten Matrix muss mit der Zeilenzahl der zweiten Matrix übereinstimmen. Das Ergebnis ist auch eine Matrix, die dann als Produktmatrix genannt wird.\\
+    Gegeben seien zwei Matrizen.
+    A ist eine  m$\times$n-Matrix.\\
+    B ist eine  n$\times$p-Matrix.\\
+    
+   \textbf{ A}=$\begin{pmatrix}
+    	a_{11} & a_{12} &  \ldots & a_{1n} \\
+    	a_{21} & a_{22} &  \ldots & a_{2n} \\ 
+    	\vdots & \vdots &  \ddots & \vdots \\
+    	a_{m1} & a_{m2} &  \ldots & a_{mn} \\
+    \end{pmatrix}$ , \textbf{B} = 
+    $\begin{pmatrix}
+    b_{11} & b_{12} &  \ldots & b_{1p} \\
+    b_{21} & b_{22} &  \ldots & b_{2p} \\ 
+    \vdots & \vdots &  \ddots & \vdots \\
+    b_{n1} & b_{n2} &  \ldots & b_{np} \\
+    \end{pmatrix}$\\
+    
+    Die Produktmatrix C ergibt sich:\textbf{C} = 
+    $\begin{pmatrix}
+    c_{11} & c_{12} &  \ldots & c_{1p} \\
+    c_{21} & c_{22} &  \ldots & c_{2p} \\ 
+    \vdots & \vdots &  \ddots & \vdots \\
+    c_{m1} & c_{m2} &  \ldots & c_{mp} \\
+    \end{pmatrix}$\\
+    
+    Die Produktmatrix C besteht aus viele Multiplikationen und Additionen.\\
+    $c_{ij}=a_{i1}b_{1j}+a_{i2}b_{2j}+\ldots+a_{in}b_{nj}=\sum_{k-1}^{n} a_{ik}b_{kj}$\\
+    
+    
+    \textbf{C}=$\begin{pmatrix}
+    a_{11}b_{11}+ \ldots +a_{1n}b_{n1} & a_{11}b_{12}+\ldots +a_{1n}b_{n2} & \ldots & a_{11}b_{1p}+ \ldots +a_{1n}b_{np}  \\
+    a_{21}b_{11}+ \ldots +a_{2n}b_{n1} & a_{21}b_{12}+\ldots +a_{2n}b_{n2} & \ldots & a_{21}b_{1p}+ \ldots +a_{2n}b_{np}  \\
+    \vdots & \vdots &  \ddots & \vdots \\
+    a_{m1}b_{11}+ \ldots +a_{mn}b_{n1} & a_{m1}b_{12}+\ldots +a_{mn}b_{n2} & \ldots & a_{m1}b_{1p}+ \ldots +a_{mn}b_{np}  
+    \end{pmatrix}$\\
+    
+    Bei einer MM-Multiplikation findet mpn-Multiplikationen und mp(n-1)-Additionen statt.
+	
+    
+   
+    \section{1D-Faltung und 2D-Faltung}\label{sec:Faltungsmatrix}
+    
+    \subsection{1D-Faltung bzw. Faltung}\label{subsec:1D-Faltung}
+    Die Faltung mit eindimensionalen Signalen wird als 1D-Faltung oder nur Faltung bezeichnet. In der digitalen Bildverarbeitung und Signalverarbeitung findet meistens diskrete Faltung statt.\\
+    Die Faltung von zwei diskreten Funktionen wird  durch folgende Formel berechnet:
+    
+
+
+    \begin{center}
+    	$f[n]=a[n]\ast b[n] = \sum_{k=-\infty}^{\infty}a[k]  b[n-k]$
+    \end{center}
+	Die Faltung erfolgt durch Multiplizieren und Akkumulieren der Momentanwerte der überlappenden Abtastwerte. Dabei soll ein Signal umgedreht sein.
+
+	\subsection{2D-Faltung}\label{subsec:2D-Faltung}
+	Dieses Grundkonzept für 1D-Faltung gilt auch für die 2D-Faltung, wenn die Signale 2 Dimensionen haben. \\
+	
+	Analog kann die Faltung in 2D definiert werden.
+	
+	\begin{center}
+		$f[x,y] = a[x,y]\ast b[x,y] = \sum_{j=-\infty}^{\infty}\sum_{k=-\infty}^{\infty} a[j,k] b[x-j , y-k]$
+	\end{center}
+
+%	 \begin{center}
+%		$g\left( x,y\right) =\omega\ast f\left( x,y\right) = %\sum_{s=-a}^{a}\sum_{t=-b}^{b}\omega(s,t)f(x-s,y-t)$
+%	\end{center}
+	
+
+	\subsubsection{Beispiel für 2D-Faltung}
+	
+	Hier ist ein Beispiel für 2D-Faltung. Es gibt ein 7x7 Eingangsmatrix I (inputmatrix) und eine Filtermatrix K (kernel) 3x3. Die Werte der Ausgangsmatrix werden durch Multiplikation und Addition von entsprechenden Pixelwerte von I und K berechnet. Siehe Beispiel: 
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%% Local functions %%%%%%%%%%%%%%%%%%%
+%% -- Draw marks
+\newbox\dumbox
+\newcommand{\mymark}[2]{%
+	\setbox\dumbox=\hbox{#2}%
+	\hbox to \wd\dumbox{\hss%
+		\tikz[overlay,remember picture,baseline=(#1.base)]{ \node (#1) {\box\dumbox}; }%
+		\hss}%
+}
+
+%% -- Draw small coefficient
+\newcommand{\mysmall}[1]{%
+	\tikz[overlay,remember picture]{%
+		\node[blue,scale=.5, shift={(0,-.1)}] {x#1};%
+	}%
+}
+%%%%%%%%%%%%%%%%%%% Local functions %%%%%%%%%%%%%%%%%%%
+
+
+
+	\begin{center}
+
+	
+	
+	\newcommand\numRowsK{3}
+	\newcommand\numColsK{3}
+	\newcommand{\K}[2]{% #1: row, #2: col
+		\edef\Kcol##1##2##3{###2}%
+		\edef\Krow##1##2##3{\noexpand\Kcol###1}%
+		\Krow
+		{1 0 1}
+		{0 1 0}
+		{1 0 1}%
+	}
+	
+	\newcommand{\convoutionpicture}[2]{% #1: row to be highlighted, #2: colum to be highlighted
+		\begin{tikzpicture}
+		% ------- style -------
+		\tikzset{%
+			parenthesized/.style={%
+				left delimiter  = (,
+				right delimiter = ),
+			},
+			node distance = 10mu,
+		}
+		
+		% ------- equation -------
+		\matrix[matrix of math nodes, parenthesized, ampersand replacement=\&] (I) {
+			0 \& 1 \& 1 \& 1 \& 0 \& 0 \& 0 \\
+			0 \& 0 \& 1 \& 1 \& 1 \& 0 \& 0 \\
+			0 \& 0 \& 0 \& 1 \& 1 \& 1 \& 0 \\
+			0 \& 0 \& 0 \& 1 \& 1 \& 0 \& 0 \\
+			0 \& 0 \& 1 \& 1 \& 0 \& 0 \& 0 \\
+			0 \& 1 \& 1 \& 0 \& 0 \& 0 \& 0 \\
+			1 \& 1 \& 0 \& 0 \& 0 \& 0 \& 0 \\
+		};
+		
+		\node (*) [right = of I] {${}*{}$};
+		
+		\def\Kmatrix{}
+		\foreach \row in {1, ..., 3} {
+			\gdef \sep {}
+			\foreach \col in {1, ..., 3} {%
+				\xdef \Kmatrix {\unexpanded\expandafter{\Kmatrix}\unexpanded\expandafter{\sep}\noexpand \K{\row}{\col}}
+				\gdef \sep { \& }
+			}
+			\xdef \Kmatrix {\unexpanded\expandafter{\Kmatrix}\noexpand\\}
+		}
+		\matrix[matrix of math nodes, parenthesized, ampersand replacement=\&] (K) [right = of *] {
+			\Kmatrix
+		};
+		
+		\node (=) [right = of K] {${}={}$};
+		
+		\matrix[matrix of math nodes, parenthesized, ampersand replacement=\&] (I*K) [right = of {=}] {
+			1 \& 4 \& 3 \& 4 \& 1 \\
+			1 \& 2 \& 4 \& 3 \& 3 \\
+			1 \& 2 \& 3 \& 4 \& 1 \\
+			1 \& 3 \& 3 \& 1 \& 1 \\
+			3 \& 3 \& 1 \& 1 \& 0 \\
+		};
+		
+		% ------- highlighting -------
+		\def\rowResult{#1}
+		\def\colResult{#2}
+		
+		\begin{scope}[on background layer]
+		\newcommand{\padding}{2pt}
+		\coordinate (Is-nw) at ([xshift=-\padding, yshift=+\padding] I-\rowResult-\colResult.north west);
+		\coordinate (Is-se) at ([xshift=+\padding, yshift=-\padding] I-\the\numexpr\rowResult+\numRowsK-1\relax-\the\numexpr\colResult+\numColsK-1\relax.south east);
+		\coordinate (Is-sw) at (Is-nw |- Is-se);
+		\coordinate (Is-ne) at (Is-se |- Is-nw);
+		
+		\filldraw[red,   fill opacity=.1] (Is-nw) rectangle (Is-se);
+		\filldraw[green, fill opacity=.1] (I*K-\rowResult-\colResult.north west) rectangle (I*K-\rowResult-\colResult.south east);
+		
+		\draw[blue, dotted] 
+		(Is-nw) -- (K.north west)
+		(Is-se) -- (K.south east)
+		(Is-sw) -- (K.south west)
+		(Is-ne) -- (K.north east)
+		;
+		\draw[green, dotted] 
+		(I*K-\rowResult-\colResult.north west) -- (K.north west)
+		(I*K-\rowResult-\colResult.south east) -- (K.south east)
+		(I*K-\rowResult-\colResult.south west) -- (K.south west)
+		(I*K-\rowResult-\colResult.north east) -- (K.north east)
+		;
+		
+		\draw[blue,  fill=blue!10!white] (K.north west) rectangle (K.south east);
+		
+		\foreach \row [evaluate=\row as \rowI using int(\row+\rowResult-1)] in {1, ..., \numRowsK} {%
+			\foreach \col [evaluate=\col as \colI using int(\col+\colResult-1)] in {1, ..., \numColsK} {%
+				\node[text=blue] at (I-\rowI-\colI.south east) [xshift=-.3em] {\tiny$\times \K{\row}{\col}$};
+			}
+		}
+		\end{scope}
+		
+		% ------- labels -------
+		\tikzset{node distance=0em}
+		\node[below=of I] (I-label) {$I$};
+		\node at (K |- I-label)     {$K$};
+		\node at (I*K |- I-label)   {$I*K$};
+		\end{tikzpicture}%
+	}
+	
+%	\begin{document}
+		\convoutionpicture 14
+		\bigskip
+		
+		\convoutionpicture 41
+		\bigskip
+		
+		\convoutionpicture 55
+	%\end{document}
+	\end{center}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\section{Maschinelles Lernen}\label{sec:Maschinelles Lernen}
+	Beim ML wird das System so programmiert, damit das aus eingegebenen Daten automatisch lernt und sich mit der \grqq Erfahrung\grqq  verbessert. Das heißt, das System wird mit Trainingsdaten trainiert. Hier bedeutet das Lernen: die eingegebenen Daten zu erkennen, verstehen und auf der Grundlage der gelieferten Daten eine sinnvolle Entscheidung zu treffen.\\
+	Aber nicht alle Entscheidungen können auf der Grundlage aller möglichen Eingaben berücksichtigt werden. Um dieses Problem  zu lösen, werden hier Algorithmen entwickelt, die das maschinelles Lernen optimieren und schneller machen.
+	
+	
+	%\cleardoublepage
+	
+	
+	\section{Kuenstliche neuronale Netze} \label{sec:Kuenstliche neuronale Netze}
+	Kuenstliche neuronale Netze sind beliebte Technik des maschinellen Lernens, die den Mechanismus des Lernens in biologischen Organismen simulieren. Das menschliche Nervensystem enthält Zellen, die als Neuron bezeichnet wird. Die Neuronen sind unter Verwendung von Axonen miteinander verbunden.
+	
+	
+	\begin{center}
+		\includegraphics[width=10 cm , height= 5 cm]{Bilder/neuron}
+	\end{center}
+
+
+	Dieser biologische Mechanismus wird in kuenstlichen neuronalen Netzen übertragen. Ein Neuron besitz viele Eingaben und jede Eingabe des Neurons wird mit einem Gewicht versehen. Die gewichteten Eingaben werden dann durch eine Übertragungsfunktion akkumuliert und daraus resultierende Netzeingabe in eine Aktivierungsfunktion gegeben, die die Ausgabe bestimmt.
+	
+
+		
+	%hier kommt neuron
+	
+	\begin{center}
+		\begin{tikzpicture}[
+		init/.style={
+			draw,
+			circle,
+			inner sep=2pt,
+			font=\Huge,
+			join = by -latex
+		},
+		squa/.style={
+			draw,
+			inner sep=2pt,
+			font=\Large,
+			join = by -latex
+		},
+		start chain=2,node distance=13mm
+		]
+		\node[on chain=2] 
+		(x2) {$x_2$};
+		\node[on chain=2,join=by o-latex] 
+		{$w_2$};
+		\node[on chain=2,init] (sigma) 
+		{$\displaystyle\Sigma$};
+		\node[on chain=2,squa,label=above:{\parbox{2cm}{\centering Activate \\ function}}]   
+		{$f$};
+		\node[on chain=2,label=above:Output,join=by -latex] 
+		{$y$};
+		\begin{scope}[start chain=1]
+		\node[on chain=1] at (0,1.5cm) 
+		(x1) {$x_1$};
+		\node[on chain=1,join=by o-latex] 
+		(w1) {$w_1$};
+		\end{scope}
+		\begin{scope}[start chain=3]
+		\node[on chain=3] at (0,-1.5cm) 
+		(x3) {$x_3$};
+		\node[on chain=3,label=below:Weights,join=by o-latex] 
+		(w3) {$w_3$};
+		\end{scope}
+		\node[label=above:\parbox{2cm}{\centering Bias \\ $b$}] at (sigma|-w1) (b) {};
+		
+		\draw[-latex] (w1) -- (sigma);
+		\draw[-latex] (w3) -- (sigma);
+		\draw[o-latex] (b) -- (sigma);
+		
+		\draw[decorate,decoration={brace,mirror}] (x1.north west) -- node[left=10pt] {Inputs} (x3.south west);
+		\end{tikzpicture}
+				
+	\end{center}
+	\cleardoublepage
+
+	\subsection{Aktivierungsfunktionen}\label{subsec:Aktivierungsfunktionen}
+	Eine Aktivierungsfunktion ist eine mathematische Funktion und entscheidet, ob ein Neuron aktiviert werden soll oder nicht, indem sie die gewichtete Summe berechnet und eine Bias hinzufügt. Diese Funktionen sind:
+	
+	
+	\subsubsection{Schwellenwertfunktion}\label{subsec:Schwellenwertfunktion}
+	Die Schwellenwertfunktion (engl. heaviside step function oder auch binary step function) nimmt nur die Werte 0 und 1 an. Liegt der Eingabewert über oder unter einem bestimmten Schwellenwert, wird das Neuron aktiviert und sendet das Eingangssignal. Für die Eingabe e$\geq$ {0} nimmt der Ausgangswert 1, ansonsten 0.\\
+
+
+	%$\varphi (e) = 
+	%\begin{cases}
+	%	 0 & \text{wenn $e<0$} \\
+%		1 & \text{wenn $e\geq0$} \\
+%	\end{cases}$ \\
+%	\includegraphics[width=5 cm , height= 5 cm]{Bilder/step}
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%\begin{figure}
+		\begin{minipage}{.5\linewidth}
+			\begin{eqnarray*}
+			\varphi (e) = 
+			\begin{cases}
+				0 & \text{wenn $e<0$} \\
+				1 & \text{wenn $e\geq0$} \\
+			\end{cases}
+			\end{eqnarray*}
+		\end{minipage}
+		\begin{minipage}{.5\linewidth}
+			\includegraphics[width=5 cm , height= 5 cm]{Bilder/step}
+		\end{minipage}
+	%\end{figure}
+
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+	
+	
+
+	
+
+	
+	\subsubsection{Stückweise lineare Funktion}
+	Stückweise lineare Funktion läuft in einem begrenzten Intervall linear ab. Außerhalb des Intervalls besitzt die Funktion einen konstanten Wert.\\
+	%$\varphi (e) = 
+%	\begin{cases}
+	%	0 & \text{wenn $e\leq -\dfrac{1}{2}$} \\
+	%	1 & \text{wenn $e\geq \dfrac{1}{2}$} \\
+	%	e + 1/2 & \text{wenn  $-\dfrac{1}{2} < e < \dfrac{1}{2} $ }
+	%\end{cases}$\\
+	
+	\begin{minipage}{.5\linewidth}
+		\begin{eqnarray*}
+			\varphi (e) = 
+			\begin{cases}
+				0 & \text{wenn $e\leq -\dfrac{1}{2}$} \\
+				1 & \text{wenn $e\geq \dfrac{1}{2}$} \\
+				e + 1/2 & \text{wenn  $-\dfrac{1}{2} < e < \dfrac{1}{2} $ }
+			\end{cases}
+		\end{eqnarray*}
+	\end{minipage}
+	\begin{minipage}{.5\linewidth}
+		\includegraphics[width=7 cm , height= 5 cm]{Bilder/stf}
+	\end{minipage}
+	\newpage
+	\subsubsection{Sigmoidfunktion}
+	Sigmoide Funktionen sind sehr häufig verwendete Funktionen. Sie besitzen ein variables Steigungsmaß $\alpha $ , dass die Krümmung des Funktionsgraphen beeinflusst. Differenzierbarkeit der Sigmoidfunktion ist für einige ML-Verfahren wie Backpropagation-Algorithmus ein Vorteil. Der Nachteil ist ein starker negativer Eingangssignal, damit kann es während des Trainings hängen bleiben.\\Sie ist definiert durch: \\
+	
+		
+		
+
+		
+
+		%\includegraphics[width=7 cm , height= 5 cm]{Bilder/sigmoid}
+		\begin{tikzpicture}
+		\begin{axis}[legend pos=north west,
+			axis x line=middle,
+			axis y line=middle,
+			x tick label style={/pgf/number format/fixed,
+			/pgf/number format/fixed zerofill,
+			/pgf/number format/precision=1},
+			y tick label style={/pgf/number format/fixed,
+			/pgf/number format/fixed zerofill,
+			/pgf/number format/precision=1},
+			grid = major,
+			width=16cm,
+			height=8cm,
+			grid style={dashed, gray!30},
+			xmin=-1,     % start the diagram at this x-coordinate
+			xmax= 1,    % end   the diagram at this x-coordinate
+			ymin= 0,     % start the diagram at this y-coordinate
+			ymax= 1,   % end   the diagram at this y-coordinate
+			%axis background/.style={fill=white},
+			xlabel=x,
+			ylabel=y,
+			tick align=outside,
+			enlargelimits=false]
+		% plot the stirling-formulae
+			$\addplot[domain=-1:1, red, ultra thick,samples=500] {1/(1+exp(-5*x))};$
+			$\addplot[domain=-1:1, blue, ultra thick,samples=500] {1/(1+exp(-10*x))};$
+			$\addlegendentry{$f(x)=\frac{1}{1+e^{-5x}}$}$
+			$\addlegendentry{$g(x)=\frac{1}{1+e^{-10x}}$}$
+	\end{axis}
+		
+	\end{tikzpicture}
+		
+	\begin{center}
+		$\varphi_{\alpha}^{sig} (e) = \dfrac{1}{1+\exp (-\alpha e)}$
+	\end{center}
+		
+	\subsubsection{Rectifier (ReLU)}
+	Es wird besonders in Deep-Learning Modellen wie CNN( Convolutional Neural Networks) eingesetzt. Dies ist auch als Rampenfunktion bekannt. ReLU Funktion ist definiert durch:
+	\\
+	
+	\begin{minipage}{.5\linewidth}
+	\begin{eqnarray*}
+		\varphi (e) = \max (0,e)
+	\end{eqnarray*}
+	\end{minipage}
+	\begin{minipage}{.5\linewidth}
+		\includegraphics[width=7 cm , height= 5 cm]{Bilder/ReLu}
+	\end{minipage}
+
+	\newpage
+	
+	\section{Lernphase}\label{sec:Lernphase}
+	\subsection{Supervised Learning}\label{subsec:Supervised Learning}
+	Beim supervised Learning brauchen die Trainingsdaten Label (Lösungen).
+	D.h. man muss als Entwickler dem Modell vorher sagen, was die Lösung ist.
+	Wenn man beispielsweise einem Bildererkenner beibringen will, Hunde-und Katzenbilder 
+	zu unterscheiden, muss vorher ein Mensch alle Trainingsbilder anschauen und notieren 
+	was zu sehen ist. Hier ist der Entwickler als ''Lehrer'' vorgesehen, der das ML-Modell beibringt. Ansonsten weiss der Algorithmus nicht, ob er falsch oder richtig entscheidet.
+	
+	
+
+	\subsection{Unsupervised Learning}\label{subsec:Unspervised Learning}
+	Beim Unsupervised Learning soll das ML-Modell aus Daten ''lernen'', die Bedeutungen von denen noch unbekannt sind. Hier wird dem Algorithmus die Daten ohne Zielvorgabe eingespeist und trainiert. Ohne Daten gibt es natürlich nichts zu ''lernen''.
+	
+	
+	Unsupervised Learning wird verwendet, um einen bestimmten Datensatz in verschiedene Gruppen zu gruppieren. Dies wird häufig verwendet, um Kunden für bestimmte Eingriffe in verschiedene Gruppen zu segmentieren.
+	\newpage
+	
+	\section{Grundlage der Hardwarebeschreibungssprache VHDL}\label{sec:Grundlage der Hardwarebeschreibungssprache VHDL}
+	
+	
+	%\subsection{Reinforcement Learning}\label{subsec:Reinforcement Learning}	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	\cleardoublepage
+	\chapter{Konzept}\label{ch:Konzept}  	
+	\section{Grundlagen der Systolic Array Architektur}\label{sec:Grundlagen der Systolic Array Architektur}
+%	Zur Errinerung wird hier die Pseudocode von Matrix-Matrix Multiplikation
+	Machine Learning basiert stark auf Berechnungen von Eingabewerten bzw. Daten. Die künstliche neuronale Netze bestehen aus vielen kuenstlichen Neuronen, indem viele Berechnungen stattfinden, die den Ausgabewert des ML-Modells beeinflussen. \\
+	Die Frage ist, wie können die ML-Modells noch schneller ''lernen'' bzw. wie kann man die Berechnungen noch schneller und effektiver durchführen?
+	
+	\textbf{Beispiel:}Bei herkömmlichen Vorgehensweise der Matrix Multiplikationen wird zuerst überprüft, ob die Matrizen miteinander multipliziert werden kann. Wenn die Spaltenmatrix der ersten Matrix mit der Zeilenzahl der zweiten Matrix übereinstimmen, dann kann es mit der Berechnung fortgesetzt werden. Der Nachteil dieser Berechnungen ist die sequentielle Ausführung. Es findet keine parallele Berechnung statt. Das Ziel ist aber ein Algorithmus zu entwickeln, dass parallele Berechnung und sogar mehrere parallele Berechnungen durchführt.
+	
+	\begin{center}
+		\includegraphics[width=7 cm , height= 6 cm]{Bilder/matrixmult}
+		\footnote{$http://www.texample.net/media/tikz/examples/PDF/matrix-multiplication.pdf$}
+		%\caption{Matrix Multiplikation}
+	\end{center}
+	
+	\section{Why Systolic Architectures?} \label{sec:Why Systolic Architectures?}
+	\subsection{Grundidee}\label{subsec:Grundidee}
+	Die Grundidee des systolischen Arrays ist, dass die Daten rhythmisch aus dem Computerspeicher fließen und laufen durch viele PEs (processing elements), bevor sie in den Speicher zurückkehren.
+		
+	\begin{center}
+		\includegraphics[width=12 cm , height= 5 cm]{Bilder/einPE}
+	\end{center}
+	
+		
+	Wenn es nur ein einziges PE gibt, das aus dem Speicher ein Data holt, verarbeitet und das Ergebnis in den Speicher speichert. Das ist ineffizient und zeitaufwändig.\\
+	
+	\begin{center}
+		\includegraphics[width=12 cm , height= 5 cm]{Bilder/PEs}
+	\end{center}
+
+	
+	
+	Aber wenn es mehrere PEs gibt, die Daten mehrmals verarbeiten und das Ergebnis in den Speicher legt. Das ist die Idee, die das System beschleunigt.
+	\newpage
+	
+	Der Begriff ''systolisches Array'' kann nach einer neuen Innovation in der Rechnerarchitektur klingen.Aber es ist fast 40 Jahre alt. H.T. Kung kam auf diese Idee in den 80er Jahren und veröffentlichte seine Idee im Jahr 1982.\footnote{http://www.eecs.harvard.edu/~htk/publication/1982-kung-why-systolic-architecture.pdf} 
+	
+	
+
+
+	
+	
+	
+	
+	
+
+	
+	
+	  
+	
+		
+    \cleardoublepage    
+    
+    \chapter{Implementierung}
+    \label{ch:implementierung}   
+   		%\input{03_chapter/bsp-chapter.tex}
+   		
+    \chapter{Bewertung des Gesamtsystems}
+	\label{ch:Bewertung}  
+		%\input{03_chapter/bsp-chapter.tex}
+    \cleardoublepage    
+
+    \chapter{Fazit}
+    \label{ch:Fazit}    
+    	%\input{03_chapter/bsp-chapter.tex}
+    \cleardoublepage
+    
+% =====================================================
+% Bibliography
+% ===================================================== 
+\nocite{*}
+%\addcontentsline{toc}{chapter}{Literaturverzeichnis, in ToC löschen}
+%\addcontentsline{toc}{chapter}{Literature}
+%\bibliographystyle{dinat}        % use a DIN style for the bibliography
+%\bibliographystyle{plain}        % use a DIN style for the bibliography
+%\bibliographystyle{abbrv}			%mit nummern in []
+%\bibliographystyle{plain}			%mit nummern in []
+%\bibliographystyle{alpha}			%3 Buchstaben + Jahr
+\bibliographystyle{alphadin}
+
+    % use external Bib-File, 
+		\bibliography{99_bib/standardbib}		
+		\cleardoublepage
+% =====================================================
+% Appendix
+% ===================================================== 
+    \appendix
+
+%    \input{95_anhang/anhang}
+		\cleardoublepage
+
+    \listoftables
+    	\cleardoublepage
+    \listoffigures
+    	\cleardoublepage
+    \printindex
+    	\cleardoublepage
+    \printnomenclature
+    \renewcommand{\leftmark}{\uppercase{Abkürzungsverzeichnis}}
+    	\cleardoublepage
+
+\end{document}
+
