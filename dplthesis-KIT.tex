@@ -848,10 +848,16 @@ EVITA
 	\newpage
 
 	\subsection{Systolic Array Matrix Multiplikation}
-	Bei der Matrix Multiplikation sind mehrere PEs (Processing elements) nötig, die miteinander verbunden sind. Der Datenfluss erfolgt hier von links z.B. Matrix A-Werte und von oben transponierte Matrix B-Werte. Die Aufgabe von PEs sind Multiplikationen von Eingangswerten und Akkumulieren die Teilsumme in ihren eingebauten Register. Mehr Details über PEs sind in Kapitel $Implementierung$. 
+	Bei der Matrix Multiplikation sind mehrere PEs (Processing elements) nötig, die miteinander verbunden sind. Der Datenfluss erfolgt von links z.B. Matrix A-Werte und von oben transponierte Matrix B-Werte. Die Aufgabe von PEs sind Multiplikationen von Eingangswerten und Akkumulation der Teilsumme in ihren eingebauten Register. Abschließend werden dann die Eingangswerte (Matrix A - Wert) nach rechts  und (Matrix B - Wert) nach unten zur Weiterberechnung gesendet. Mehr Details über PEs findet man in Kapitel $Implementierung$. 
 	\begin{center}
 		\input{Design/systolicArray.tex}\\
 	\end{center}
+
+	\subsection{Vorteile des Systolic Arrays}
+
+	\subsection{Nachteile des Systolic Arrays}
+
+
 	
 
 

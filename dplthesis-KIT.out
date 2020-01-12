@@ -20,6 +20,8 @@
 \BOOKMARK [2][-]{subsection.3.2.1}{Grundidee}{section.3.2}% 20
 \BOOKMARK [2][-]{subsection.3.2.2}{Systolic Array Designs f\374r Faltung Berechnungen}{section.3.2}% 21
 \BOOKMARK [2][-]{subsection.3.2.3}{Systolic Array Matrix Multiplikation}{section.3.2}% 22
-\BOOKMARK [0][-]{chapter.4}{Implementierung}{}% 23
-\BOOKMARK [0][-]{chapter.5}{Bewertung des Gesamtsystems}{}% 24
-\BOOKMARK [0][-]{chapter.6}{Fazit}{}% 25
+\BOOKMARK [2][-]{subsection.3.2.4}{Vorteile des Systolic Arrays}{section.3.2}% 23
+\BOOKMARK [2][-]{subsection.3.2.5}{Nachteile des Systolic Arrays}{section.3.2}% 24
+\BOOKMARK [0][-]{chapter.4}{Implementierung}{}% 25
+\BOOKMARK [0][-]{chapter.5}{Bewertung des Gesamtsystems}{}% 26
+\BOOKMARK [0][-]{chapter.6}{Fazit}{}% 27
