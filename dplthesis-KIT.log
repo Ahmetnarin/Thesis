@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2019.9.29)  31 DEC 2019 21:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2019.9.29)  12 JAN 2020 18:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -855,6 +855,32 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks36
 \@floatcapt=\box43
 )
+(c:/texlive/2019/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.meta.cod
+e.tex
+File: pgflibraryarrows.meta.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgfarrowinset=\dimen195
+\pgfarrowlength=\dimen196
+\pgfarrowwidth=\dimen197
+\pgfarrowlinewidth=\dimen198
+) (c:/texlive/2019/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2019/09/01 v3.3d Customizing captions (AR)
+
+(c:/texlive/2019/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2019/09/01 v1.8d caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 64.
+\captionmargin=\dimen199
+\captionmargin@=\dimen256
+\captionwidth=\dimen257
+\caption@tempdima=\dimen258
+\caption@indent=\dimen259
+\caption@parindent=\dimen260
+\caption@hangindent=\dimen261
+)
+\c@caption@flags=\count135
+\c@ContinuedFloat=\count136
+Package caption Info: float package is loaded.
+Package caption Info: hyperref package is loaded.
+)
 (c:/texlive/2019/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 
@@ -872,42 +898,42 @@ Package: amsmath 2018/12/01 v2.17b AMS math features
 For additional information on amsmath, use the `?' option.
 (c:/texlive/2019/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen195
+\pmbraise@=\dimen262
 )
 (c:/texlive/2019/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count135
+\inf@bad=\count137
 LaTeX Info: Redefining \frac on input line 223.
-\uproot@=\count136
-\leftroot@=\count137
+\uproot@=\count138
+\leftroot@=\count139
 LaTeX Info: Redefining \overline on input line 385.
-\classnum@=\count138
-\DOTSCASE@=\count139
+\classnum@=\count140
+\DOTSCASE@=\count141
 LaTeX Info: Redefining \ldots on input line 482.
 LaTeX Info: Redefining \dots on input line 485.
 LaTeX Info: Redefining \cdots on input line 606.
 \Mathstrutbox@=\box44
 \strutbox@=\box45
-\big@size=\dimen196
+\big@size=\dimen263
 LaTeX Font Info:    Redeclaring font encoding OML on input line 729.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 730.
-\macc@depth=\count140
-\c@MaxMatrixCols=\count141
+\macc@depth=\count142
+\c@MaxMatrixCols=\count143
 \dotsspace@=\muskip11
-\c@parentequation=\count142
-\dspbrk@lvl=\count143
+\c@parentequation=\count144
+\dspbrk@lvl=\count145
 \tag@help=\toks37
-\row@=\count144
-\column@=\count145
-\maxfields@=\count146
+\row@=\count146
+\column@=\count147
+\maxfields@=\count148
 \andhelp@=\toks38
-\eqnshift@=\dimen197
-\alignsep@=\dimen198
-\tagshift@=\dimen199
-\tagwidth@=\dimen256
-\totwidth@=\dimen257
-\lineht@=\dimen258
+\eqnshift@=\dimen264
+\alignsep@=\dimen265
+\tagshift@=\dimen266
+\tagwidth@=\dimen267
+\totwidth@=\dimen268
+\lineht@=\dimen269
 \@envbody=\toks39
 \multlinegap=\skip59
 \multlinetaggap=\skip60
@@ -927,7 +953,7 @@ Package: amsthm 2017/10/31 v2.20.4
 \thm@headsep=\skip63
 \dth@everypar=\toks46
 )
-\c@definition=\count147
+\c@definition=\count149
 
 (c:/texlive/2019/texmf-dist/tex/latex/nomencl/nomencl.sty
 Package: nomencl 2019/05/05 v5.2 Nomenclature package
@@ -940,7 +966,7 @@ Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
 \XKV@toks=\toks47
 \XKV@tempa@toks=\toks48
 )
-\XKV@depth=\count148
+\XKV@depth=\count150
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
 (c:/texlive/2019/texmf-dist/tex/latex/base/ifthen.sty
@@ -961,15 +987,15 @@ Package: scrlfile 2019/02/01 v3.26b KOMA-Script package (loading files)
 )
 Package tocbasic Info: setting babel extension for `nlo' on input line 155.
 Package tocbasic Info: setting babel extension for `nls' on input line 156.
-\nomlabelwidth=\dimen259
-\nom@tempdim=\dimen260
+\nomlabelwidth=\dimen270
+\nom@tempdim=\dimen271
 \nomitemsep=\skip65
 )
 \@nomenclaturefile=\write4
 \openout4 = `dplthesis-KIT.nlo'.
 
 Package nomencl Info: Writing nomenclature file dplthesis-KIT.nlo on input line
- 66.
+ 68.
 
 (./00_special_pages/platzhalter-titel.tex) (./00_special_pages/formats.tex
 \@indexfile=\write5
@@ -986,40 +1012,40 @@ LaTeX Warning: Unused global option(s):
 (./dplthesis-KIT.aux)
 \openout1 = `dplthesis-KIT.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 108.
-LaTeX Font Info:    ... okay on input line 108.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 108.
-LaTeX Font Info:    ... okay on input line 108.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 108.
-LaTeX Font Info:    ... okay on input line 108.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 108.
-LaTeX Font Info:    ... okay on input line 108.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 108.
-LaTeX Font Info:    ... okay on input line 108.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 108.
-LaTeX Font Info:    ... okay on input line 108.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 108.
-LaTeX Font Info:    ... okay on input line 108.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 108.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 108.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 110.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 110.
 
  (c:/texlive/2019/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    ... okay on input line 110.
 
 (c:/texlive/2019/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count149
-\scratchdimen=\dimen261
+\scratchcounter=\count151
+\scratchdimen=\dimen272
 \scratchbox=\box47
-\nofMPsegments=\count150
-\nofMParguments=\count151
+\nofMPsegments=\count152
+\nofMParguments=\count153
 \everyMPshowfont=\toks49
-\MPscratchCnt=\count152
-\MPscratchDim=\dimen262
-\MPnumerator=\count153
-\makeMPintoPDFobject=\count154
+\MPscratchCnt=\count154
+\MPscratchDim=\dimen273
+\MPnumerator=\count155
+\makeMPintoPDFobject=\count156
 \everyMPtoPDFconversion=\toks50
 ) (c:/texlive/2019/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -1039,7 +1065,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box48
-Package hyperref Info: Link coloring ON on input line 108.
+Package hyperref Info: Link coloring ON on input line 110.
 
 (c:/texlive/2019/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/12 v2.45 Cross-referencing by name of section
@@ -1047,11 +1073,11 @@ Package: nameref 2019/09/12 v2.45 Cross-referencing by name of section
 (c:/texlive/2019/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count155
+\c@section@level=\count157
 )
-LaTeX Info: Redefining \ref on input line 108.
-LaTeX Info: Redefining \pageref on input line 108.
-LaTeX Info: Redefining \nameref on input line 108.
+LaTeX Info: Redefining \ref on input line 110.
+LaTeX Info: Redefining \pageref on input line 110.
+LaTeX Info: Redefining \nameref on input line 110.
 
 (./dplthesis-KIT.out) (./dplthesis-KIT.out)
 \@outlinefile=\write6
@@ -1066,8 +1092,10 @@ ABD: EveryShipout initializing macros
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
 ick labels; missing features). Consider writing \pgfplotsset{compat=1.16} into 
 your preamble.
- on input line 108.
+ on input line 110.
 
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
 (./00_special_pages/titelseite.tex
 LaTeX Font Info:    Try loading font information for U+msa on input line 12.
 
@@ -1079,7 +1107,7 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 12.
 (c:/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<98_images/kit.png, id=99, 137.313pt x 49.1436pt>
+<98_images/kit.png, id=107, 137.313pt x 49.1436pt>
 File: 98_images/kit.png Graphic file (type png)
 <use 98_images/kit.png>
 Package pdftex.def Info: 98_images/kit.png  used on input line 14.
@@ -1089,7 +1117,7 @@ Overfull \hbox (30.97pt too wide) in paragraph at lines 14--15
 [][] 
  []
 
-<98_images/ITIVLogo.png, id=101, 83.31125pt x 85.31876pt>
+<98_images/ITIVLogo.png, id=109, 83.31125pt x 85.31876pt>
 File: 98_images/ITIVLogo.png Graphic file (type png)
 <use 98_images/ITIVLogo.png>
 Package pdftex.def Info: 98_images/ITIVLogo.png  used on input line 26.
@@ -1137,12 +1165,12 @@ l.4 \cleardoublepage
 ]
 Kapitel 1.
 
-Underfull \hbox (badness 10000) in paragraph at lines 170--175
+Underfull \hbox (badness 10000) in paragraph at lines 172--177
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 170--175
+Underfull \hbox (badness 10000) in paragraph at lines 172--177
 
  []
 
@@ -1152,39 +1180,39 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [1
 
 ]
-<Bilder/Moore's_Law_Transistor_Count_1971-2018.png, id=182, 3145.6722pt x 2272.
+<Bilder/Moore's_Law_Transistor_Count_1971-2018.png, id=192, 3145.6722pt x 2272.
 1688pt>
 File: Bilder/Moore's_Law_Transistor_Count_1971-2018.png Graphic file (type png)
 
 <use Bilder/Moore's_Law_Transistor_Count_1971-2018.png>
 Package pdftex.def Info: Bilder/Moore's_Law_Transistor_Count_1971-2018.png  use
-d on input line 185.
+d on input line 187.
 (pdftex.def)             Requested size: 355.62482pt x 284.50578pt.
 
 [2 <./Bilder/Moore's_Law_Transistor_Count_1971-2018.png (PNG copy)>]
 Kapitel 2.
 
-Underfull \hbox (badness 10000) in paragraph at lines 194--198
+Underfull \hbox (badness 10000) in paragraph at lines 196--200
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 199--211
+Underfull \hbox (badness 10000) in paragraph at lines 201--213
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 212--219
+Underfull \hbox (badness 10000) in paragraph at lines 214--221
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 220--222
+Underfull \hbox (badness 10000) in paragraph at lines 222--224
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 224--230
+Underfull \hbox (badness 10000) in paragraph at lines 226--232
 
  []
 
@@ -1192,156 +1220,166 @@ Underfull \hbox (badness 10000) in paragraph at lines 224--230
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 249--250
+Underfull \hbox (badness 10000) in paragraph at lines 251--252
 
  []
 
 \dumbox=\box49
 [4]
-<Bilder/neuron.png, id=211, 313.17pt x 164.615pt>
+<Bilder/neuron.png, id=221, 313.17pt x 164.615pt>
 File: Bilder/neuron.png Graphic file (type png)
 <use Bilder/neuron.png>
-Package pdftex.def Info: Bilder/neuron.png  used on input line 419.
+Package pdftex.def Info: Bilder/neuron.png  used on input line 421.
 (pdftex.def)             Requested size: 284.53595pt x 142.26692pt.
 
 Underfull \vbox (badness 3098) has occurred while \output is active []
 
  [5]
 [6 <./Bilder/neuron.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 485--486
+Underfull \hbox (badness 10000) in paragraph at lines 487--488
 
  []
 
-<Bilder/step.png, id=222, 351.3125pt x 262.9825pt>
+<Bilder/step.png, id=232, 351.3125pt x 262.9825pt>
 File: Bilder/step.png Graphic file (type png)
 <use Bilder/step.png>
-Package pdftex.def Info: Bilder/step.png  used on input line 507.
+Package pdftex.def Info: Bilder/step.png  used on input line 509.
 (pdftex.def)             Requested size: 142.2647pt x 142.26926pt.
 
-Overfull \hbox (2.61108pt too wide) in paragraph at lines 497--510
+Overfull \hbox (2.61108pt too wide) in paragraph at lines 499--512
 []$[]$ $[]$ 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 520--527
+Underfull \hbox (badness 10000) in paragraph at lines 522--529
 
  []
 
-<Bilder/stf.png, id=223, 537.00626pt x 256.96pt>
+<Bilder/stf.png, id=233, 537.00626pt x 256.96pt>
 File: Bilder/stf.png Graphic file (type png)
 <use Bilder/stf.png>
-Package pdftex.def Info: Bilder/stf.png  used on input line 539.
+Package pdftex.def Info: Bilder/stf.png  used on input line 542.
 (pdftex.def)             Requested size: 199.16446pt x 142.26552pt.
 
-Overfull \hbox (2.61108pt too wide) in paragraph at lines 528--541
+Overfull \hbox (2.61108pt too wide) in paragraph at lines 530--544
 []$[]$ $[]$ 
  []
 
 [7
 
  <./Bilder/step.png> <./Bilder/stf.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 543--544
+Underfull \hbox (badness 10000) in paragraph at lines 546--547
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 588--590
+Underfull \hbox (badness 10000) in paragraph at lines 591--593
 
  []
 
-<Bilder/ReLu.png, id=232, 220.825pt x 110.4125pt>
+<Bilder/ReLu.png, id=242, 220.825pt x 110.4125pt>
 File: Bilder/ReLu.png Graphic file (type png)
 <use Bilder/ReLu.png>
-Package pdftex.def Info: Bilder/ReLu.png  used on input line 597.
+Package pdftex.def Info: Bilder/ReLu.png  used on input line 600.
 (pdftex.def)             Requested size: 199.17868pt x 142.27097pt.
 
-Overfull \hbox (2.61108pt too wide) in paragraph at lines 591--599
+Overfull \hbox (2.61108pt too wide) in paragraph at lines 594--602
 []$[]$ $[]$ 
  []
 
 [8 <./Bilder/ReLu.png>] [9] [10]
 Kapitel 3.
-<Bilder/matrixmult.jpg, id=250, 316.18124pt x 359.09157pt>
-File: Bilder/matrixmult.jpg Graphic file (type jpg)
-<use Bilder/matrixmult.jpg>
-Package pdftex.def Info: Bilder/matrixmult.jpg  used on input line 642.
-(pdftex.def)             Requested size: 199.17111pt x 170.7182pt.
-[11
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [11
 
 
- <./Bilder/matrixmult.JPG>]
-<Bilder/einPE.jpg, id=257, 580.41844pt x 148.30406pt>
-File: Bilder/einPE.jpg Graphic file (type jpg)
-<use Bilder/einPE.jpg>
-Package pdftex.def Info: Bilder/einPE.jpg  used on input line 652.
-(pdftex.def)             Requested size: 341.43428pt x 142.26843pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 656--657
+]
+[12] (./design/SA_1PE.tex
+\du=\skip66
+)
+Underfull \hbox (badness 10000) in paragraph at lines 797--798
 
  []
 
-<Bilder/PEs.jpg, id=258, 582.67688pt x 161.85469pt>
-File: Bilder/PEs.jpg Graphic file (type jpg)
-<use Bilder/PEs.jpg>
-Package pdftex.def Info: Bilder/PEs.jpg  used on input line 659.
-(pdftex.def)             Requested size: 341.43806pt x 142.27202pt.
-[12 <./Bilder/einPE.JPG> <./Bilder/PEs.JPG>] [13] [14
+(./design/SA_PEs.tex)
+Underfull \hbox (badness 2285) in paragraph at lines 812--816
+[]\OT1/cmr/bx/n/12 Design1: Ge-ge-ben \OT1/cmr/m/n/12 sind hier die Ein-
+ []
 
-]
+(./design/design1.tex)
+Overfull \hbox (7.12787pt too wide) in paragraph at lines 334--819
+[][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 334--819
+
+ []
+
+
+Overfull \hbox (2.61108pt too wide) in paragraph at lines 811--820
+$[]$ $[]$ 
+ []
+
+[13] (./design/design2.tex) (./design/design3.tex) [14] (./design/design4.tex)
+[15] (./design/Systolicarray.tex) [16]
 Kapitel 4.
-[15
-
-]
-Kapitel 5.
-[16
-
-]
-Kapitel 6.
 [17
 
 
-] [18
+]
+Kapitel 5.
+[18
 
-] (./dplthesis-KIT.bbl) [19
+]
+Kapitel 6.
+[19
+
 
 ] [20
+
+] (./dplthesis-KIT.bbl) [21
+
+] [22
 
 ] (./dplthesis-KIT.lot)
 \tf@lot=\write8
 \openout8 = `dplthesis-KIT.lot'.
 
- [21
+ [23
 
 
-] [22
+] [24
 
 ]
 (./dplthesis-KIT.lof)
 \tf@lof=\write9
 \openout9 = `dplthesis-KIT.lof'.
 
- [23
+ [25
 
-] [24
+] [26
 
 ]
 No file dplthesis-KIT.ind.
 No file dplthesis-KIT.nls.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 733.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 733.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 913.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 913.
 (./dplthesis-KIT.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 733.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 733.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 913.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 913.
 Package rerunfilecheck Info: File `dplthesis-KIT.out' has not changed.
-(rerunfilecheck)             Checksum: 188A7D2D8BFAF4EF3B4BD48DC94C511C;1490.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 733.
+(rerunfilecheck)             Checksum: 0D5143579688D805FA1828B9DF1AA246;1684.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 913.
  ) 
 Here is how much of TeX's memory you used:
- 32087 strings out of 492609
- 744705 string characters out of 6132818
- 1225674 words of memory out of 5000000
- 35360 multiletter control sequences out of 15000+600000
- 20857 words of font info for 79 fonts, out of 8000000 for 9000
+ 33921 strings out of 492609
+ 781904 string characters out of 6132818
+ 1246916 words of memory out of 5000000
+ 37159 multiletter control sequences out of 15000+600000
+ 21541 words of font info for 81 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
  62i,19n,100p,751b,2102s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/tex
@@ -1363,12 +1401,13 @@ texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb><c:/texlive/2
 019/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb><c:/texlive/2019/texmf-
 dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2019/texmf-dist/font
 s/type1/public/amsfonts/cm/cmsy6.pfb><c:/texlive/2019/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmsy8.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/cm-su
-per/sfrm0800.pfb>
-Output written on dplthesis-KIT.pdf (34 pages, 1405723 bytes).
+blic/amsfonts/cm/cmsy8.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmti12.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfrm0
+800.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
+Output written on dplthesis-KIT.pdf (36 pages, 1357462 bytes).
 PDF statistics:
- 409 PDF objects out of 1000 (max. 8388607)
- 331 compressed objects within 4 object streams
- 71 named destinations out of 1000 (max. 500000)
- 247 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 432 PDF objects out of 1000 (max. 8388607)
+ 353 compressed objects within 4 object streams
+ 74 named destinations out of 1000 (max. 500000)
+ 248 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -18,6 +18,8 @@
 \BOOKMARK [1][-]{section.3.1}{Grundlagen der Systolic Array Architektur}{chapter.3}% 18
 \BOOKMARK [1][-]{section.3.2}{Why Systolic Architectures?}{chapter.3}% 19
 \BOOKMARK [2][-]{subsection.3.2.1}{Grundidee}{section.3.2}% 20
-\BOOKMARK [0][-]{chapter.4}{Implementierung}{}% 21
-\BOOKMARK [0][-]{chapter.5}{Bewertung des Gesamtsystems}{}% 22
-\BOOKMARK [0][-]{chapter.6}{Fazit}{}% 23
+\BOOKMARK [2][-]{subsection.3.2.2}{Systolic Array Designs f\374r Faltung Berechnungen}{section.3.2}% 21
+\BOOKMARK [2][-]{subsection.3.2.3}{Systolic Array Matrix Multiplikation}{section.3.2}% 22
+\BOOKMARK [0][-]{chapter.4}{Implementierung}{}% 23
+\BOOKMARK [0][-]{chapter.5}{Bewertung des Gesamtsystems}{}% 24
+\BOOKMARK [0][-]{chapter.6}{Fazit}{}% 25

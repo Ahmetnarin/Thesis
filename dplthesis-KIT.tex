@@ -24,6 +24,8 @@
 \usetikzlibrary{matrix,chains,positioning,decorations.pathreplacing,arrows,backgrounds}
 \usepackage{pgfplots}
 \usepackage{float}
+\usetikzlibrary{matrix,arrows.meta,positioning}
+\usepackage{caption}
 
 
 %\usetikzlibrary{matrix,chains,positioning,decorations.pathreplacing,arrows}
@@ -167,19 +169,19 @@ EVITA
     	%\input{01_einleitung/bsp-chapter.tex}
     
     %\cleardoublepage   
-    Neue innovative Projekte wie autonomes Fahren oder auch selbstfliegende Autos in der Zukunft und industrielle Automatisierung  müssen immer mehr mit umfangreichenden Datenmenge umgehen. ML-Methoden werden in solchen Anwendungen häufig verwendet, damit die Daten analysiert werden können bzw. die Maschinen etwas neues aus Daten ohne explizite Programmierung lernen. Insbesondere im Kontext von Echtzeitsystemen stellt sich die Latenz während der Datenverarbeitung als Flaschenhals dar.\\
+    Neue innovative Projekte wie autonomes Fahren oder auch kommenden neue Technologien in der Zukunft und industrielle Automatisierung  müssen immer mehr mit umfangreicher Datenmenge umgehen. ML-Methoden werden in solchen Anwendungen häufig verwendet, damit die Daten analysiert werden können bzw. die Maschinen etwas neues aus den Daten ohne explizite Programmierung lernen. Insbesondere im Kontext von Echtzeitsystemen stellt sich die Latenz während der Datenverarbeitung als Flaschenhals dar.\\
     \\
     Die CPU-Hardwarearchitektur kann dieses Problem leider nicht lösen, da CPUs für allgemeinen Gebrauch vorgesehen sind. GPU (graphics processing unit) ist für solchen rechenintensiven Anwendungen besser geeignet, um die Datenverarbeitung zu beschleunigen. Aber sie verbrauchen viel Energie und für mobile Geräte und Embedded Systems nicht einsetzbar. Eine spezielle Hardwarearchitektur soll für diesen Zweck eingesetzt werden. Es soll wenig Strom verbrauchen und trotz dieser Anforderung auch schnell und mehrfache vorkommende Multiplikation-und Addition Operationen bearbeiten. \\
     \\
-	Das \textbf{FPGA} (field-programable gate array) kann diese Anforderungen erfüllen. Das FPGA besteht aus internen Hardware-Blöcken, die mit anderen von einem Fachperson programiert werden können, um eine spezielle Anforderungen zu erfüllen. Der Hauptvorteil von FPGA im Gegensatz zu den anderen Hardwarearchiteckturen ist, dass die Verbindungen von internen Hardware-Blöcken leicht umprogrammiert und während dem Einsatz Änderungen oder Verbesserungen vorgenommen werden. Verschiedene ML-Algorithmen können damit implementiert und evaluiert werden.  
+	Das \textbf{FPGA} (field-programable gate array) kann diese Anforderungen erfüllen. Das FPGA besteht aus internen Hardware-Blöcken, die mit anderen von einer Fachperson programiert werden können, um eine spezielle Anforderungen zu erfüllen. Der Hauptvorteil von FPGA im Gegensatz zu den anderen Hardwarearchiteckturen ist, dass die Verbindungen von internen Hardware-Blöcken leicht umprogrammiert und während dem Einsatz Änderungen oder Verbesserungen vorgenommen werden. Verschiedene ML-Algorithmen können damit implementiert und evaluiert werden.  
     
     
     \section{Zielsetzung}\label{sec:Zielsetzung}
-    In der vorliegenden Arbeit geht es um eine Entwicklung von Systolic Array Architektur, damit es auf einem FPGA implementiert wird. Das FPGA ist klein, verbraucht wenig Energie und ermöglicht dem ML-Modell eine höhere Rechenleistung und somit eine schnelle Ausführung. 
+    In der vorliegenden Arbeit geht es um eine Entwicklung von Systolic Array Architektur, die auf einem FPGA implementiert wird. Das FPGA ist klein, verbraucht wenig Energie und ermöglicht dem ML-Modell eine höhere Rechenleistung und somit eine schnelle Ausführung. 
     
     \section{Das Mooresche Gesetz}\label{sec:Das Mooresche Gesetz}
-    Ich möchte an dieser Stelle auch noch das Mooresche Gesetz anmerken. Das Gesetz besagt, dass sich die Anzahl der Transistoren, die auf eine integrierte Schaltung gedrückt werden können ungefähr alle 18 Monate verdoppelt.\footnote{$https://de.wikipedia.org/wiki/Mooresches_Gesetz$} 
-    Das ist kein Naturgesetz, sondern es ist nur eine Beobachtung von dem Mitgründer Gordon Moore der Firma Intel im Jahr 1965.\\ Milliarden von Transistoren auf den neusten Chips sind schon unsichtbar für das menschliche Augen. Wenn man das Mooresche Gesetz ins unendliche betrachten möchte, dann müssen die Transistoren aus Bauteilen hergestellt werden, die kleiner als ein einziges Wasserstoffatom sind. Das ist natürlich unmöglich und die Herstellung von Transistoren physikalisch begrenzt. Die Investitionskosten wird immer teurer für Unternehmen, um mehr Transistoren auf einen winzig kleinen Flächen zu drücken. 
+    Ich möchte an dieser Stelle auch noch das Mooresche Gesetz erwähnen. Das Gesetz besagt, dass sich die Anzahl der Transistoren, die auf eine integrierte Schaltung gedrückt werden können ungefähr alle 18 Monate verdoppelt.\footnote{$https://de.wikipedia.org/wiki/Mooresches_Gesetz$} 
+    Das ist kein Naturgesetz, sondern es ist nur eine Beobachtung von dem Mitgründer Gordon Moore der Firma Intel im Jahr 1965.\\ Milliarden von Transistoren auf den neusten Chips sind schon unsichtbar für das menschliche Augen. Wenn man das Mooresche Gesetz ins unendliche betrachten möchte, dann müssen die Transistoren aus Bauteilen hergestellt werden, die kleiner als ein einziges Wasserstoffatom sind. Das ist physikalisch unmöglich und die Herstellung von Transistoren begrenzt. Die Investitionskosten für Unternehmen wird immer teurer, um mehr Transistoren auf einen winzig kleinen Flächen zu drücken. 
     
     \begin{center}
     	\includegraphics[width=12.5cm, height=10cm]{Bilder/Moore's_Law_Transistor_Count_1971-2018}  
@@ -530,8 +532,9 @@ EVITA
 			\varphi (e) = 
 			\begin{cases}
 				0 & \text{wenn $e\leq -\dfrac{1}{2}$} \\
-				1 & \text{wenn $e\geq \dfrac{1}{2}$} \\
-				e + 1/2 & \text{wenn  $-\dfrac{1}{2} < e < \dfrac{1}{2} $ }
+				e + 1/2 & \text{wenn  $-\dfrac{1}{2} < e < \dfrac{1}{2} $ }\\
+				1 & \text{wenn $e\geq \dfrac{1}{2}$} 
+				
 			\end{cases}
 		\end{eqnarray*}
 	\end{minipage}
@@ -636,50 +639,227 @@ EVITA
 	Machine Learning basiert stark auf Berechnungen von Eingabewerten bzw. Daten. Die künstliche neuronale Netze bestehen aus vielen kuenstlichen Neuronen, indem viele Berechnungen stattfinden, die den Ausgabewert des ML-Modells beeinflussen. \\
 	Die Frage ist, wie können die ML-Modells noch schneller ''lernen'' bzw. wie kann man die Berechnungen noch schneller und effektiver durchführen?
 	
-	\textbf{Beispiel:}Bei herkömmlichen Vorgehensweise der Matrix Multiplikationen wird zuerst überprüft, ob die Matrizen miteinander multipliziert werden kann. Wenn die Spaltenmatrix der ersten Matrix mit der Zeilenzahl der zweiten Matrix übereinstimmen, dann kann es mit der Berechnung fortgesetzt werden. Der Nachteil dieser Berechnungen ist die sequentielle Ausführung. Es findet keine parallele Berechnung statt. Das Ziel ist aber ein Algorithmus zu entwickeln, dass parallele Berechnung und sogar mehrere parallele Berechnungen durchführt.
+	\textbf{Beispiel: }Bei herkömmlichen Vorgehensweise der Matrix Multiplikationen wird zuerst überprüft, ob die Matrizen miteinander multipliziert werden kann. Wenn die Spaltenmatrix der ersten Matrix mit der Zeilenzahl der zweiten Matrix übereinstimmen, dann kann es mit der Berechnung fortgesetzt werden. Der Nachteil dieser Berechnungen ist die sequentielle Ausführung. Es findet keine parallele Berechnung statt. Das Ziel ist aber ein Algorithmus zu entwickeln, dass parallele Berechnung und sogar mehrere parallele Berechnungen durchführt.
+	
+%	\begin{center}
+	%	\includegraphics[width=7 cm , height= 6 cm]{Bilder/matrixmult}
+	%	\footnote{$http://www.texample.net/media/tikz/examples/PDF/matrix-multiplication.pdf$}
+		%\caption{Matrix Multiplikation}
+	%\end{center}
+	
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\definecolor{myyellow}{RGB}{240,217,1}
+	\definecolor{mygreen}{RGB}{143,188,103}
+	\definecolor{myred}{RGB}{234,38,40}
+	\definecolor{myblue}{RGB}{53,101,167}
+	
 	
 	\begin{center}
-		\includegraphics[width=7 cm , height= 6 cm]{Bilder/matrixmult}
-		\footnote{$http://www.texample.net/media/tikz/examples/PDF/matrix-multiplication.pdf$}
-		%\caption{Matrix Multiplikation}
+			\begin{tikzpicture}[
+		mymatrix/.style={
+			matrix of math nodes,
+			outer sep=0pt,
+			nodes={
+				draw,
+				text width=2.5em,
+				align=center,
+				minimum height=2.5em,
+				text=gray
+			},
+			nodes in empty cells,
+			column sep=-\pgflinewidth,
+			row sep=-\pgflinewidth,
+			left delimiter=[,
+			right delimiter=],
+		},
+		mycircle/.style 2 args={
+			draw=#1,
+			circle,
+			fill=#2,
+			line width=2pt,
+			inner sep=5pt
+		},
+		arr/.style={
+			line width=4pt,
+			-{Triangle[angle=60:1.5pt 3]},
+			#1,
+			shorten >= 3pt,
+			shorten <= 3pt
+		}
+		]
+		%the matrices
+		\matrix[mymatrix] (A)
+		{
+			|[text=black]|a_{11} & |[text=black]|a_{12} \\
+			a_{21} & a_{22} \\
+			|[text=black]|a_{31} & |[text=black]|a_{32} \\
+			a_{41} & a_{42} \\
+		};
+		\matrix[mymatrix,right=of A.north east,anchor=north west] (prod)
+		{
+			& & \\
+			& & \\
+			& & \\
+			& & \\
+		};
+		\matrix[mymatrix,above=of prod.north west,anchor=south west] (B)
+		{
+			b_{11} & |[text=black]|b_{12} & |[text=black]|b_{13} \\
+			b_{21} & |[text=black]|b_{22} & |[text=black]|b_{23} \\
+		};
+		
+		%the labels for the matrices
+		\node[font=\huge,left=10pt of A] {$A$};
+		\node[font=\huge,above=2pt of B] {$B$};
+		
+		%the frames in both matrices
+		\draw[myyellow,line width=2pt]
+		([shift={(1.2pt,-1.2pt)}]A-1-1.north west) 
+		rectangle 
+		([shift={(-1.2pt,1.2pt)}]A-1-2.south east);
+		\draw[myyellow,line width=2pt]
+		([shift={(1.2pt,-1.2pt)}]B-1-2.north west) 
+		rectangle 
+		([shift={(-1.2pt,1.2pt)}]B-2-2.south east);
+		\draw[mygreen,line width=2pt]
+		([shift={(1.2pt,-1.2pt)}]A-3-1.north west) 
+		rectangle 
+		([shift={(-1.2pt,1.2pt)}]A-3-2.south east);
+		\draw[mygreen,line width=2pt]
+		([shift={(1.2pt,-1.2pt)}]B-1-3.north west) 
+		rectangle 
+		([shift={(-1.2pt,1.2pt)}]B-2-3.south east);
+		
+		%the filled circles in the product
+		\node[mycircle={myblue}{mygreen}]
+		at (prod-3-3) (prod33) {};
+		\node[mycircle={myred}{myyellow}]
+		at (prod-1-2) (prod12) {};
+		
+		%the arrows
+		\draw[arr=myred]
+		(A-1-2.east) -- (prod12); 
+		\draw[arr=myred]
+		(B-2-2.south) -- (prod12); 
+		\draw[arr=myblue]
+		(A-3-2.east) -- (prod33); 
+		\draw[arr=myblue]
+		(B-2-3.south) -- (prod33); 
+		
+		%the legend
+		\matrix[
+		matrix of math nodes,
+		nodes in empty cells,
+		column sep=10pt,
+		anchor=north,
+		nodes={
+			minimum height=2.2em,
+			minimum width=2em,
+			anchor=north west
+		},
+		below=5pt of current bounding box.south
+		] 
+		(legend)
+		{
+			& a_{11}b_{12} + a_{12}b_{22} \\
+			& a_{31}b_{13} + a_{32}b_{23} \\
+		};
+		\node[mycircle={myblue}{mygreen}]
+		at (legend-2-1) {};
+		\node[mycircle={myred}{myyellow}]
+		at (legend-1-1) {};
+		\end{tikzpicture}
+		
 	\end{center}
+	
+	
+		
+	
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	
 	
 	\section{Why Systolic Architectures?} \label{sec:Why Systolic Architectures?}
 	\subsection{Grundidee}\label{subsec:Grundidee}
-	Die Grundidee des systolischen Arrays ist, dass die Daten rhythmisch aus dem Computerspeicher fließen und laufen durch viele PEs (processing elements), bevor sie in den Speicher zurückkehren.
-		
-	\begin{center}
-		\includegraphics[width=12 cm , height= 5 cm]{Bilder/einPE}
-	\end{center}
+	Der Begriff ''systolisches Array'' kann nach einer neuen Innovation in der Rechnerarchitektur klingen.Aber es ist fast 40 Jahre alt. H.T. Kung kam auf diese Idee in den 80er Jahren und veröffentlichte seine Idee im Jahr 1982.\footnote{http://www.eecs.harvard.edu/~htk/publication/1982-kung-why-systolic-architecture.pdf}
 	
-		
-	Wenn es nur ein einziges PE gibt, das aus dem Speicher ein Data holt, verarbeitet und das Ergebnis in den Speicher speichert. Das ist ineffizient und zeitaufwändig.\\
-	
-	\begin{center}
-		\includegraphics[width=12 cm , height= 5 cm]{Bilder/PEs}
-	\end{center}
-
-	
-	
-	Aber wenn es mehrere PEs gibt, die Daten mehrmals verarbeiten und das Ergebnis in den Speicher legt. Das ist die Idee, die das System beschleunigt.
+	Die Grundidee des systolischen Arrays ist, dass die Daten rhythmisch aus dem Computerspeicher fließen und laufen durch viele PEs (processing elements), bevor sie in den Speicher zurückkehren. Die Idee ist vergleichbar mit dem Blutkreislauf, dass der Herz zu jeden Zellen Blut pumpt.
 	\newpage
 	
-	Der Begriff ''systolisches Array'' kann nach einer neuen Innovation in der Rechnerarchitektur klingen.Aber es ist fast 40 Jahre alt. H.T. Kung kam auf diese Idee in den 80er Jahren und veröffentlichte seine Idee im Jahr 1982.\footnote{http://www.eecs.harvard.edu/~htk/publication/1982-kung-why-systolic-architecture.pdf} 
 	
+	\begin{center}
+		%\includegraphics[width=12 cm , height= 5 cm]{Bilder/einPE}
+		\input{Design/SA_1PE.tex}
+		
+	\end{center}
+	Das oben dargestellte Verarbeitungsschema ist ineffizient und zeitaufwändig, wenn es nur ein einziges PE gibt, das aus dem Speicher ein Data holt, verarbeitet und das Ergebnis in den Speicher ablegt. In einer Sekunde werden nur 5 Millionen Operationen \textbf{MOPS} \textit{(Millions of operations per seconds)} durchgeführt.  \\
+
+  
+	Um \textbf{MOPS} zu erhöhen soll mehrere PEs geben, die Daten mehrmals verarbeiten (wie Pipeline System) und am Ende das Ergebnis wird von dem letzten PE in den Speicher abgelegt. Das ist die Idee, die das System beschleunigen soll. Damit werden 30 Millionen Operationen durchgeführt.
+	
+	\begin{center}
+		%\includegraphics[width=12 cm , height= 5 cm]{Bilder/PEs}
+		\input{Design/SA_PEs.tex}
+		
+	\end{center}
+	
+	
+	\subsection{Systolic Array Designs für Faltung Berechnungen}
+	
+	\begin{minipage}{.5\linewidth}
+		\textbf{Design1: Gegeben} sind hier die Eingangswerte $\left[ x_{1}, x_{2},\ldots ,x_{n}\right]$  und die Gewichte $\left[ w_{1}, w_{2},\ldots ,w_{k}\right]$ .\\
+		Die Ausgangswerte sind\\ $y_{i} = \left[ w_{1}x_{i}+w_{2}x_{i+1}+ \ldots + w_{k}x_{i+k-1} \right]$ \\
+		Die Gewichte sind schon in jeder Zelle  vorgeladen. Die Eingangswerte $x_{i}$ verbreiten sich zu jeder Zelle und Teilsummen $y_{i}$ bewegen sich systolisch durch jede Zelle.\\
+		$y_{out} \leftarrow y_{in} + w \cdot x_{in}$
+	\end{minipage}
+	\begin{minipage}{.5\linewidth}
+		 \input{Design/design1.tex}			
+	\end{minipage}
+	\newpage
+	
+	
+	\textbf{Design2}: Die Eingangswerte $x_{i}$ verbreiten sich und die Ausgangswerte $y_{i}$ werden in Zellen berechnet und akkumuliert. Die Gewichte $w_{i}$ bewegen sich in einer Schleife systolisch durch jede Zelle. Am Ende der Berechnung müssen die Ergebnisse $y_{i}$ aus den Zellen geholt werden. Das Ziel vom \textbf{Design2} ist die Erhöhung der Genauigkeit von Ergebnissen. Dafür ist eine BUS-Leitung nötig, um die Ergebnisse auszugeben, was im \textbf{Design1} nicht der Fall war.
+	
+	\begin{center}
+		\input{Design/design2.tex}\\
+		$y_{out} \leftarrow y + w_{in} \cdot x_{in}$\\
+		$w_{out} \leftarrow w_{in}$\\
+	\end{center}
+	
+	
+	\textbf{Design3}:Die Gewichte $w_{i}$ sind in Zellen vorgeladen. Nach einem Takt fließen die Eingangswerte $x_{i}$ systolisch in die Zellen rein und finden in jeden Zellen Multiplikationen statt, die Teilsummen beim nächsten Takt zum globalen Adder (Addierer) weitergegeben werden sollen. In dem Addierer werden die Ergebnisse aus den Zellen gesammelt und addiert. Ein Nachteil dieser Entwurf ist der globale Akkumulator bzw. Addierer. Dafür ist ein BUS-Leitung nötig. \\ \textbf{Anwendung:} Diese Methode wird in musterbasierte Suche (Pattern matching) oder auch in der digitale Signalverarbeitung eingesetzt.
+	\begin{center}
+		\input{Design/design3.tex}\\
+		$z_{out} \leftarrow w \cdot x_{in}$\\
+		$x_{out} \leftarrow x_{in}$\\
+	\end{center}
+
+	\newpage
+	\textbf{Design4}: Die Ausgangswerte $y_{i}$ bleiben fest in den Zellen und die Gewichte $w_{i}$ und Eingangswerte $x_{i}$ laufen systolisch und gegenseitig durch die Zellen. \\ \textbf{Design4} hat ein Vorteil, dass das keine externe Netzwerke wie z.B. Adder in \textbf{Design3} braucht.
+	
+	\begin{center}
+		\input{Design/design4.tex}\\
+		$y \leftarrow y + w_{in} \cdot x_{in}$\\
+		$x_{out} \leftarrow x_{in}$\\
+		$x_{out} \leftarrow w_{in}$
+	\end{center}
+	\newpage
+
+	\subsection{Systolic Array Matrix Multiplikation}
+	Bei der Matrix Multiplikation sind mehrere PEs (Processing elements) nötig, die miteinander verbunden sind. Der Datenfluss erfolgt hier von links z.B. Matrix A-Werte und von oben transponierte Matrix B-Werte. Die Aufgabe von PEs sind Multiplikationen von Eingangswerten und Akkumulieren die Teilsumme in ihren eingebauten Register. Mehr Details über PEs sind in Kapitel $Implementierung$. 
+	\begin{center}
+		\input{Design/systolicArray.tex}\\
+	\end{center}
 	
 
 
 	
 	
-	
-	
-	
-
-	
-	
-	  
 	
 		
+	
     \cleardoublepage    
     
     \chapter{Implementierung}
