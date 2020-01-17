@@ -64,6 +64,7 @@
 \renewcommand{\nomname}{Abkürzungsverzeichnis}
 \setlength{\nomlabelwidth}{.25\hsize}
 \renewcommand{\nomlabel}[1]{#1 }%\dotfill}
+
 \setlength{\nomitemsep}{-\parsep}
 \makenomenclature
 \newcommand{\markup}[1]{\underline{#1}} 
@@ -144,13 +145,13 @@ EVITA
 % Signaturepage
 % ===================================================== 
     \input{00_special_pages/erklaerung}
-	\cleardoublepage
+	%\cleardoublepage
 % =====================================================
 % TOC
 % ===================================================== 
     \tableofcontents
     %\clearpage
-    \cleardoublepage
+    %\cleardoublepage
 
 % =====================================================
 % Main Chapters
@@ -185,7 +186,7 @@ EVITA
     
     \begin{center}
     	\includegraphics[width=12.5cm, height=10cm]{Bilder/Moore's_Law_Transistor_Count_1971-2018}  
-    	\cleardoublepage
+    	%\cleardoublepage
     \end{center}
     
     
@@ -211,7 +212,7 @@ EVITA
     b_{n1} & b_{n2} &  \ldots & b_{np} \\
     \end{pmatrix}$\\
     
-    Die Produktmatrix C ergibt sich:\textbf{C} = 
+    Die Produktmatrix C ergibt sich:\\ \textbf{C} = 
     $\begin{pmatrix}
     c_{11} & c_{12} &  \ldots & c_{1p} \\
     c_{21} & c_{22} &  \ldots & c_{2p} \\ 
@@ -219,7 +220,7 @@ EVITA
     c_{m1} & c_{m2} &  \ldots & c_{mp} \\
     \end{pmatrix}$\\
     
-    Die Produktmatrix C besteht aus viele Multiplikationen und Additionen.\\
+    Bei einer MM-Multiplikation finden mpn-Multiplikationen und mp(n-1)-Additionen statt.\\
     $c_{ij}=a_{i1}b_{1j}+a_{i2}b_{2j}+\ldots+a_{in}b_{nj}=\sum_{k-1}^{n} a_{ik}b_{kj}$\\
     
     
@@ -230,18 +231,15 @@ EVITA
     a_{m1}b_{11}+ \ldots +a_{mn}b_{n1} & a_{m1}b_{12}+\ldots +a_{mn}b_{n2} & \ldots & a_{m1}b_{1p}+ \ldots +a_{mn}b_{np}  
     \end{pmatrix}$\\
     
-    Bei einer MM-Multiplikation findet mpn-Multiplikationen und mp(n-1)-Additionen statt.
+    
 	
     
    
     \section{1D-Faltung und 2D-Faltung}\label{sec:Faltungsmatrix}
     
     \subsection{1D-Faltung bzw. Faltung}\label{subsec:1D-Faltung}
-    Die Faltung mit eindimensionalen Signalen wird als 1D-Faltung oder nur Faltung bezeichnet. In der digitalen Bildverarbeitung und Signalverarbeitung findet meistens diskrete Faltung statt.\\
-    Die Faltung von zwei diskreten Funktionen wird  durch folgende Formel berechnet:
+    Die Faltung mit eindimensionalen Signalen wird als 1D-Faltung oder nur Faltung bezeichnet. In der digitalen Bildverarbeitung und Signalverarbeitung findet meistens diskrete Faltung statt. Die Faltung von zwei diskreten Funktionen wird  durch folgende Formel berechnet:
     
-
-
     \begin{center}
     	$f[n]=a[n]\ast b[n] = \sum_{k=-\infty}^{\infty}a[k]  b[n-k]$
     \end{center}
@@ -405,162 +403,117 @@ EVITA
 	%\end{document}
 	\end{center}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\section{Maschinelles Lernen}\label{sec:Maschinelles Lernen}
-	Beim ML wird das System so programmiert, damit das aus eingegebenen Daten automatisch lernt und sich mit der \grqq Erfahrung\grqq  verbessert. Das heißt, das System wird mit Trainingsdaten trainiert. Hier bedeutet das Lernen: die eingegebenen Daten zu erkennen, verstehen und auf der Grundlage der gelieferten Daten eine sinnvolle Entscheidung zu treffen.\\
-	Aber nicht alle Entscheidungen können auf der Grundlage aller möglichen Eingaben berücksichtigt werden. Um dieses Problem  zu lösen, werden hier Algorithmen entwickelt, die das maschinelles Lernen optimieren und schneller machen.
+	
 	
 	
 	%\cleardoublepage
 	
 	
 	\section{Kuenstliche neuronale Netze} \label{sec:Kuenstliche neuronale Netze}
-	Kuenstliche neuronale Netze sind beliebte Technik des maschinellen Lernens, die den Mechanismus des Lernens in biologischen Organismen simulieren. Das menschliche Nervensystem enthält Zellen, die als Neuron bezeichnet wird. Die Neuronen sind unter Verwendung von Axonen miteinander verbunden.
-	
+	Kuenstliche neuronale Netze sind ein Technik des ML, die den Mechanismus des Lernens in biologischen Organismen simulieren. Das menschliche Nervensystem enthält Zellen, die als Neuron bezeichnet wird. Ein typisches Neuron ist in drei Teile aufgeteilt: Die Dendriten, den Zellkörper und das Axon. Aus dem Zellkörper zweigen eine Reihe von Dendriten ab, die elektrochemische Signale von anderen Neuronen zum Zellkörper übertragen. Das Axon erstreckt sich über eine lange Strecke, um das Signal von einem Neuron zu einem Anderen zu übertragen.
 	
 	\begin{center}
 		\includegraphics[width=10 cm , height= 5 cm]{Bilder/neuron}
 	\end{center}
 
 
-	Dieser biologische Mechanismus wird in kuenstlichen neuronalen Netzen übertragen. Ein Neuron besitz viele Eingaben und jede Eingabe des Neurons wird mit einem Gewicht versehen. Die gewichteten Eingaben werden dann durch eine Übertragungsfunktion akkumuliert und daraus resultierende Netzeingabe in eine Aktivierungsfunktion gegeben, die die Ausgabe bestimmt.
+	Dieser biologische Mechanismus wird in kuenstlichen neuronalen Netzen übertragen. Ein Neuron ist eine Einheit für die Informationsverarbeitung, das sich die Grundlage einer neuronaler Netze bildet.
 	
-
-		
-	%hier kommt neuron
-	
+		%hier kommt neuron
 	\begin{center}
-		\begin{tikzpicture}[
-		init/.style={
-			draw,
-			circle,
-			inner sep=2pt,
-			font=\Huge,
-			join = by -latex
-		},
-		squa/.style={
-			draw,
-			inner sep=2pt,
-			font=\Large,
-			join = by -latex
-		},
-		start chain=2,node distance=13mm
-		]
-		\node[on chain=2] 
-		(x2) {$x_2$};
-		\node[on chain=2,join=by o-latex] 
-		{$w_2$};
-		\node[on chain=2,init] (sigma) 
-		{$\displaystyle\Sigma$};
-		\node[on chain=2,squa,label=above:{\parbox{2cm}{\centering Activate \\ function}}]   
-		{$f$};
-		\node[on chain=2,label=above:Output,join=by -latex] 
-		{$y$};
-		\begin{scope}[start chain=1]
-		\node[on chain=1] at (0,1.5cm) 
-		(x1) {$x_1$};
-		\node[on chain=1,join=by o-latex] 
-		(w1) {$w_1$};
-		\end{scope}
-		\begin{scope}[start chain=3]
-		\node[on chain=3] at (0,-1.5cm) 
-		(x3) {$x_3$};
-		\node[on chain=3,label=below:Weights,join=by o-latex] 
-		(w3) {$w_3$};
-		\end{scope}
-		\node[label=above:\parbox{2cm}{\centering Bias \\ $b$}] at (sigma|-w1) (b) {};
-		
-		\draw[-latex] (w1) -- (sigma);
-		\draw[-latex] (w3) -- (sigma);
-		\draw[o-latex] (b) -- (sigma);
-		
-		\draw[decorate,decoration={brace,mirror}] (x1.north west) -- node[left=10pt] {Inputs} (x3.south west);
-		\end{tikzpicture}
-				
+		\includegraphics[width=10 cm , height= 5 cm]{Bilder/artneuron}
 	\end{center}
-	\cleardoublepage
-
-	\subsection{Aktivierungsfunktionen}\label{subsec:Aktivierungsfunktionen}
-	Eine Aktivierungsfunktion ist eine mathematische Funktion und entscheidet, ob ein Neuron aktiviert werden soll oder nicht, indem sie die gewichtete Summe berechnet und eine Bias hinzufügt. Diese Funktionen sind:
 	
 	
-	\subsubsection{Schwellenwertfunktion}\label{subsec:Schwellenwertfunktion}
-	Die Schwellenwertfunktion (engl. heaviside step function oder auch binary step function) nimmt nur die Werte 0 und 1 an. Liegt der Eingabewert über oder unter einem bestimmten Schwellenwert, wird das Neuron aktiviert und sendet das Eingangssignal. Für die Eingabe e$\geq$ {0} nimmt der Ausgangswert 1, ansonsten 0.\\
-
-
-	%$\varphi (e) = 
-	%\begin{cases}
-	%	 0 & \text{wenn $e<0$} \\
-%		1 & \text{wenn $e\geq0$} \\
-%	\end{cases}$ \\
-%	\includegraphics[width=5 cm , height= 5 cm]{Bilder/step}
-	
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%\begin{figure}
-		\begin{minipage}{.5\linewidth}
-			\begin{eqnarray*}
-			\varphi (e) = 
-			\begin{cases}
-				0 & \text{wenn $e<0$} \\
-				1 & \text{wenn $e\geq0$} \\
-			\end{cases}
-			\end{eqnarray*}
-		\end{minipage}
-		\begin{minipage}{.5\linewidth}
-			\includegraphics[width=5 cm , height= 5 cm]{Bilder/step}
-		\end{minipage}
-	%\end{figure}
-
-
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
-	
-	
-
-	
-
-	
-	\subsubsection{Stückweise lineare Funktion}
-	Stückweise lineare Funktion läuft in einem begrenzten Intervall linear ab. Außerhalb des Intervalls besitzt die Funktion einen konstanten Wert.\\
-	%$\varphi (e) = 
-%	\begin{cases}
-	%	0 & \text{wenn $e\leq -\dfrac{1}{2}$} \\
-	%	1 & \text{wenn $e\geq \dfrac{1}{2}$} \\
-	%	e + 1/2 & \text{wenn  $-\dfrac{1}{2} < e < \dfrac{1}{2} $ }
-	%\end{cases}$\\
-	
-	\begin{minipage}{.5\linewidth}
-		\begin{eqnarray*}
-			\varphi (e) = 
-			\begin{cases}
-				0 & \text{wenn $e\leq -\dfrac{1}{2}$} \\
-				e + 1/2 & \text{wenn  $-\dfrac{1}{2} < e < \dfrac{1}{2} $ }\\
-				1 & \text{wenn $e\geq \dfrac{1}{2}$} 
-				
-			\end{cases}
-		\end{eqnarray*}
-	\end{minipage}
-	\begin{minipage}{.5\linewidth}
-		\includegraphics[width=7 cm , height= 5 cm]{Bilder/stf}
-	\end{minipage}
-	\newpage
-	\subsubsection{Sigmoidfunktion}
-	Sigmoide Funktionen sind sehr häufig verwendete Funktionen. Sie besitzen ein variables Steigungsmaß $\alpha $ , dass die Krümmung des Funktionsgraphen beeinflusst. Differenzierbarkeit der Sigmoidfunktion ist für einige ML-Verfahren wie Backpropagation-Algorithmus ein Vorteil. Der Nachteil ist ein starker negativer Eingangssignal, damit kann es während des Trainings hängen bleiben.\\Sie ist definiert durch: \\
-	
-		
-		
-
-		
-
-		%\includegraphics[width=7 cm , height= 5 cm]{Bilder/sigmoid}
-		\begin{tikzpicture}
-		\begin{axis}[legend pos=north west,
+		\begin{description}
+			\item[\textbf{Gewichtung $w_{i}$ :}] Sie bestimmen den Grad, wie stark die Eingänge der Entscheidung des Neurons beeinflusst. Ein Gewicht mit dem Wert 0 bedeutet, dass es keine Verbindung zwischen Neuronen existiert.
+			\item[\textbf{Übertragungsfunktion:}] Die Netzeingabe wird durch die Übertragungsfunktion $\sum$ von einzelnen Einganswerte, die mit Gewichte multipliziert sind, berechnet.
+			
+			\item[\textbf{Bias $b_{k}$}]: Die Übertragungsfunktion enthält noch ein externer Wert, die mit Bias $b$ bezeichnet ist. Das kann auch positive und negative Werte einnehmen und hat Einfluss auf den Eingangswert der Aktivierungsfunktion. Damit wird dieser Wert erhöht oder auch gesenkt werden.
+			
+			
+			\item[\textbf{Aktivierungsfunktionen:}]
+			%{Aktivierungsfunktionen}\label{subsec:Aktivierungsfunktionen}
+			Eine Aktivierungsfunktion ist eine mathematische Funktion und entscheidet, ob ein Neuron aktiviert werden soll oder nicht, indem sie die gewichtete Summe berechnet und eine Bias hinzufügt. Diese Funktionen sind:	
+			
+			\subsection{Schwellenwertfunktion}\label{subsec:Schwellenwertfunktion}
+			Die Schwellenwertfunktion (engl. heaviside step function oder auch binary step function) nimmt nur die Werte 0 und 1 an. Liegt der Eingabewert über oder unter einem bestimmten Schwellenwert, wird das Neuron aktiviert und sendet das Eingangssignal. Für die Eingabe e$\geq$ {0} nimmt der Ausgangswert 1, ansonsten 0.\\
+			
+			
+			%$\varphi (e) = 
+			%\begin{cases}
+			%	 0 & \text{wenn $e<0$} \\
+			%		1 & \text{wenn $e\geq0$} \\
+			%	\end{cases}$ \\
+			%	\includegraphics[width=5 cm , height= 5 cm]{Bilder/step}
+			
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			%\begin{figure}
+			\begin{minipage}{.5\linewidth}
+				\begin{eqnarray*}
+					\varphi (e) = 
+					\begin{cases}
+						0 & \text{wenn $e<0$} \\
+						1 & \text{wenn $e\geq0$} \\
+					\end{cases}
+				\end{eqnarray*}
+			\end{minipage}
+			\begin{minipage}{.5\linewidth}
+				\includegraphics[width=5 cm , height= 5 cm]{Bilder/step}
+			\end{minipage}
+			%\end{figure}
+			
+			
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+			
+			
+			
+			
+			
+			
+			\subsection{Stückweise lineare Funktion}
+			Stückweise lineare Funktion läuft in einem begrenzten Intervall linear ab. Außerhalb des Intervalls besitzt die Funktion einen konstanten Wert.\\
+			%$\varphi (e) = 
+			%	\begin{cases}
+			%	0 & \text{wenn $e\leq -\dfrac{1}{2}$} \\
+			%	1 & \text{wenn $e\geq \dfrac{1}{2}$} \\
+			%	e + 1/2 & \text{wenn  $-\dfrac{1}{2} < e < \dfrac{1}{2} $ }
+			%\end{cases}$\\
+			
+			\begin{minipage}{.5\linewidth}
+				\begin{eqnarray*}
+					\varphi (e) = 
+					\begin{cases}
+						0 & \text{wenn $e\leq -\dfrac{1}{2}$} \\
+						e + 1/2 & \text{wenn  $-\dfrac{1}{2} < e < \dfrac{1}{2} $ }\\
+						1 & \text{wenn $e\geq \dfrac{1}{2}$} 
+						
+					\end{cases}
+				\end{eqnarray*}
+			\end{minipage}
+			\begin{minipage}{.5\linewidth}
+				\includegraphics[width=7 cm , height= 5 cm]{Bilder/stf}
+			\end{minipage}
+			
+			\subsection{Sigmoidfunktion}
+			Sigmoide Funktionen sind sehr häufig verwendete Funktionen. Sie besitzen ein variables Steigungsmaß $\alpha $ , dass die Krümmung des Funktionsgraphen beeinflusst. Differenzierbarkeit der Sigmoidfunktion ist für einige ML-Verfahren wie Backpropagation-Algorithmus ein Vorteil. Der Nachteil ist ein starker negativer Eingangssignal, damit kann es während des Trainings hängen bleiben.\\Sie ist definiert durch: \\
+			
+			
+			
+			
+			
+			
+			%\includegraphics[width=7 cm , height= 5 cm]{Bilder/sigmoid}
+			\begin{tikzpicture}
+			\begin{axis}[legend pos=north west,
 			axis x line=middle,
 			axis y line=middle,
 			x tick label style={/pgf/number format/fixed,
-			/pgf/number format/fixed zerofill,
-			/pgf/number format/precision=1},
+				/pgf/number format/fixed zerofill,
+				/pgf/number format/precision=1},
 			y tick label style={/pgf/number format/fixed,
-			/pgf/number format/fixed zerofill,
-			/pgf/number format/precision=1},
+				/pgf/number format/fixed zerofill,
+				/pgf/number format/precision=1},
 			grid = major,
 			width=16cm,
 			height=8cm,
@@ -574,33 +527,49 @@ EVITA
 			ylabel=y,
 			tick align=outside,
 			enlargelimits=false]
-		% plot the stirling-formulae
+			% plot the stirling-formulae
 			$\addplot[domain=-1:1, red, ultra thick,samples=500] {1/(1+exp(-5*x))};$
 			$\addplot[domain=-1:1, blue, ultra thick,samples=500] {1/(1+exp(-10*x))};$
 			$\addlegendentry{$f(x)=\frac{1}{1+e^{-5x}}$}$
 			$\addlegendentry{$g(x)=\frac{1}{1+e^{-10x}}$}$
-	\end{axis}
-		
-	\end{tikzpicture}
-		
-	\begin{center}
-		$\varphi_{\alpha}^{sig} (e) = \dfrac{1}{1+\exp (-\alpha e)}$
-	\end{center}
-		
-	\subsubsection{Rectifier (ReLU)}
-	Es wird besonders in Deep-Learning Modellen wie CNN( Convolutional Neural Networks) eingesetzt. Dies ist auch als Rampenfunktion bekannt. ReLU Funktion ist definiert durch:
-	\\
+			\end{axis}
+			
+			\end{tikzpicture}
+			
+			\begin{center}
+				$\varphi_{\alpha}^{sig} (e) = \dfrac{1}{1+\exp (-\alpha e)}$
+			\end{center}
+			
+			\subsection{Rectifier (ReLU)}
+			Es wird besonders in Deep-Learning Modellen wie CNN( Convolutional Neural Networks) eingesetzt. Dies ist auch als Rampenfunktion bekannt. ReLU Funktion ist definiert durch:
+			\\
+			
+			\begin{minipage}{.5\linewidth}
+				\begin{eqnarray*}
+					\varphi (e) = \max (0,e)
+				\end{eqnarray*}
+			\end{minipage}
+			\begin{minipage}{.5\linewidth}
+				\includegraphics[width=7 cm , height= 5 cm]{Bilder/ReLu}
+			\end{minipage}
+		\end{description}
 	
-	\begin{minipage}{.5\linewidth}
-	\begin{eqnarray*}
-		\varphi (e) = \max (0,e)
-	\end{eqnarray*}
-	\end{minipage}
-	\begin{minipage}{.5\linewidth}
-		\includegraphics[width=7 cm , height= 5 cm]{Bilder/ReLu}
-	\end{minipage}
+	Das Neuron kann durch eine mathematische Gleichung beschrieben werden. Die Eingänge $x_{1},x_{2}, \ldots , x_{m}$ sind mit Gewichten $w_{1},w_{2}, \ldots , w_{m}$ multipliziert und diese Werte werden durch Übertragungsfunktion summiert und Bias hinzugefügt. Die Aktivierungsfunktion hat dann den Ausgangswert bestimmt.
+	\begin{center}
+		$y = \varphi(\cdot)(b+ \sum_{i=0}^{n} w_{m}x_{m})$			
+	\end{center}
 
-	\newpage
+	
+
+	
+
+
+	\textbf{Kurze Zusammenfassung:} Ein Neuron besitzt viele Eingaben und jede Eingabe des Neurons wird mit einem Gewicht versehen. Die gewichteten Eingaben werden dann durch eine Übertragungsfunktion akkumuliert und daraus resultierende Netzeingabe in eine Aktivierungsfunktion gegeben, die die Ausgabe bestimmt.
+
+	\section{Maschinelles Lernen}\label{sec:Maschinelles Lernen}
+	Beim ML wird das System so programmiert, damit das aus eingegebenen Daten automatisch lernt und sich mit der \grqq Erfahrung\grqq  verbessert. Das heißt, das System wird mit Trainingsdaten trainiert. Hier bedeutet das Lernen: die eingegebenen Daten zu erkennen, verstehen und auf der Grundlage der gelieferten Daten eine sinnvolle Entscheidung zu treffen.
+	Aber nicht alle Entscheidungen können auf der Grundlage aller möglichen Eingaben berücksichtigt werden. Um dieses Problem  zu lösen, werden hier Algorithmen 	entwickelt, die das maschinelles Lernen optimieren und schneller machen.
+
 	
 	\section{Lernphase}\label{sec:Lernphase}
 	\subsection{Supervised Learning}\label{subsec:Supervised Learning}
@@ -608,21 +577,44 @@ EVITA
 	D.h. man muss als Entwickler dem Modell vorher sagen, was die Lösung ist.
 	Wenn man beispielsweise einem Bildererkenner beibringen will, Hunde-und Katzenbilder 
 	zu unterscheiden, muss vorher ein Mensch alle Trainingsbilder anschauen und notieren 
-	was zu sehen ist. Hier ist der Entwickler als ''Lehrer'' vorgesehen, der das ML-Modell beibringt. Ansonsten weiss der Algorithmus nicht, ob er falsch oder richtig entscheidet.
+	was zu sehen ist. Hier ist der Entwickler als ''Lehrer'' vorgesehen, der das ML-Modell beibringt. Ansonsten weiss der Algorithmus nicht, ob er falsch oder richtig entscheidet.\\
+	\textbf{Anwendungen}
+	\begin{description}
+		\item[Bildklasifizierung] In der Zukunft wird von dem System erwartet, dass es ein neu gegebenes Bild erkennt.
+		\item[Marktvorhersage] Das System wird von Werten aus der vergangenen Marktdaten trainiert und wird erwartet, dass es den Preis für die Zukunft vorhersagt.
+		\begin{center}
+			\includegraphics[width=15 cm , height= 7 cm]{Bilder/clasreg}
+		\end{center}  
+	\end{description}
 	
 	
 
-	\subsection{Unsupervised Learning}\label{subsec:Unspervised Learning}
+	\subsection{Unsupervised Learning}\label{subsec:Unsupervised Learning}
 	Beim Unsupervised Learning soll das ML-Modell aus Daten ''lernen'', die Bedeutungen von denen noch unbekannt sind. Hier wird dem Algorithmus die Daten ohne Zielvorgabe eingespeist und trainiert. Ohne Daten gibt es natürlich nichts zu ''lernen''.
+	Unsupervised Learning wird verwendet, um einen bestimmten Datensatz in verschiedene Gruppen zu gruppieren. Dies wird häufig verwendet, um Kunden für bestimmte Eingriffe in verschiedene Gruppen zu segmentieren.\\
+	\newpage
+	\textbf{Anwendungen}
+	\begin{description}
+		\item[Clustering] Ähnliche Daten werden in Cluster bzw. Gruppen eingeteilt, um die Gruppierung für ein Zweck zu nutzen. Dies ist in Forschung und Wissenschaft eingesetzt. 
+		\begin{center}
+			\includegraphics[width=15 cm , height= 7 cm]{Bilder/clustering}
+		\end{center}  
+	\end{description}
 	
-	
-	Unsupervised Learning wird verwendet, um einen bestimmten Datensatz in verschiedene Gruppen zu gruppieren. Dies wird häufig verwendet, um Kunden für bestimmte Eingriffe in verschiedene Gruppen zu segmentieren.
+
+
+	\subsection{Reinforcement Learning}\label{subsec:Reinforcement Learning}
+	Bei der reinforcement Learning geht es darum, dass der Agent (hier: Software-Bot) in einer unbekannten und komplexen Umgebung ein Ziel zu erreichen. Dabei wird der Agent für richtiges Aktion belohnt und für falsches Aktion bestraft. Sein Ziel ist es, die Gesamtbelohnung zu maximieren bzw. Strafen zu minimieren. Der Unterschied zwischen supervised-und reinforcement Learning
+	ist es, dass der Agent keine Hinweise oder Vorschläge zur Lösung bekommt. Die Lösung ist unbekannt und er versteht nur aus seiner Aktion, ob er falsch oder richtig liegt. 
 	\newpage
 	
-	\section{Grundlage der Hardwarebeschreibungssprache VHDL}\label{sec:Grundlage der Hardwarebeschreibungssprache VHDL}
+	\section{Neuronale Netze}\label{sec:Neuronale Netze}
 	
 	
-	%\subsection{Reinforcement Learning}\label{subsec:Reinforcement Learning}	
+	
+	%\section{Grundlagen der Hardwarebeschreibungssprache VHDL}\label{sec:Grundlage der Hardwarebeschreibungssprache VHDL}
+	
+		
 	
 	
 	
@@ -634,158 +626,25 @@ EVITA
 	
 	\cleardoublepage
 	\chapter{Konzept}\label{ch:Konzept}  	
-	\section{Grundlagen der Systolic Array Architektur}\label{sec:Grundlagen der Systolic Array Architektur}
+	\section{Einführung der Systolic Array Architektur}%\label{sec:Grundlagen der Systolic Array Architektur}
 %	Zur Errinerung wird hier die Pseudocode von Matrix-Matrix Multiplikation
-	Machine Learning basiert stark auf Berechnungen von Eingabewerten bzw. Daten. Die künstliche neuronale Netze bestehen aus vielen kuenstlichen Neuronen, indem viele Berechnungen stattfinden, die den Ausgabewert des ML-Modells beeinflussen. \\
-	Die Frage ist, wie können die ML-Modells noch schneller ''lernen'' bzw. wie kann man die Berechnungen noch schneller und effektiver durchführen?
+	Machine Learning basiert stark auf Berechnungen z.B. von Faltungen, Matrix-Matrix-und Matrix-Vektor Multiplikationen, Berechnung von Verlustfunktionen, Max-Pooling usw. Die künstliche neuronale Netze bestehen aus vielen kuenstlichen Neuronen, indem viele Berechnungen stattfinden, die den Ausgabewert des ML-Modells beeinflussen. 
+%	Die Frage ist, wie können die ML-Modells noch schneller ''lernen'' bzw. wie kann man die Berechnungen noch schneller und effektiver durchführen?
+	Das wesentliche Ziel ist die Entwicklung neuer Rechnerarchitektur und der effizienten Nutzung von modernen Systeme, um solchen komplizierten ML-Anwendungen schneller ausführen zu können. Die wachsende Nachfrage nach mehr Rechenleistung führte in den 80er Jahren zur Entwicklung parallel skalierbaren Multiprocessing-Systemen. Das System soll durch paralleles Rechnen in der Lage sein, dass ein kompliziertes großes Rechenproblem in kleinere Stück unterteilt und diese kleine Rechenprobleme gleichzeitig löst.
 	
-	\textbf{Beispiel: }Bei herkömmlichen Vorgehensweise der Matrix Multiplikationen wird zuerst überprüft, ob die Matrizen miteinander multipliziert werden kann. Wenn die Spaltenmatrix der ersten Matrix mit der Zeilenzahl der zweiten Matrix übereinstimmen, dann kann es mit der Berechnung fortgesetzt werden. Der Nachteil dieser Berechnungen ist die sequentielle Ausführung. Es findet keine parallele Berechnung statt. Das Ziel ist aber ein Algorithmus zu entwickeln, dass parallele Berechnung und sogar mehrere parallele Berechnungen durchführt.
-	
-%	\begin{center}
-	%	\includegraphics[width=7 cm , height= 6 cm]{Bilder/matrixmult}
-	%	\footnote{$http://www.texample.net/media/tikz/examples/PDF/matrix-multiplication.pdf$}
-		%\caption{Matrix Multiplikation}
-	%\end{center}
-	
-	
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\definecolor{myyellow}{RGB}{240,217,1}
-	\definecolor{mygreen}{RGB}{143,188,103}
-	\definecolor{myred}{RGB}{234,38,40}
-	\definecolor{myblue}{RGB}{53,101,167}
-	
-	
+	\textbf{Problem der sequentille Berechnungsmethode: }Bei der herkömmlichen Berechnungsmethode der Matrix-Matrix Multiplikationen \textit{siehe unten} wird zuerst überprüft, ob die Matrizen miteinander multiplizierbar sind. D.h. wenn die Spaltenanzahl von A-Matrix mit der Zeilenanzahl von B-Matrix übereinstimmen, dann sind sie miteinander multiplizierbar. Der Nachteil dieser Berechnungsmethode ist die sequentielle Ausführung von Rechenoperationen, die sehr zeitaufwändig ist. Es findet keine parallele Berechnung statt. Das Ziel ist aber ein Algorithmus zu entwickeln, dass parallele Berechnung und sogar mehrere parallele Berechnungen durchführt, sodass die Rechenleistung erhöht wird.
 	\begin{center}
-			\begin{tikzpicture}[
-		mymatrix/.style={
-			matrix of math nodes,
-			outer sep=0pt,
-			nodes={
-				draw,
-				text width=2.5em,
-				align=center,
-				minimum height=2.5em,
-				text=gray
-			},
-			nodes in empty cells,
-			column sep=-\pgflinewidth,
-			row sep=-\pgflinewidth,
-			left delimiter=[,
-			right delimiter=],
-		},
-		mycircle/.style 2 args={
-			draw=#1,
-			circle,
-			fill=#2,
-			line width=2pt,
-			inner sep=5pt
-		},
-		arr/.style={
-			line width=4pt,
-			-{Triangle[angle=60:1.5pt 3]},
-			#1,
-			shorten >= 3pt,
-			shorten <= 3pt
-		}
-		]
-		%the matrices
-		\matrix[mymatrix] (A)
-		{
-			|[text=black]|a_{11} & |[text=black]|a_{12} \\
-			a_{21} & a_{22} \\
-			|[text=black]|a_{31} & |[text=black]|a_{32} \\
-			a_{41} & a_{42} \\
-		};
-		\matrix[mymatrix,right=of A.north east,anchor=north west] (prod)
-		{
-			& & \\
-			& & \\
-			& & \\
-			& & \\
-		};
-		\matrix[mymatrix,above=of prod.north west,anchor=south west] (B)
-		{
-			b_{11} & |[text=black]|b_{12} & |[text=black]|b_{13} \\
-			b_{21} & |[text=black]|b_{22} & |[text=black]|b_{23} \\
-		};
-		
-		%the labels for the matrices
-		\node[font=\huge,left=10pt of A] {$A$};
-		\node[font=\huge,above=2pt of B] {$B$};
-		
-		%the frames in both matrices
-		\draw[myyellow,line width=2pt]
-		([shift={(1.2pt,-1.2pt)}]A-1-1.north west) 
-		rectangle 
-		([shift={(-1.2pt,1.2pt)}]A-1-2.south east);
-		\draw[myyellow,line width=2pt]
-		([shift={(1.2pt,-1.2pt)}]B-1-2.north west) 
-		rectangle 
-		([shift={(-1.2pt,1.2pt)}]B-2-2.south east);
-		\draw[mygreen,line width=2pt]
-		([shift={(1.2pt,-1.2pt)}]A-3-1.north west) 
-		rectangle 
-		([shift={(-1.2pt,1.2pt)}]A-3-2.south east);
-		\draw[mygreen,line width=2pt]
-		([shift={(1.2pt,-1.2pt)}]B-1-3.north west) 
-		rectangle 
-		([shift={(-1.2pt,1.2pt)}]B-2-3.south east);
-		
-		%the filled circles in the product
-		\node[mycircle={myblue}{mygreen}]
-		at (prod-3-3) (prod33) {};
-		\node[mycircle={myred}{myyellow}]
-		at (prod-1-2) (prod12) {};
-		
-		%the arrows
-		\draw[arr=myred]
-		(A-1-2.east) -- (prod12); 
-		\draw[arr=myred]
-		(B-2-2.south) -- (prod12); 
-		\draw[arr=myblue]
-		(A-3-2.east) -- (prod33); 
-		\draw[arr=myblue]
-		(B-2-3.south) -- (prod33); 
-		
-		%the legend
-		\matrix[
-		matrix of math nodes,
-		nodes in empty cells,
-		column sep=10pt,
-		anchor=north,
-		nodes={
-			minimum height=2.2em,
-			minimum width=2em,
-			anchor=north west
-		},
-		below=5pt of current bounding box.south
-		] 
-		(legend)
-		{
-			& a_{11}b_{12} + a_{12}b_{22} \\
-			& a_{31}b_{13} + a_{32}b_{23} \\
-		};
-		\node[mycircle={myblue}{mygreen}]
-		at (legend-2-1) {};
-		\node[mycircle={myred}{myyellow}]
-		at (legend-1-1) {};
-		\end{tikzpicture}
-		
-	\end{center}
+		\input{tikz_code/matrix_multiplikation.tex}
+	\end{center} 
 	
 	
-		
-	
-	
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	
-	
+
 	
 	\section{Why Systolic Architectures?} \label{sec:Why Systolic Architectures?}
 	\subsection{Grundidee}\label{subsec:Grundidee}
-	Der Begriff ''systolisches Array'' kann nach einer neuen Innovation in der Rechnerarchitektur klingen.Aber es ist fast 40 Jahre alt. H.T. Kung kam auf diese Idee in den 80er Jahren und veröffentlichte seine Idee im Jahr 1982.\footnote{http://www.eecs.harvard.edu/~htk/publication/1982-kung-why-systolic-architecture.pdf}
+%	Der Begriff ''systolisches Array'' kann nach einer neuen Innovation in der Rechnerarchitektur klingen.Aber es ist fast 40 Jahre alt. H.T. Kung kam auf diese Idee in den 80er Jahren und veröffentlichte seine Idee im Jahr 1982.\footnote{http://www.eecs.harvard.edu/~htk/publication/1982-kung-why-systolic-architecture.pdf}
 	
-	Die Grundidee des systolischen Arrays ist, dass die Daten rhythmisch aus dem Computerspeicher fließen und laufen durch viele PEs (processing elements), bevor sie in den Speicher zurückkehren. Die Idee ist vergleichbar mit dem Blutkreislauf, dass der Herz zu jeden Zellen Blut pumpt.
+	Die Grundidee des systolischen Arrays ist, dass die Daten rhythmisch aus dem Computerspeicher fließen und laufen durch viele PEs (processing elements), bevor sie in den Speicher zurückkehren. Die Idee ist vergleichbar mit dem Blutkreislauf, dass der Herz zur Zellen Blut pumpt.
 	\newpage
 	
 	

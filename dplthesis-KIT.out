@@ -7,21 +7,25 @@
 \BOOKMARK [1][-]{section.2.2}{1D-Faltung und 2D-Faltung}{chapter.2}% 7
 \BOOKMARK [2][-]{subsection.2.2.1}{1D-Faltung bzw. Faltung}{section.2.2}% 8
 \BOOKMARK [2][-]{subsection.2.2.2}{2D-Faltung}{section.2.2}% 9
-\BOOKMARK [1][-]{section.2.3}{Maschinelles Lernen}{chapter.2}% 10
-\BOOKMARK [1][-]{section.2.4}{Kuenstliche neuronale Netze}{chapter.2}% 11
-\BOOKMARK [2][-]{subsection.2.4.1}{Aktivierungsfunktionen}{section.2.4}% 12
-\BOOKMARK [1][-]{section.2.5}{Lernphase}{chapter.2}% 13
-\BOOKMARK [2][-]{subsection.2.5.1}{Supervised Learning}{section.2.5}% 14
-\BOOKMARK [2][-]{subsection.2.5.2}{Unsupervised Learning}{section.2.5}% 15
-\BOOKMARK [1][-]{section.2.6}{Grundlage der Hardwarebeschreibungssprache VHDL}{chapter.2}% 16
-\BOOKMARK [0][-]{chapter.3}{Konzept}{}% 17
-\BOOKMARK [1][-]{section.3.1}{Grundlagen der Systolic Array Architektur}{chapter.3}% 18
-\BOOKMARK [1][-]{section.3.2}{Why Systolic Architectures?}{chapter.3}% 19
-\BOOKMARK [2][-]{subsection.3.2.1}{Grundidee}{section.3.2}% 20
-\BOOKMARK [2][-]{subsection.3.2.2}{Systolic Array Designs f\374r Faltung Berechnungen}{section.3.2}% 21
-\BOOKMARK [2][-]{subsection.3.2.3}{Systolic Array Matrix Multiplikation}{section.3.2}% 22
-\BOOKMARK [2][-]{subsection.3.2.4}{Vorteile des Systolic Arrays}{section.3.2}% 23
-\BOOKMARK [2][-]{subsection.3.2.5}{Nachteile des Systolic Arrays}{section.3.2}% 24
-\BOOKMARK [0][-]{chapter.4}{Implementierung}{}% 25
-\BOOKMARK [0][-]{chapter.5}{Bewertung des Gesamtsystems}{}% 26
-\BOOKMARK [0][-]{chapter.6}{Fazit}{}% 27
+\BOOKMARK [1][-]{section.2.3}{Kuenstliche neuronale Netze}{chapter.2}% 10
+\BOOKMARK [2][-]{subsection.2.3.1}{Schwellenwertfunktion}{section.2.3}% 11
+\BOOKMARK [2][-]{subsection.2.3.2}{St\374ckweise lineare Funktion}{section.2.3}% 12
+\BOOKMARK [2][-]{subsection.2.3.3}{Sigmoidfunktion}{section.2.3}% 13
+\BOOKMARK [2][-]{subsection.2.3.4}{Rectifier \(ReLU\)}{section.2.3}% 14
+\BOOKMARK [1][-]{section.2.4}{Maschinelles Lernen}{chapter.2}% 15
+\BOOKMARK [1][-]{section.2.5}{Lernphase}{chapter.2}% 16
+\BOOKMARK [2][-]{subsection.2.5.1}{Supervised Learning}{section.2.5}% 17
+\BOOKMARK [2][-]{subsection.2.5.2}{Unsupervised Learning}{section.2.5}% 18
+\BOOKMARK [2][-]{subsection.2.5.3}{Reinforcement Learning}{section.2.5}% 19
+\BOOKMARK [1][-]{section.2.6}{Neuronale Netze}{chapter.2}% 20
+\BOOKMARK [0][-]{chapter.3}{Konzept}{}% 21
+\BOOKMARK [1][-]{section.3.1}{Einf\374hrung der Systolic Array Architektur}{chapter.3}% 22
+\BOOKMARK [1][-]{section.3.2}{Why Systolic Architectures?}{chapter.3}% 23
+\BOOKMARK [2][-]{subsection.3.2.1}{Grundidee}{section.3.2}% 24
+\BOOKMARK [2][-]{subsection.3.2.2}{Systolic Array Designs f\374r Faltung Berechnungen}{section.3.2}% 25
+\BOOKMARK [2][-]{subsection.3.2.3}{Systolic Array Matrix Multiplikation}{section.3.2}% 26
+\BOOKMARK [2][-]{subsection.3.2.4}{Vorteile des Systolic Arrays}{section.3.2}% 27
+\BOOKMARK [2][-]{subsection.3.2.5}{Nachteile des Systolic Arrays}{section.3.2}% 28
+\BOOKMARK [0][-]{chapter.4}{Implementierung}{}% 29
+\BOOKMARK [0][-]{chapter.5}{Bewertung des Gesamtsystems}{}% 30
+\BOOKMARK [0][-]{chapter.6}{Fazit}{}% 31
