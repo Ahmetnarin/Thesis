@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2019.9.29)  30 JAN 2020 13:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2019.9.29)  30 JAN 2020 15:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1139,7 +1139,7 @@ LaTeX Font Info:    Try loading font information for U+lasy on input line 12.
 (c:/texlive/2019/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-<98_images/kit.png, id=199, 137.313pt x 49.1436pt>
+<98_images/kit.png, id=203, 137.313pt x 49.1436pt>
 File: 98_images/kit.png Graphic file (type png)
 <use 98_images/kit.png>
 Package pdftex.def Info: 98_images/kit.png  used on input line 14.
@@ -1149,7 +1149,7 @@ Overfull \hbox (30.97pt too wide) in paragraph at lines 14--15
 [][] 
  []
 
-<98_images/ITIVLogo.png, id=201, 83.31125pt x 85.31876pt>
+<98_images/ITIVLogo.png, id=205, 83.31125pt x 85.31876pt>
 File: 98_images/ITIVLogo.png Graphic file (type png)
 <use 98_images/ITIVLogo.png>
 Package pdftex.def Info: 98_images/ITIVLogo.png  used on input line 26.
@@ -1200,7 +1200,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [2
 
 ]
-<Bilder/Moore's_Law_Transistor_Count_1971-2018.png, id=293, 3145.6722pt x 2272.
+<Bilder/Moore's_Law_Transistor_Count_1971-2018.png, id=298, 3145.6722pt x 2272.
 1688pt>
 File: Bilder/Moore's_Law_Transistor_Count_1971-2018.png Graphic file (type png)
 
@@ -1248,7 +1248,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [6]
-<Bilder/clasreg.png, id=325, 433.62pt x 216.81pt>
+<Bilder/clasreg.png, id=330, 433.62pt x 216.81pt>
 File: Bilder/clasreg.png Graphic file (type png)
 <use Bilder/clasreg.png>
 Package pdftex.def Info: Bilder/clasreg.png  used on input line 320.
@@ -1259,7 +1259,7 @@ Overfull \hbox (0.94118pt too wide) in paragraph at lines 320--321
  []
 
 [7 <./Bilder/clasreg.png>]
-<Bilder/clustering.jpg, id=332, 476.2593pt x 327.3831pt>
+<Bilder/clustering.jpg, id=338, 476.2593pt x 327.3831pt>
 File: Bilder/clustering.jpg Graphic file (type jpg)
 <use Bilder/clustering.jpg>
 Package pdftex.def Info: Bilder/clustering.jpg  used on input line 334.
@@ -1269,13 +1269,13 @@ Overfull \hbox (0.9287pt too wide) in paragraph at lines 334--335
  [] 
  []
 
-<Bilder/neuron.png, id=335, 313.17pt x 164.615pt>
+<Bilder/neuron.png, id=341, 313.17pt x 164.615pt>
 File: Bilder/neuron.png Graphic file (type png)
 <use Bilder/neuron.png>
 Package pdftex.def Info: Bilder/neuron.png  used on input line 359.
 (pdftex.def)             Requested size: 284.53595pt x 142.26692pt.
 [8 <./Bilder/clustering.jpg>]
-<Bilder/artneuron.png, id=343, 1505.625pt x 714.67pt>
+<Bilder/artneuron.png, id=348, 1505.625pt x 714.67pt>
 File: Bilder/artneuron.png Graphic file (type png)
 <use Bilder/artneuron.png>
 Package pdftex.def Info: Bilder/artneuron.png  used on input line 371.
@@ -1285,7 +1285,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 389--390
 
  []
 
-<Bilder/step.png, id=350, 351.3125pt x 262.9825pt>
+<Bilder/step.png, id=355, 351.3125pt x 262.9825pt>
 File: Bilder/step.png Graphic file (type png)
 <use Bilder/step.png>
 Package pdftex.def Info: Bilder/step.png  used on input line 404.
@@ -1305,7 +1305,7 @@ Overfull \hbox (3.52177pt too wide) in alignment at lines 431--439
  [][][] []
  []
 
-<Bilder/stf.png, id=351, 537.00626pt x 256.96pt>
+<Bilder/stf.png, id=356, 537.00626pt x 256.96pt>
 File: Bilder/stf.png Graphic file (type png)
 <use Bilder/stf.png>
 Package pdftex.def Info: Bilder/stf.png  used on input line 442.
@@ -1326,7 +1326,7 @@ Overfull \hbox (11.88512pt too wide) in paragraph at lines 487--488
 [][] 
  []
 
-<Bilder/ReLu.png, id=358, 220.825pt x 110.4125pt>
+<Bilder/ReLu.png, id=363, 220.825pt x 110.4125pt>
 File: Bilder/ReLu.png Graphic file (type png)
 <use Bilder/ReLu.png>
 Package pdftex.def Info: Bilder/ReLu.png  used on input line 503.
@@ -1337,7 +1337,7 @@ Overfull \hbox (2.61108pt too wide) in paragraph at lines 497--505
  []
 
 [11 <./Bilder/ReLu.png>]
-<Bilder/simple_neuron.png, id=366, 853.1875pt x 269.005pt>
+<Bilder/simple_neuron.png, id=371, 853.1875pt x 269.005pt>
 File: Bilder/simple_neuron.png Graphic file (type png)
 <use Bilder/simple_neuron.png>
 Package pdftex.def Info: Bilder/simple_neuron.png  used on input line 516.
@@ -1348,13 +1348,13 @@ Overfull \hbox (14.23181pt too wide) in paragraph at lines 516--517
  []
 
 [12 <./Bilder/simple_neuron.png>]
-<Bilder/perceptron_ohne_bias.jpg, id=376, 313.17pt x 225.84375pt>
+<Bilder/perceptron_ohne_bias.jpg, id=381, 313.17pt x 225.84375pt>
 File: Bilder/perceptron_ohne_bias.jpg Graphic file (type jpg)
 <use Bilder/perceptron_ohne_bias.jpg>
 Package pdftex.def Info: Bilder/perceptron_ohne_bias.jpg  used on input line 54
 8.
 (pdftex.def)             Requested size: 182.09485pt x 131.32373pt.
-<Bilder/classc1_c2.png, id=379, 853.1875pt x 382.42876pt>
+<Bilder/classc1_c2.png, id=384, 853.1875pt x 382.42876pt>
 File: Bilder/classc1_c2.png Graphic file (type png)
 <use Bilder/classc1_c2.png>
 Package pdftex.def Info: Bilder/classc1_c2.png  used on input line 560.
@@ -1377,13 +1377,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 568--584
  []
 
 [13 <./Bilder/perceptron_ohne_bias.JPG> <./Bilder/classc1_c2.png>]
-<Bilder/entscheidungsgrenzen.jpg, id=393, 274.77657pt x 91.09032pt>
+<Bilder/entscheidungsgrenzen.jpg, id=398, 274.77657pt x 91.09032pt>
 File: Bilder/entscheidungsgrenzen.jpg Graphic file (type jpg)
 <use Bilder/entscheidungsgrenzen.jpg>
 Package pdftex.def Info: Bilder/entscheidungsgrenzen.jpg  used on input line 58
 9.
 (pdftex.def)             Requested size: 341.46152pt x 99.58806pt.
-<Bilder/MLP.jpg, id=396, 447.17062pt x 217.5628pt>
+<Bilder/MLP.jpg, id=401, 447.17062pt x 217.5628pt>
 File: Bilder/MLP.jpg Graphic file (type jpg)
 <use Bilder/MLP.jpg>
 Package pdftex.def Info: Bilder/MLP.jpg  used on input line 605.
@@ -1393,18 +1393,18 @@ Package pdftex.def Info: Bilder/MLP.jpg  used on input line 605.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [14 <./Bilder/entscheidungsgrenzen.JPG>]
-<Bilder/hunde.jpg, id=409, 356.83313pt x 280.04625pt>
+<Bilder/hunde.jpg, id=414, 356.83313pt x 280.04625pt>
 File: Bilder/hunde.jpg Graphic file (type jpg)
 <use Bilder/hunde.jpg>
 Package pdftex.def Info: Bilder/hunde.jpg  used on input line 636.
 (pdftex.def)             Requested size: 182.09485pt x 142.91142pt.
-<Bilder/hunde_matrix.jpg, id=410, 365.11406pt x 274.77657pt>
+<Bilder/hunde_matrix.jpg, id=415, 365.11406pt x 274.77657pt>
 File: Bilder/hunde_matrix.jpg Graphic file (type jpg)
 <use Bilder/hunde_matrix.jpg>
 Package pdftex.def Info: Bilder/hunde_matrix.jpg  used on input line 642.
 (pdftex.def)             Requested size: 182.09485pt x 137.03993pt.
  [15 <./Bilder/MLP.JPG>]
-<Bilder/cnn.png, id=418, 1043.9pt x 321.2pt>
+<Bilder/cnn.png, id=423, 1043.9pt x 321.2pt>
 File: Bilder/cnn.png Graphic file (type png)
 <use Bilder/cnn.png>
 Package pdftex.def Info: Bilder/cnn.png  used on input line 669.
@@ -1420,7 +1420,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 680--682
  []
 
 (./tikz_code/max_pooling.tex)
-<Bilder/flatten.png, id=432, 798.985pt x 436.63126pt>
+<Bilder/flatten.png, id=437, 798.985pt x 436.63126pt>
 File: Bilder/flatten.png Graphic file (type png)
 <use Bilder/flatten.png>
 Package pdftex.def Info: Bilder/flatten.png  used on input line 701.
@@ -1436,7 +1436,7 @@ Underfull \hbox (badness 4060) in paragraph at lines 703--704
  []
 
 [17 <./Bilder/flatten.png>]
-<Bilder/layer.png, id=446, 1264.725pt x 1730.465pt>
+<Bilder/layer.png, id=451, 1264.725pt x 1730.465pt>
 File: Bilder/layer.png Graphic file (type png)
 <use Bilder/layer.png>
 Package pdftex.def Info: Bilder/layer.png  used on input line 714.
@@ -1444,12 +1444,12 @@ Package pdftex.def Info: Bilder/layer.png  used on input line 714.
  [18
 
  <./Bilder/layer.png>]
-<Bilder/lenet5.jpg, id=457, 741.52031pt x 168.63pt>
+<Bilder/lenet5.jpg, id=462, 741.52031pt x 168.63pt>
 File: Bilder/lenet5.jpg Graphic file (type jpg)
 <use Bilder/lenet5.jpg>
 Package pdftex.def Info: Bilder/lenet5.jpg  used on input line 728.
 (pdftex.def)             Requested size: 426.80083pt x 142.26576pt.
-<Bilder/alexnet.jpg, id=460, 612.78937pt x 256.70906pt>
+<Bilder/alexnet.jpg, id=465, 612.78937pt x 256.70906pt>
 File: Bilder/alexnet.jpg Graphic file (type jpg)
 <use Bilder/alexnet.jpg>
 Package pdftex.def Info: Bilder/alexnet.jpg  used on input line 740.
@@ -1459,7 +1459,7 @@ Package pdftex.def Info: Bilder/alexnet.jpg  used on input line 740.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [19 <./Bilder/lenet5.JPG>]
-<Bilder/googleNet.jpg, id=472, 405.01312pt x 240.14719pt>
+<Bilder/googleNet.jpg, id=477, 405.01312pt x 240.14719pt>
 File: Bilder/googleNet.jpg Graphic file (type jpg)
 <use Bilder/googleNet.jpg>
 Package pdftex.def Info: Bilder/googleNet.jpg  used on input line 754.
@@ -1486,7 +1486,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 853--855
  []
 
 (./design/design4.tex) [24] (./design/Systolicarray.tex) [25] [26]
-<Bilder/tpu.png, id=522, 950.55125pt x 681.54625pt>
+<Bilder/tpu.png, id=527, 950.55125pt x 681.54625pt>
 File: Bilder/tpu.png Graphic file (type png)
 <use Bilder/tpu.png>
 Package pdftex.def Info: Bilder/tpu.png  used on input line 891.
@@ -1500,12 +1500,12 @@ ied Buf-fer (UB) und Ausg[]ange
 [27
 
  <./Bilder/tpu.png>]
-<Bilder/tpusystolic.png, id=529, 429.605pt x 318.18875pt>
+<Bilder/tpusystolic.png, id=534, 429.605pt x 318.18875pt>
 File: Bilder/tpusystolic.png Graphic file (type png)
 <use Bilder/tpusystolic.png>
 Package pdftex.def Info: Bilder/tpusystolic.png  used on input line 905.
 (pdftex.def)             Requested size: 355.66743pt x 284.5271pt.
-<Bilder/pooling.jpg, id=530, 598.235pt x 440.64626pt>
+<Bilder/pooling.jpg, id=535, 598.235pt x 440.64626pt>
 File: Bilder/pooling.jpg Graphic file (type jpg)
 <use Bilder/pooling.jpg>
 Package pdftex.def Info: Bilder/pooling.jpg  used on input line 921.
@@ -1515,7 +1515,7 @@ Package pdftex.def Info: Bilder/pooling.jpg  used on input line 921.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [28 <./Bilder/tpusystolic.png (PNG copy)>]
-<Bilder/tpudesign.jpg, id=535, 531.9875pt x 425.59pt>
+<Bilder/tpudesign.jpg, id=540, 531.9875pt x 425.59pt>
 File: Bilder/tpudesign.jpg Graphic file (type jpg)
 <use Bilder/tpudesign.jpg>
 Package pdftex.def Info: Bilder/tpudesign.jpg  used on input line 942.
@@ -1524,7 +1524,7 @@ Package pdftex.def Info: Bilder/tpudesign.jpg  used on input line 942.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [29 <./Bilder/pooling.jpg>]
-<Bilder/tpuverbrauch.jpg, id=540, 744.53156pt x 238.64156pt>
+<Bilder/tpuverbrauch.jpg, id=545, 744.53156pt x 238.64156pt>
 File: Bilder/tpuverbrauch.jpg Graphic file (type jpg)
 <use Bilder/tpuverbrauch.jpg>
 Package pdftex.def Info: Bilder/tpuverbrauch.jpg  used on input line 946.
@@ -1548,14 +1548,14 @@ Underfull \vbox (badness 1132) has occurred while \output is active []
 
 ]
 (./design/pe.tex) [33] (./design/mac_complett.tex) [34]
-<Bilder/Simultionsergebnisse.jpg, id=567, 366.61969pt x 374.90062pt>
+<Bilder/Simultionsergebnisse.jpg, id=572, 366.61969pt x 374.90062pt>
 File: Bilder/Simultionsergebnisse.jpg Graphic file (type jpg)
 <use Bilder/Simultionsergebnisse.jpg>
 Package pdftex.def Info: Bilder/Simultionsergebnisse.jpg  used on input line 10
 22.
 (pdftex.def)             Requested size: 426.81752pt x 341.45184pt.
  [35 <./Bilder/Simultionsergebnisse.JPG>]
-<Bilder/blockdiagram.jpg, id=574, 578.16pt x 487.06969pt>
+<Bilder/blockdiagram.jpg, id=579, 578.16pt x 487.06969pt>
 File: Bilder/blockdiagram.jpg Graphic file (type jpg)
 <use Bilder/blockdiagram.jpg>
 Package pdftex.def Info: Bilder/blockdiagram.jpg  used on input line 1030.
@@ -1593,24 +1593,24 @@ Kapitel 6.
 ]
 No file dplthesis-KIT.ind.
 No file dplthesis-KIT.nls.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1093.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1093.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1088.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1088.
 (./dplthesis-KIT.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1093.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1093.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1088.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1088.
 
 Package rerunfilecheck Info: File `dplthesis-KIT.out' has not changed.
-(rerunfilecheck)             Checksum: 74E1A091B60B4B11426AECC27A8AD1FE;2966.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1093.
+(rerunfilecheck)             Checksum: 0D76CD8AFCF343E2650EF2E81449FEF3;3038.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1088.
  ) 
 Here is how much of TeX's memory you used:
- 34340 strings out of 492609
- 791557 string characters out of 6132818
- 1255089 words of memory out of 5000000
- 37436 multiletter control sequences out of 15000+600000
+ 34343 strings out of 492609
+ 791618 string characters out of 6132818
+ 1255142 words of memory out of 5000000
+ 37438 multiletter control sequences out of 15000+600000
  24709 words of font info for 97 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
- 62i,19n,100p,1012b,2195s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,19n,100p,1091b,2195s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/tex
 live/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2019
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2019/texmf-di
@@ -1632,10 +1632,10 @@ exmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2019/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmti12.pfb><c:/texlive/2019/texmf-dist/fonts/typ
 e1/public/cm-super/sfrm0800.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/
 cm-super/sfrm1200.pfb>
-Output written on dplthesis-KIT.pdf (50 pages, 5638193 bytes).
+Output written on dplthesis-KIT.pdf (50 pages, 5639993 bytes).
 PDF statistics:
- 748 PDF objects out of 1000 (max. 8388607)
- 609 compressed objects within 7 object streams
- 144 named destinations out of 1000 (max. 500000)
- 595 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 757 PDF objects out of 1000 (max. 8388607)
+ 618 compressed objects within 7 object streams
+ 145 named destinations out of 1000 (max. 500000)
+ 603 words of extra memory for PDF output out of 10000 (max. 10000000)
 

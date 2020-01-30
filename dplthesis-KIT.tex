@@ -707,7 +707,7 @@ Zwischen convolutional layer und fully-connected layer befindet sich eine \\''fl
 
 	\subsubsection{Zusammenfassung CNN}\label{subsubsec:Zusammenfassung CNN}
 
-	Ein CNN akzeptiert als Eingang eine Matrix, die reine Intensitätswerten eines Bildes sind. Die Verarbeitung verläuft durch mehreren Schichten, um Strukturen, wie Linien, Kanten, Kurven etc. eines eingegebenes Bildes zu erkennen. Die Filter in Schichten von CNN sind nicht vorgegeben, sondern vom Netz gelernt. In jeder höheren Filterebene erhöht sich auch die Abstraktions-Level des Netzes. Es ist sehr interessant, die Muster zu visualisieren, welche jeweils auf verschiedenen Ebenen zur Aktivierung der Filter führen. \autoref{fig:layer}
+	Ein CNN akzeptiert als Eingang eine Matrix, die reine Intensitätswerten eines Bildes bestehen. Die Verarbeitung verläuft durch mehreren Schichten, um Strukturen, wie Linien, Kanten, Kurven etc. eines eingegebenes Bildes zu erkennen. Die Filter in Schichten von CNN sind nicht vorgegeben, sondern vom Netz gelernt. In jeder höheren Filterebene erhöht sich die Abstraktions-Level des Netzes. Es ist sehr interessant, die Muster zu visualisieren, welche jeweils auf verschiedenen Ebenen zur Aktivierung der Filter führen. \autoref{fig:layer}
 	
 	\begin{figure}[h!]
 		\centering
@@ -732,7 +732,7 @@ Zwischen convolutional layer und fully-connected layer befindet sich eine \\''fl
 
 
 		\item[AlexNet] Das CNN-Modell ist für Bilder geeignet, die kleine Dimensionen wie 32x32 besitzen. AlexNet \cite{ImageNet} ist das erste Modell, das auch Bilder mit größe Dimensionen verarbeiten kann. AlexNet besteht aus insgesamt acht Parameterschichten, von denen die fünf convolution layer und drei Fully connected Layer sind. Die letzte Fully-connected Layer klassifiziert das Eingangsbild in einer der 1000 Klassen von ImageNet-Dataset. Die Filtergrößen und die Position der Max-Pooling layer sind in \autoref{fig:alexnet} dargestellt.
-		Die Verwendung der nichtlineare Funktionen nach jeder convolutional layer verbessert die Trainingseffizienz im Vergleich zur traditionell verwendeten $\tanh$-Funktionen.
+		Die Verwendung der nichtlineare Funktionen nach jeder convolutional layer verbessert die Trainingseffizienz im Vergleich zur traditionell verwendeten $\tanh$-Funktionen und gewann im Jahr 2012 ImageNet Large-Scale Visual Recognition Challenge (ILSVRC) mit großem Vorsprung.
 		
 		
 		\begin{figure}[h!]
@@ -758,7 +758,7 @@ Zwischen convolutional layer und fully-connected layer befindet sich eine \\''fl
 	
 
 	
-	Aufbauend auf diese einfaches Modul wurden mehrere verbesserte und erweiterte Versionen von GoogleNet vorgeschlagen. \cite{GoingDeeperwithConvolutions}
+	Aufbauend auf diese einfaches Modul wurden mehrere verbesserte und erweiterte Versionen von GoogleNet vorgestellt. \cite{GoingDeeperwithConvolutions}
 	
 	
 \end{description}
@@ -774,10 +774,10 @@ Zwischen convolutional layer und fully-connected layer befindet sich eine \\''fl
 
 	\chapter{Konzept}\label{ch:Konzept}  	
 	\section{Einfuehrung der Systolic Array Architektur}\label{sec:Einfuehrung der Systolic Array Architektur}
-	Machine Learning basiert stark auf Berechnungen z.B. von Faltungen, Matrix-Matrix-und Matrix-Vektor Multiplikationen, Berechnung von Verlustfunktionen, Max-Pooling usw. \ref{ch:Grundlagen}  Die künstliche neuronale Netze bestehen aus vielen kuenstlichen Neuronen, indem viele Berechnungen stattfinden, die den Ausgabewert des ML-Modells beeinflussen. 
+	Machine Learning basiert stark auf Berechnungen z.B. von Faltungen, Matrix-Matrix-und Matrix-Vektor Multiplikationen, Berechnung von Verlustfunktionen, Max-Pooling usw. siehe \autoref{ch:Grundlagen} \\Die künstliche neuronale Netze bestehen aus vielen kuenstlichen Neuronen, indem viele Berechnungen stattfinden, die den Ausgabewert des ML-Modells beeinflussen. 
 	Das wesentliche Ziel ist die Entwicklung neuer Rechnerarchitektur und der effizienten Nutzung von modernen Systeme, um solchen komplizierten ML-Anwendungen schneller ausführen zu können. Die wachsende Nachfrage nach mehr Rechenleistung führte in den 80er Jahren zur Entwicklung parallel skalierbaren Multiprocessing-Systemen. Das System soll durch paralleles Rechnen in der Lage sein, dass ein kompliziertes großes Rechenproblem in kleinere Stück unterteilt und diese kleine Rechenprobleme gleichzeitig löst. \cite{DesignofSystolicArchitecture}
 	
-	\textbf{Problem der sequentille Berechnungsmethode: }Bei der herkömmlichen Berechnungsmethode der Matrix-Matrix Multiplikationen \autoref{fig:mm} wird zuerst überprüft, ob die Matrizen miteinander multiplizierbar sind. D.h. wenn die Spaltenanzahl von A-Matrix mit der Zeilenanzahl von B-Matrix übereinstimmen, dann sind sie miteinander multiplizierbar. Der Nachteil dieser Berechnungsmethode ist die sequentielle Ausführung von Rechenoperationen, die sehr zeitaufwändig ist. Es findet keine parallele Berechnung statt. Das Ziel ist aber ein Algorithmus zu entwickeln, dass parallele Berechnung und sogar mehrere parallele Berechnungen durchführt, sodass die Rechenleistung erhöht wird.
+	\textbf{Problem der sequentille Berechnungsmethode: }Bei der herkömmlichen Berechnungsmethode der Matrix-Matrix Multiplikationen \autoref{fig:mm} wird zuerst überprüft, ob die Matrizen miteinander multiplizierbar sind. D.h. wenn die Spaltenanzahl von A-Matrix mit der Zeilenanzahl von B-Matrix übereinstimmen, dann sind sie miteinander multiplizierbar. Der Nachteil dieser Berechnungsmethode ist die sequentielle Ausführung von Rechenoperationen, die sehr zeitaufwändig ist. Es findet keine zeitgleiche bzw. parallele Berechnung statt. Das Ziel ist aber ein Algorithmus zu entwickeln, dass parallele Berechnung und sogar mehrere parallele Berechnungen durchführt, sodass die Rechenleistung erhöht wird.
 
 
 	\begin{figure}[h!]
@@ -1031,28 +1031,23 @@ Zwischen convolutional layer und fully-connected layer befindet sich eine \\''fl
 	\caption[Block Design von Matrixmultiplikation mit Systolic Array Architektur]{Es ist wegen Leitungen schwer zu sehen. In dem Design sind die oben vorgestellten Komponenten wie MAC (PE in MAC),RAM und Delay Controller.}
 	\label{fig:blockdiagram}
 \end{figure}
-	
-	
-
-	
 
 
+	\subsection{Zusammenfassung}\label{subsec:Zusammenfassung}
+	In diesem Projekt wurde ein systolisches Array zur Berechnung der Matrixmultiplikation entworfen und implementiert. Die Vorteile des systolisches Arrays sind einfaches Design und zeitgleiche Operationen (Parallelität). Die Nachteile sind, dass es nicht für allgemeine Anwendungen anwendbar ist, sondern eher für speziale Zwecke geeignet ist, da die Organisation von PE (Processing element) zur Berechnung der Matrixelementen anpassen muss. Außerdem die Implementierung des systolichen Arrays ist beschränkt auf 3x3-Matrizen und die Dimension der Matrizen war nicht dynamisch, dass man am Anfang der Berechnung beliebig groß wählen darf. 
+
 	
-	 
 	
-    
-     
-     
-   		
    		
     \chapter{Bewertung des Gesamtsystems} %evaluation Experimentelle ergebnisse 
 	\label{ch:Bewertung}  
 	
   
 
-    \chapter{Fazit} %Ausblick
-    \label{ch:Fazit}    
-    	%\input{03_chapter/bsp-chapter.tex}
+    \chapter{Ausblick}\label{ch:Ausblick}   
+    In meiner Thesis werden zuerst die Grundlagen zum maschinellen Lernen erläuert und im folgenden dann die Strukturen der künstlichen neuronalen Netze betrachtet. Besonders wird die CNN-Architektur \textit{(convolutional neural network)} und ihr Entwicklungstrend betrachtet. Die Gemeinsamkeit von dieser vorgestellten Architekturen sind, dass die erste Entwurf wie z.B. LeNET waren oder die besondere Erfolge in ImageNet Large-Scale Visual Recognition Challenge (ILSVRC) bekommen haben. siehe \autoref{fig:GoogleNet} \autoref{fig:alexnet}
+     
+ 
   
     
 % =====================================================
