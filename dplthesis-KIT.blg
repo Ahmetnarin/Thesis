@@ -13,47 +13,130 @@ You're missing a field name---line 13 of file 99_bib/standardbib.bib
  :   %booktitle = {booktitle},
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
+You're missing a field name---line 33 of file 99_bib/standardbib.bib
+ :  
+ :  %pages = {1-17},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 49 of file 99_bib/standardbib.bib
+ :  
+ :  %pages = {1-17},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 67 of file 99_bib/standardbib.bib
+ :  
+ :  %pages = {1-17},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 83 of file 99_bib/standardbib.bib
+ :  
+ :  %pages = {1-17},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 97 of file 99_bib/standardbib.bib
+ :  
+ :  %booktitle = {booktitle},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 133 of file 99_bib/standardbib.bib
+ :  
+ :  %pages = {1-17},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 151 of file 99_bib/standardbib.bib
+ :  
+ :  %booktitle = {booktitle},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 167 of file 99_bib/standardbib.bib
+ :  
+ :  %booktitle = {booktitle},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 185 of file 99_bib/standardbib.bib
+ :  
+ :  %booktitle = {booktitle},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 203 of file 99_bib/standardbib.bib
+ :  
+ :  %booktitle = {booktitle},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 229 of file 99_bib/standardbib.bib
+ :  
+ :  %pages = {84-90},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--entry type for "Wikipedia" isn't style-file defined
+--line 239 of file 99_bib/standardbib.bib
+You're missing a field name---line 241 of file 99_bib/standardbib.bib
+ :  
+ :  %author = {Mooresches Gesetz},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--to sort, need author or key in Wikipedia
+Name 1 in "Salman Khan, Hossein Rahmani, Syed Afaq Ali Shah, and Mohammed Bennamoun" has a comma at the end for entry AGuidetoConvolutional
+while executing---line 2132 of file alphadin.bst
+Name 1 in "Salman Khan, Hossein Rahmani, Syed Afaq Ali Shah, and Mohammed Bennamoun" has a comma at the end for entry AGuidetoConvolutional
+while executing---line 2132 of file alphadin.bst
 Warning--empty booktitle in bib-lable
 Warning--empty pages in bib-lable
-You've used 1 entry,
+Warning--there's no year in Gradient-BasedLearning
+Warning--there's no year in VisualizingandUnderstandingConvolutionalNetworks
+Warning--there's no year in RosenblattsPerceptron
+Name 1 in "Salman Khan, Hossein Rahmani, Syed Afaq Ali Shah, and Mohammed Bennamoun" has a comma at the end for entry AGuidetoConvolutional
+while executing---line 2205 of file alphadin.bst
+Name 1 in "Salman Khan, Hossein Rahmani, Syed Afaq Ali Shah, and Mohammed Bennamoun" has a comma at the end for entry AGuidetoConvolutional
+while executing---line 2205 of file alphadin.bst
+Name 1 in "Salman Khan, Hossein Rahmani, Syed Afaq Ali Shah, and Mohammed Bennamoun" has a comma at the end for entry AGuidetoConvolutional
+while executing---line 2205 of file alphadin.bst
+Warning--there's no year in GoingDeeperwithConvolutions
+Warning--there's no year in GoogleTPU
+Warning--Wikipedia
+ptr=1, stack=
+
+---the literal stack isn't empty for entry Wikipedia
+while executing---line 2205 of file alphadin.bst
+You've used 14 entries,
             4793 wiz_defined-function locations,
-            892 strings with 6325 characters,
-and the built_in function-call counts, 414 in all, are:
-= -- 37
-> -- 8
-< -- 7
-+ -- 7
-- -- 2
-* -- 23
-:= -- 84
-add.period$ -- 0
-call.type$ -- 1
-change.case$ -- 4
-chr.to.int$ -- 1
-cite$ -- 3
-duplicate$ -- 15
-empty$ -- 31
-format.name$ -- 6
-if$ -- 75
+            949 strings with 7848 characters,
+and the built_in function-call counts, 6196 in all, are:
+= -- 621
+> -- 127
+< -- 190
++ -- 198
+- -- 40
+* -- 287
+:= -- 1066
+add.period$ -- 12
+call.type$ -- 14
+change.case$ -- 57
+chr.to.int$ -- 14
+cite$ -- 24
+duplicate$ -- 214
+empty$ -- 480
+format.name$ -- 86
+if$ -- 1224
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 1
-newline$ -- 14
-num.names$ -- 3
-pop$ -- 11
+missing$ -- 43
+newline$ -- 77
+num.names$ -- 39
+pop$ -- 130
 preamble$ -- 1
-purify$ -- 6
+purify$ -- 85
 quote$ -- 0
-skip$ -- 19
+skip$ -- 401
 stack$ -- 0
-substring$ -- 17
-swap$ -- 1
-text.length$ -- 2
-text.prefix$ -- 1
+substring$ -- 358
+swap$ -- 20
+text.length$ -- 27
+text.prefix$ -- 9
 top$ -- 0
-type$ -- 10
-warning$ -- 2
-while$ -- 3
-width$ -- 2
-write$ -- 16
-(There was 1 error message)
+type$ -- 124
+warning$ -- 9
+while$ -- 44
+width$ -- 17
+write$ -- 157
+(There were 19 error messages)

@@ -1,6 +1,29 @@
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Mooresches Gesetz von 1971-2018\relax }}{3}{figure.caption.4}% 
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Visualisierung von 2D Faltung\relax }}{6}{figure.caption.5}% 
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Aufbau eines Neurons\relax }}{9}{figure.caption.6}% 
+\contentsline {figure}{\numberline {2.3}{\ignorespaces K\IeC {\"u}nstliches Neuron}}{9}{figure.caption.7}% 
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Ein vereinfachtes mathematisches Modell f\IeC {\"u}r ein k\IeC {\"u}nstliches Neuron\relax }}{12}{figure.caption.8}% 
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Entscheidungsregionen\relax }}{13}{figure.caption.9}% 
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Entscheidungsgrenzen von logischen Gattern\relax }}{14}{figure.caption.10}% 
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Struktur eines mehrschichtigen feedforward-Netzes\relax }}{15}{figure.caption.11}% 
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Was wir sehen\relax }}{16}{figure.caption.12}% 
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Was der Computer sieht\relax }}{16}{figure.caption.12}% 
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Struktur von Convolutional Neural Network CNN\relax }}{16}{figure.caption.13}% 
+\contentsline {figure}{\numberline {2.11}{\ignorespaces Max Pooling}}{17}{figure.caption.14}% 
+\contentsline {figure}{\numberline {2.12}{\ignorespaces Visualisierung von Convolutional Network\relax }}{18}{figure.caption.16}% 
+\contentsline {figure}{\numberline {2.13}{\ignorespaces LeNet-5 Architektur\relax }}{19}{figure.caption.17}% 
+\contentsline {figure}{\numberline {2.14}{\ignorespaces AlexNet Architektur\relax }}{20}{figure.caption.18}% 
+\contentsline {figure}{\numberline {2.15}{\ignorespaces GoogleNet Inception Module\relax }}{20}{figure.caption.19}% 
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Matrix Multiplikation\relax }}{22}{figure.caption.20}% 
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Einzelne Processing Elemente PEs}}{22}{figure.caption.21}% 
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Mehrere Processing Elemente PEs}}{23}{figure.caption.22}% 
+\contentsline {figure}{\numberline {3.5}{\ignorespaces TPU design\relax }}{27}{figure.caption.24}% 
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Pooling}}{29}{figure.caption.25}% 
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces \IeC {\"U}bersicht des Codes f\IeC {\"u}r die Matrixmultiplikation\relax }}{32}{figure.caption.26}% 
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Block Design von Matrixmultiplikation mit Systolic Array Architektur}}{36}{figure.caption.28}% 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
