@@ -194,7 +194,7 @@ EVITA
     
     
     \section{Zielsetzung}\label{sec:Zielsetzung}
-    In der vorliegenden Arbeit geht es um eine Entwicklung von Systolic Array Architektur, die auf einem FPGA implementiert wird. Das FPGA ist klein, verbraucht wenig Energie und ermöglicht dem ML-Modell eine höhere Rechenleistung und somit eine schnelle Ausführung. Außerdem wird Anwendungen von Systolic Array wie TPU \cite{GoogleTPU} und ihre Implementierung untersucht. 
+    In der vorliegenden Arbeit geht es um eine Entwicklung von Systolic Array Architektur, die auf einem FPGA implementiert wird. Das FPGA ist klein, verbraucht wenig Energie und ermöglicht dem ML-Modell eine höhere Rechenleistung und somit eine schnelle Ausführung. Außerdem wird Anwendungen von Systolic Array wie TPU \cite{8192463} und ihre Implementierung untersucht. 
     
     \section{Das Mooresche Gesetz}\label{sec:Das Mooresche Gesetz}
    	Das Mooresche Gesetz besagt, dass sich die Anzahl der Transistoren, die auf eine integrierte Schaltung gedrückt werden können ungefähr alle 18 Monate verdoppelt. \cite{Wikipedia} siehe \autoref{fig:moor}
@@ -342,7 +342,7 @@ EVITA
 	%\newpage
 	
 		\section{Kuenstliche neuronale Netze} \label{sec:Kuenstliche neuronale Netze}
-	Kuenstliche neuronale Netze sind ein Technik des ML, die den Mechanismus des Lernens in biologischen Organismen simulieren. \cite{NeuralNetwork} Das menschliche Nervensystem enthält Zellen, die als Neuron bezeichnet wird.  Jedes Neuron besteht aus drei Teile: Es sind die Dendriten, der Zellkörper und das Axon. \autoref{fig:neuron} Aus dem Zellkörper verzweigen sich eine Reihe von Fasern ab, die Dendritte genannt werden. Die Lange Faser wird Axon genannt und streckt sich nach große Entfernungen. Es kann von 1cm bis 1 Meter lang sein.\\
+	Kuenstliche neuronale Netze sind ein Technik des ML, die den Mechanismus des Lernens in biologischen Organismen simulieren. \cite{haykin1994neural} Das menschliche Nervensystem enthält Zellen, die als Neuron bezeichnet wird.  Jedes Neuron besteht aus drei Teile: Es sind die Dendriten, der Zellkörper und das Axon. \autoref{fig:neuron} Aus dem Zellkörper verzweigen sich eine Reihe von Fasern ab, die Dendritte genannt werden. Die Lange Faser wird Axon genannt und streckt sich nach große Entfernungen. Es kann von 1cm bis 1 Meter lang sein.\\
 	Ein Neuron kann mit anderen Neuronen 10 bis 100.000 Verbindungen herstellen, die als Synapsen bezeichnet werden. Die Kommunikationen zwischen Neuronen erfolgen mit elektrochemischen Signalen.  
 	
 	
@@ -540,7 +540,7 @@ EVITA
 	\subsection{Einlagiges Perzeptron}
 
 	\begin{minipage}[t]{.6\textwidth}%
-		Ein einlagiges Perzeptron enthält eine einzelne Eingabeebene und einen Ausgabeknoten. Die Eingabewerte $x_{1},x_{2},x_{3}, \ldots ,x_{n} $ werden mit ihren jeweiligen Gewichten $w_{1},w_{2},w_{3}, \ldots ,w_{n} $ multipliziert. Dieser gesamte Ausdruck wird innerhalb des Neurons summiert. Nach der Berechnung der Gesamtsumme kann auch ein Biaswert $b$ addiert werden. Der Ausgangswert ist $ y= \left[ \sum_{i=1}^{n} w_{i}x_{i} + b\right]  , y \in (-1 , +1) $ . \cite{DeepLearning}
+		Ein einlagiges Perzeptron enthält eine einzelne Eingabeebene und einen Ausgabeknoten. Die Eingabewerte $x_{1},x_{2},x_{3}, \ldots ,x_{n} $ werden mit ihren jeweiligen Gewichten $w_{1},w_{2},w_{3}, \ldots ,w_{n} $ multipliziert. Dieser gesamte Ausdruck wird innerhalb des Neurons summiert. Nach der Berechnung der Gesamtsumme kann auch ein Biaswert $b$ addiert werden. Der Ausgangswert ist $ y= \left[ \sum_{i=1}^{n} w_{i}x_{i} + b\right]  , y \in (-1 , +1) $ . \cite{aggrawal2018neural}
 	
 	\end{minipage}%
 	\begin{minipage}[t]{.4\textwidth}%
@@ -554,7 +554,7 @@ EVITA
 	
 	
 	
-		Das Ziel eines Perzeptrons ist es , mit den extern angelegten Werte $x_{1},x_{2},x_{3}, \ldots ,x_{n}$ in eine von zwei Klassen, $c1$ oder $c2$, richtig zu klassifizieren. Die Entscheidungsregel für die Klassifizierung erfolgt bei eingegebenen Werten $x_{1},x_{2},x_{3}, \ldots ,x_{n}$ dann, wenn der Ausgangswert $y=1$ ist, Klasse C1 einordnen, wenn aber $y=-1$ ist , dann Klasse C2 einordnen. Die Entscheidungsregionen werden durch Hyperebene eng. \textit{hyperplane} getrennt, die mit $\sum_{i=1}^{n}w_{i}x_{i} + b = 0$ \autoref{fig:classc1_c2} definiert ist. \cite{NeuralNetwork}
+		Das Ziel eines Perzeptrons ist es , mit den extern angelegten Werte $x_{1},x_{2},x_{3}, \ldots ,x_{n}$ in eine von zwei Klassen, $c1$ oder $c2$, richtig zu klassifizieren. Die Entscheidungsregel für die Klassifizierung erfolgt bei eingegebenen Werten $x_{1},x_{2},x_{3}, \ldots ,x_{n}$ dann, wenn der Ausgangswert $y=1$ ist, Klasse C1 einordnen, wenn aber $y=-1$ ist , dann Klasse C2 einordnen. Die Entscheidungsregionen werden durch Hyperebene eng. \textit{hyperplane} getrennt, die mit $\sum_{i=1}^{n}w_{i}x_{i} + b = 0$ \autoref{fig:classc1_c2} definiert ist. \cite{haykin1994neural}
 		
 		\begin{wrapfigure}{l}{0.5\textwidth}
 			\includegraphics[width=1\linewidth]{Bilder/classc1_c2} 
@@ -582,7 +582,7 @@ EVITA
 %		\caption[Perceptron mit 2 Eingänge und 2 Ausgänge ]{Ein Perceptron Netzwerk mit 2 Eingänge und 2 Ausgänge}
 	\end{minipage}\\
 
-	Wir wollen jetz ein Perzeptron ''beibringen'', dass das 2-Bit addieren lernt. Oben links steht die Wertetabelle für ein Halbaddierer. Es gibt zwei Eingänge und 2 Ausgänge. Ein Ausgang steht für \textbf{\textit{carry}} und der zweite Ausgang für Summe \textbf{\textit{sum}}. Auf der rechten Seite sieht man die Einheiten. Die Einheit \textbf{3} ist für \textbf{\textit{carry}} und die \textbf{4.} Einheit ist für die Summe \textbf{\textit{sum}}. Die \textbf{Einheit 3} lernt die carry-Funktion leicht, weil es hier lediglich um \textbf{AND}-Operator geht. Aber die \textbf{Einheit 4} scheint nicht zu funktionieren. Die Einheit soll \textbf{XOR} \textit{(exklusive ODER)} lernen. Das Perzeptron kann aber \textbf{XOR} \textit{(exklusive ODER)} nicht lernen, weil die nicht linear trennbar ist. \autoref{fig:Entscheidungsgrenzen} \cite{ArtificialIntelligence}
+	Wir wollen jetz ein Perzeptron ''beibringen'', dass das 2-Bit addieren lernt. Oben links steht die Wertetabelle für ein Halbaddierer. Es gibt zwei Eingänge und 2 Ausgänge. Ein Ausgang steht für \textbf{\textit{carry}} und der zweite Ausgang für Summe \textbf{\textit{sum}}. Auf der rechten Seite sieht man die Einheiten. Die Einheit \textbf{3} ist für \textbf{\textit{carry}} und die \textbf{4.} Einheit ist für die Summe \textbf{\textit{sum}}. Die \textbf{Einheit 3} lernt die carry-Funktion leicht, weil es hier lediglich um \textbf{AND}-Operator geht. Aber die \textbf{Einheit 4} scheint nicht zu funktionieren. Die Einheit soll \textbf{XOR} \textit{(exklusive ODER)} lernen. Das Perzeptron kann aber \textbf{XOR} \textit{(exklusive ODER)} nicht lernen, weil die nicht linear trennbar ist. \autoref{fig:Entscheidungsgrenzen} \cite{russell2016artificial}
 	
 	\begin{figure}[h!]
 		\centering
@@ -713,64 +713,66 @@ Zwischen convolutional layer und fully-connected layer befindet sich eine \\''fl
 		\centering
 		\includegraphics[width=15 cm , height=17cm]{Bilder/layer}
 		\caption{Visualisierung von Convolutional Network}
-		\label{fig:layer} \cite{VisualizingandUnderstandingConvolutionalNetworks}		
+		\label{fig:layer} 	
 	\end{figure}
 
 	\subsection{Beispiele von CNN Architekturen}\label{subsec:Beispiele von CNN Architekturen}
 	Hier werden einige erfolgreiche CNN-Entwürfe vorgestellt, die unter Grundlagen von CNN erstellt wurden. Die einige Grundlagen sind wie Faltungen, Max-Pooling, Funktion von Fully connected layer, flatening etc. schon oben erläutert. Zuerst möchte ich mit früheren Entwurf vorstellen und anschließend folgen dann die neue davon, sodass man den Trend bei der Entwicklung von CNN-Architekturen einen Überblick bekommt.
 	
 	\begin{description}
-		\item[LENET] Die LeNet-Architektur \cite{Gradient-BasedLearning} ist eine der frühesten Formen von CNN, die für die handschriftliche Ziffernidentifikation angewendet wurden. Die erfolgreichste Variante dieser Architektur ist die LeNet-5 Modell, da es insgesamt 5 Gewichtsschichten umfasst. LeNet besteht aus zwei Faltungsschichten,denen jeweils eine Sub-Sampling (Max-Pooling)-Schicht folgt, um Merkmale zu extrahieren. Danach folgt eine einzelne Faltungsschicht. Am Ende des Modells befinden sich dann fully-connected layer.
+		\item[LENET] Die LeNet-Architektur \cite{lecun1998gradient} ist eine der frühesten und grundlegendsten Formen von CNNs, die für die handschriftliche Ziffernidentifikation entwickelt wurde. \cite{AGuidetoConvolutional} Die erfolgreichste Variante dieser Architektur ist die LeNet-5 Modell, da es insgesamt 5 Gewichtsschichten umfasst. LeNet besteht aus zwei convolutional layer, denen jeweils eine (Max-Pooling)-Schicht folgt, um Merkmale zu extrahieren. Anschließend folgt eine einzelne convolution layer. Am Ende des Modells befinden sich dann fully-connected layer.
 		Die Modellarchitektur ist in \autoref{fig:lenet}  dargestellt.
 		
 		\begin{figure}[h!]
 			\centering
 			\includegraphics[width=15 cm , height=5cm]{Bilder/lenet5}
-			\caption{LeNet-5 Architektur}
+			\caption{LeNet-5 Architektur \cite{lecun1998gradient}}
 			\label{fig:lenet} 
 		\end{figure}
+	
+	%%fertig
 
 
-		\item[AlexNet] Das CNN-Modell ist für Bilder geeignet, die kleine Dimensionen wie 32x32 besitzen. AlexNet \cite{ImageNet} ist das erste Modell, das auch Bilder mit größe Dimensionen verarbeiten kann. AlexNet besteht aus insgesamt acht Parameterschichten, von denen die fünf convolution layer und drei Fully connected Layer sind. Die letzte Fully-connected Layer klassifiziert das Eingangsbild in einer der 1000 Klassen von ImageNet-Dataset. Die Filtergrößen und die Position der Max-Pooling layer sind in \autoref{fig:alexnet} dargestellt.
-		Die Verwendung der nichtlineare Funktionen nach jeder convolutional layer verbessert die Trainingseffizienz im Vergleich zur traditionell verwendeten $\tanh$-Funktionen und gewann im Jahr 2012 ImageNet Large-Scale Visual Recognition Challenge (ILSVRC) mit großem Vorsprung.
-		
+		\item[AlexNet] Im Jahr 2012 gewann AlexNet \cite{ImageNet} Architektur mit einem besonderen Erfolg im Vergleich zu den anderen Architekturen die ImageNet Large-Scale Visual Recognition Challenge (ILSVRC). \footnote{http://www.image-net.org/} 
+		AlexNet besteht aus insgesamt acht Parameterschichten, von denen die fünf convolution layer und drei Fully connected Layer sind. Die letzte Fully-connected Layer klassifiziert das Eingangsbild in einer der 1000 Klassen von ImageNet-Dataset. Die Filtergrößen und die Position der Max-Pooling layer sind in \autoref{fig:alexnet} dargestellt.
+		Die Verwendung der nichtlineare Funktionen nach jeder convolutional layer verbessert die Trainingseffizienz im Vergleich zur traditionell verwendeten $\tanh$-Funktionen.
+	
 		
 		\begin{figure}[h!]
 			\centering
 			\includegraphics[width=15 cm , height=5cm]{Bilder/alexnet}
-			\caption{AlexNet Architektur}
+			\caption{AlexNet Architektur \cite{AGuidetoConvolutional}}
 			\label{fig:alexnet} 
 		\end{figure}
 	
 	\newpage
 	
-	\item[GoogleNet] Bisher diskutierten Netzwerke bestehen aus einer sequentiellen Architektur in  einer Richtung. Entlang dieser Richtung befinden sich nach Reihen geordnet Schichten wie convolution layer , Max-pooling, ReLu und Fully-connected layer etc. Die GoogleNet-Architektur ist eine komplexe Architektur mit mehreren Netzwerkzweigen und gewann den ILSVRC (Large Scale Visual Recognition Challenge) im Jahr 2014 mit der Fehlerquote von 6,7\% bei der Klassifizierungsaufgabe. 
-	
-	GoogleNet \autoref{fig:GoogleNet} besteht aus insgesamt 22 Gewichtsschichten und das Grunddesign ist das ''Inception-Module''.
-	Die Verarbeitung dieses Moduls erfolgt im Vergleich bisher vorgestellten Architekturen nicht sequentiell, sondern parallel. Eine einfache Version dieses Moduls ist in \autoref{fig:GoogleNet} dargestellt. Die Hauptidee ist, dass allen grundlegenden Verarbeitungsblöcke parallel platzieren, um die Ausgabe von denen zu kombinieren. Der Vorteil dieser Architektur ist, dass mehrere Inception-Module zusammen gestapelt werden, um ein riesiges Netzwerk zu erstellen.
+	\item[GoogleNet] Bisher diskutierten Netzwerke bestehen aus einer sequentiellen Architektur in  einer Richtung. Entlang dieser Richtung befinden sich nach Reihen geordnet Schichten wie convolution layer , Max-pooling, ReLu und Fully-connected layer etc. Die GoogleNet-Architektur \cite{szegedy2015going} ist eine komplexe Architektur mit mehreren Netzwerkzweigen und gewann den ILSVRC (Large Scale Visual Recognition Challenge) im Jahr 2014 mit der Fehlerquote von 6,7\% bei der Klassifizierungsaufgabe. 
+	GoogleNet \autoref{fig:GoogleNet} besteht aus insgesamt 22 Gewichtsschichten und das Grundkonzept ist das ''Inception-Module''.
+	Die Verarbeitung dieses Moduls erfolgt im Vergleich bisher vorgestellten Architekturen nicht sequentiell, sondern parallel. Eine einfache Version dieses Moduls ist in \autoref{fig:GoogleNet} dargestellt. \\ Die Hauptidee von GoogleNet ist, alle grundlegenden Verarbeitungsblöcke, die in einem regulären sequentiellen CNN auftreten, parallel zu platzieren und die Ausgaben davon kombinieren. Der Vorteil von GoogleNet ist, dass mehrere ''Inception-Module''  zusammen gestapelt werden, um ein riesigen Netzwerk zu erstellen. 
 	
 	\begin{figure}[h!]
 		\centering
 		\includegraphics[width=10 cm , height=4cm]{Bilder/googleNet}
-		\caption{GoogleNet Inception Module}
+		\caption{Grundkonzept von GoogleNet Inception Module \cite{szegedy2015going}}
 		\label{fig:GoogleNet} 
 	\end{figure}
 	
-
+	Ein großes Problem beim ''Inception Module'' ist, dass die Faltungen wie 5x5 auf einer convolutional layer mit einer großen Anzahl von Filtern sehr ineffizient sein kann. Das wird noch deutlicher, wenn dazu Pooling-Einheiten hinzugefügt werden. Die Anzahl der Ausgangsfilter entspricht der Anzahl der Filter in der vorherigen Stufen. Beim Mischen der Ausgabe der pooling-Unit mit den Ausgaben der convolutional layer würde die Anzahl von Ausgaben von Stufe zu Stufe extrem zunehmen. Innerhalb wenige Stufen könnte dies zu einer rechnerischen Explosion führen und die Ausgaben können höhere Dimensionen haben. Um dieses Problem zu überwinden, müssen die Dimension der Ausgaben reduziert werden. \autoref{fig:dimensionred}
+	siehe mehr Details zur Lösung \cite{szegedy2015going}
 	
-	Aufbauend auf diese einfaches Modul wurden mehrere verbesserte und erweiterte Versionen von GoogleNet vorgestellt. \cite{GoingDeeperwithConvolutions}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=10 cm , height=4cm]{Bilder/dimensionred}
+		\caption[GoogleNet Inception Module]{Neues Inception-Modul, um Dimensionen von Ausgaben  zu reduzieren \cite{szegedy2015going}}
+		\label{fig:dimensionred} 
+	\end{figure}
+
 	
 	
 \end{description}
-
-
-
-
-
 	
-
-
-
+	
 
 	\chapter{Konzept}\label{ch:Konzept}  	
 	\section{Einfuehrung der Systolic Array Architektur}\label{sec:Einfuehrung der Systolic Array Architektur}
@@ -796,7 +798,7 @@ Zwischen convolutional layer und fully-connected layer befindet sich eine \\''fl
 	\subsection{Grundidee}\label{subsec:Grundidee}
 %	Der Begriff ''systolisches Array'' kann nach einer neuen Innovation in der Rechnerarchitektur klingen.Aber es ist fast 40 Jahre alt. H.T. Kung kam auf diese Idee in den 80er Jahren und veröffentlichte seine Idee im Jahr 1982.\footnote{http://www.eecs.harvard.edu/~htk/publication/1982-kung-why-systolic-architecture.pdf}
 	
-	Die Grundidee des systolischen Arrays \cite{bib-lable} ist, dass die Daten rhythmisch aus dem Computerspeicher fließen und laufen durch viele PEs (processing elements), bevor sie in den Speicher zurückkehren. Die Idee ist vergleichbar mit dem Blutkreislauf, dass der Herz zur Zellen Blut pumpt.
+	Die Grundidee des systolischen Arrays \cite{kung1982systolic} ist, dass die Daten rhythmisch aus dem Computerspeicher fließen und laufen durch viele PEs (processing elements), bevor sie in den Speicher zurückkehren. Die Idee ist vergleichbar mit dem Blutkreislauf, dass der Herz zur Zellen Blut pumpt.
 	%\newpage
 	
 	
@@ -811,58 +813,83 @@ Zwischen convolutional layer und fully-connected layer befindet sich eine \\''fl
 		\end{center}
 		\caption[Einzelne Processing Elemente PEs]{\label{fig:SA_1PE} Das Grundprinzip des systolischen Systems}
 	\end{figure}
+
 	Das in \autoref{fig:SA_1PE} Verarbeitungsschema ist ineffizient und zeitaufwändig, wenn es nur ein einziges PE gibt, das aus dem Speicher ein Data holt, verarbeitet und das Ergebnis in den Speicher ablegt. In einer Sekunde werden nur 5 Millionen Operationen \textbf{MOPS} \textit{(Millions of operations per seconds)} durchgeführt.  
 
   
 	Um \textbf{MOPS} zu erhöhen soll mehrere PEs geben, die Daten mehrmals verarbeiten (wie Pipeline System) und am Ende das Ergebnis wird von dem letzten PE in den Speicher abgelegt. \autoref{fig:PEs} Das ist die Idee, die das System beschleunigen soll. Damit werden 30 Millionen Operationen durchgeführt.
 
 
-\begin{figure}
-	\begin{center}
-		\input{Design/SA_PEs.tex}
-	\end{center}
-	\caption[Mehrere Processing Elemente PEs]{\label{fig:PEs} Das Grundprinzip des systolischen Systems}
-\end{figure}
+	\begin{figure}
+		\begin{center}
+			\input{Design/SA_PEs.tex}
+		\end{center}
+		\caption[Mehrere Processing Elemente PEs]{\label{fig:PEs} Das Grundprinzip des systolischen Systems}
+	\end{figure}
 	
 	
 	\subsection{Systolic Array Designs für Faltung Berechnungen}
 	
 	\textbf{Design1: Gegeben} sind hier die Eingangswerte $\left[ x_{1}, x_{2},\ldots ,x_{n}\right]$  und\\ die Gewichte $\left[ w_{1}, w_{2},\ldots ,w_{k}\right]$.\\
 	Die Ausgangswerte sind $y_{i} = \left[ w_{1}x_{i}+w_{2}x_{i+1}+ \ldots + w_{k}x_{i+k-1} \right]$.\\
-	Die Gewichte sind schon in jeder Zelle vorgeladen. Die Eingangswerte $x_{i}$ verbreiten sich zu jeder Zelle, wird multipliziert mit der Gewichte und Teilsummen $y_{i}$ bewegen sich systolisch durch jede Zelle.
+	Die Gewichte sind schon in jeder Zelle vorgeladen. Die Eingangswerte $x_{i}$ verbreiten sich zu jeder Zelle, wird multipliziert mit der Gewichte und Teilsummen $y_{i}$ bewegen sich systolisch durch jede Zelle. \autoref{fig:design1}
+	
+	\begin{figure}[h!]
+		\centering
+		\input{Design/design1.tex}
+		\caption[Design1]{In PE gespeicherten Gewichten werden jeweils mit der Eingabe multipliziert und das Ergebnis zur Teilsumme vom vorherigen Element addiert. Beim nächsten Takt wird ein Eingangselement ausgelesen und die Teilsummen von PE wird zum Nachbar PE gesendet. Somit werden alle Daten trotz bei minimaler Bandbreite des Speichers verarbeitet.}
+		\label{fig:design1}
+	\end{figure}
+	
+	\textbf{Design2}: Die Eingangswerte $x_{i}$ verbreiten sich in Zellen und die Ausgangswerte $y_{i}$ werden in Zellen berechnet und akkumuliert. Die Gewichte $w_{i}$ bewegen sich in einer Schleife systolisch durch jede Zelle. Am Ende der Berechnung müssen die Ergebnisse $y_{i}$ aus den Zellen geholt werden. Dafür ist eine seperate BUS-Leitung nötig, um die Ergebnisse auszugeben, was im \textbf{Design1} \autoref{fig:design1} nicht der Fall war. Das Ziel vom \textbf{Design2} \autoref{fig:design2} ist die Erhöhung der Genauigkeit von Ergebnissen, da die $y_{i}$-Werte während der Berechnung wie im \textbf{Design 1} \autoref{fig:design2} in jedem Takt sich ändern oder die Genauigkeit kann bei Gleitkommazahlen sinken und das Ergebnis kann damit gefälscht werden. 
+
+
+	\begin{figure}[h!]
+		\centering
+		\input{Design/design2.tex}
+		\caption[Design2]
+		{Die Eingangswerte $x_{i}$ verbreiten sich und $y_{i}$ bleiben in Zellen (PE) und die Gewichte bewegen sich systolisch durch jede Zelle.}
+		\label{fig:design2}
+		$y_{out} \leftarrow y + w_{in} \cdot x_{in}$\\
+		$w_{out} \leftarrow w_{in}$
+
+	\end{figure}
+
 
 	
-	In PE gespeicherten Gewichten werden jeweils mit der Eingabe multipliziert und das Ergebnis zur Teilsumme vom vorherigen Element addiert. Beim nächsten Takt wird ein Eingangselement ausgelesen und die Teilsummen von PE wird zum Nachbar PE gesendet. Somit werden alle Daten trotz bei minimaler Bandbreite des Speichers verarbeitet.\\	
-	\textbf{Design2}: Die Eingangswerte $x_{i}$ verbreiten sich in Zellen und die Ausgangswerte $y_{i}$ werden in Zellen berechnet und akkumuliert. Die Gewichte $w_{i}$ bewegen sich in einer Schleife systolisch durch jede Zelle. Am Ende der Berechnung müssen die Ergebnisse $y_{i}$ aus den Zellen geholt werden. Dafür ist eine seperate BUS-Leitung nötig, um die Ergebnisse auszugeben, was im \textbf{Design1} nicht der Fall war. Das Ziel vom \textbf{Design2} ist die Erhöhung der Genauigkeit von Ergebnissen, da die $y_{i}$-Werte während der Berechnung wie im \textbf{Design 1} in jedem Takt sich ändern oder die Genauigkeit kann bei Gleitkommazahlen sinken und das Ergebnis kann damit gefälscht werden. 
 	
-	\begin{center}
-		\input{Design/design2.tex}\\
-		$y_{out} \leftarrow y + w_{in} \cdot x_{in}$\\
-		$w_{out} \leftarrow w_{in}$\\
-	\end{center}
+	\textbf{Design3}:Die Gewichte $w_{i}$ sind in Zellen vorgeladen. In jedem Takt wird ein Eingangswert ausgelesen und die Eingangswerte $x_{i}$ fließen systolisch durch die Zellen. In PE werden die Eingangswerte mit Gewichten multipliziert und das Ergebnis zum globalen Adder (Addierer) weitergegeben. Im Addierer werden die Ergebnisse aus den Zellen gesammelt und addiert. Ein Nachteil dieser Entwurf ist der globale Akkumulator bzw. Addierer. Dafür ist eine seperate BUS-Leitung nötig.  \autoref{fig:design3} \\ \textbf{Anwendung:} Diese Methode wird in musterbasierte Suche (Pattern matching) oder auch in der digitale Signalverarbeitung eingesetzt.
 	
-	
-	\textbf{Design3}:Die Gewichte $w_{i}$ sind in Zellen vorgeladen. In jedem Takt wird ein Eingangswert ausgelesen und die Eingangswerte $x_{i}$ fließen systolisch durch die Zellen. In PE werden die Eingangswerte mit Gewichten multipliziert und das Ergebnis zum globalen Adder (Addierer) weitergegeben. Im Addierer werden die Ergebnisse aus den Zellen gesammelt und addiert. Ein Nachteil dieser Entwurf ist der globale Akkumulator bzw. Addierer. Dafür ist eine seperate BUS-Leitung nötig. \\ \textbf{Anwendung:} Diese Methode wird in musterbasierte Suche (Pattern matching) oder auch in der digitale Signalverarbeitung eingesetzt.
-	\begin{center}
-		\input{Design/design3.tex}\\
+	\begin{figure}[h!]
+		\centering
+		\input{Design/design3.tex}
+		\caption[Design3]{
+			Die Gewichte $w_{i}$ bleiben in Zellen (PE), die Eingangswerte bewegen sich systolisch durch jede Zelle und $y_{i}$ werden in den Zellen berechnet und in der Komponente Adder akkumuliert.}		
 		$z_{out} \leftarrow w \cdot x_{in}$\\
-		$x_{out} \leftarrow x_{in}$\\
-	\end{center}
+		$x_{out} \leftarrow x_{in}$
+		\label{fig:design3}
+	\end{figure}
+
 
 	%\newpage
-	\textbf{Design4}: Die Ausgangswerte $y_{i}$ bleiben fest in den Zellen. Die Gewichte $w_{i}$ und Eingangswerte $x_{i}$ bewegen sich systolisch und entgegengesetzte Richtungen durch die Zellen. Die Berechnungen finden in PE statt und das resultierende Produkt zu dem Teilergebnis werden dort gespeichert.
-	\\
-	
-	
-	
+	\textbf{Design4}: \autoref{fig:design4} Die Ausgangswerte $y_{i}$ bleiben fest in den Zellen. Die Gewichte $w_{i}$ und Eingangswerte $x_{i}$ bewegen sich systolisch und entgegengesetzte Richtungen durch die Zellen. Die Berechnungen finden in PE statt und das resultierende Produkt zu dem Teilergebnis werden dort gespeichert. 
 	 Dieser Entwurf braucht keine BUS-Leitung oder externe Adder wie vorherigen Entwürfe. Die PEs haben eigene Akkumulator und das Ergebnis wird vom Akkumulator geholt. Der Nachteil hier ist die zusätzliche Logik, damit den Akkumulator in jedem PE am Ende der Berechnung zurücksetzt.
+	
+
+	\begin{figure}[h!]
+		\centering
+		\input{Design/design4.tex}
+		\caption[Design4]{$y_{i}$ bleiben in Zellen (PE) und $x_{i} und w_{i}$ bewegen sich systolisch durch die Zellen in entgegengesetzte Richtung}
+		\label{fig:design4}
+	\end{figure}
 	\begin{center}
-		\input{Design/design4.tex}\\
+		
 		$y \leftarrow y + w_{in} \cdot x_{in}$\\
 		$x_{out} \leftarrow x_{in}$\\
 		$x_{out} \leftarrow w_{in}$
 	\end{center}
-	%\newpage
+
+
 
 	\subsection{Systolic Array Matrix Multiplikation}
 	Bei der Matrix Multiplikation sind mehrere PEs (Processing elements) \autoref{fig:systolicArray} nötig, die miteinander verbunden sind. Der Datenfluss erfolgt von links z.B. Matrix A-Werte und von oben transponierte Matrix B-Werte. Die Aufgabe von PEs sind Multiplikationen von Eingangswerten und Akkumulation der Teilsumme in ihren eingebauten Register. Abschließend werden dann die Eingangswerte (Matrix A - Wert) nach rechts  und (Matrix B - Wert) nach unten zur Weiterberechnung gesendet. Mehr Details über PEs finden Sie in Kapitel $Implementierung$. 
@@ -884,12 +911,12 @@ Zwischen convolutional layer und fully-connected layer befindet sich eine \\''fl
 	
 	\subsection{Architektur der Tensor Processing Unit} \label{subsec:Architektur der Tensor Processing Unit}
 	
-	Die Computer-Technologien der 80er Jahren war nicht genug, um die revolutionäre Idee ''Systolic Array'' von H.T. Kung in die Praxis umzusetzen. Von 80er Jahren bis heute (2020) die Computer Technologie hat sich immer weiter entwickelt und ist nicht mehr vergleichbar mit 80er Jahren. Aber die Idee von damals ist noch nutzbar.\\Tensor Processing Unit  (TPUs) \cite{GoogleTPU} \autoref{fig:TPU} sind anwendungsspezifische Chips, die von Google entwickelt wurden, um ML-Anwendungen zu beschleunigen.
+	Die Computer-Technologien der 80er Jahren war nicht genug, um die revolutionäre Idee ''Systolic Array'' von H.T. Kung in die Praxis umzusetzen. Von 80er Jahren bis heute (2020) die Computer Technologie hat sich ständig entwickelt und ist nicht mehr vergleichbar mit 80er Jahren. Aber die Idee von damals ist noch nutzbar.\\Tensor Processing Unit  (TPUs) \cite{8192463} \autoref{fig:TPU} sind anwendungsspezifische Chips, die von Google entwickelt wurden, um ML-Anwendungen zu beschleunigen.
 	
 	\begin{figure}[h!]
 		\centering
 		\includegraphics[width=12.5cm, height=10cm]{Bilder/tpu}		
-		\caption{TPU design} 
+		\caption{Architektur einer Tensor Processing Unit Design \cite{8192463}} 
 		\label{fig:TPU}
 	\end{figure}
 	
@@ -902,19 +929,22 @@ Zwischen convolutional layer und fully-connected layer befindet sich eine \\''fl
 	\newpage
 	Die Gewichte werden zuerst vorgeladen und die Aktivierungen aus dem Aktivierungsspeicherpuffer werden in die MM-Einheit eingelesen. Die Aktivierungen bewegen sich von links nach rechts systolisch und die Teilsummen bewegen sich vertikal von oben nach unten.
 	\begin{center}
-		\includegraphics[width=12.5cm, height=10cm]{Bilder/tpusystolic}	
+		
 		
 	\end{center}
+
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=12.5cm, height=10cm]{Bilder/tpusystolic}	
+		\caption{Systolischer Datenfluss der Matrix Multiply Unit. Die Gesamtsumme werden in den Akkumulatoren gebildet. \cite{8192463}} 
+		\label{fig:sysdaten}
+	\end{figure}
 
 	\begin{description}
 		\item[\textbf{Systolic Data Setup:}] Hier werden die Daten aus dem Unified Buffer so eingespeist, sodass die Eingänge jeder Zeile um einen Takt zur vorherigen Zeile verzögert werden. Dadurch entsteht eine Latenz von 256-Taktzyklen.
 		\item[\textbf{Akkumulatoren:}] In MM-Einheit in MACs finden 8-Bit-Multiplikationen statt und das Ergebnis ist 16-Bit-Produkte. Die werden in den Akkumulator gesammelt und die Teilsumme dazu addiert. Es werden pro Taktzyklus 256 Teilsumme gebildet. Die hier verwendete Akkumulatoren sind 32-Bit Akkumulator und befindet sich unter der MM-Einheit. 
-		\item[\textbf{Aktivierung:}] hier werden die Funktionen des künstlichen Neuronen wie Sigmoid, ReLu, usw. ausgeführt. Es kann auch hier die Pooling Operationen für Faltungen ausgeführt werden.
-%		\begin{center}
-%			\includegraphics[width=7 cm , height=5 cm]{Bilder/pooling}
-%			\caption[Pooling]{Average und max - Pooling}
-%			\label{fig:pooling_layer}
-%		\end{center} 
+		\item[\textbf{Aktivierung:}] hier werden die Funktionen des künstlichen Neuronen wie Sigmoid, ReLu, usw. ausgeführt. Es kann auch hier die Pooling Operationen \autoref{fig:pooling_layer} für Faltungen ausgeführt werden.
+
 	
 	\begin{figure}[h!]
 		\centering
@@ -923,8 +953,6 @@ Zwischen convolutional layer und fully-connected layer befindet sich eine \\''fl
 		\label{fig:pooling_layer}			
 	\end{figure}
 		
-		%\item[\textbf{Pooling:}]
-		%\item[\textbf{Instruktionssatz:}]
 		\item[\textbf{Read\_Host\_Memory:}] liest Daten aus dem CPU\_Hostspeicher in den Unified Buffer (UB).
 		\item[\textbf{Read\_Weights:}] liest Gewichte aus dem Gewichtsspeicher-FIFO (Weight-Memory) und im Gewichtsspeicher in die MM-Einheit als Eingabe bereit gestellt.
 		\item[\textbf{MatrixMultiply/Convolve:}] mit den geladenen Gewichten und Daten aus dem Unified Buffer wird in MM-Einheit eine Matrixmultiplikation oder eine Faltung ausgeführt werden. Hier kann die eingegebene Matrix variabel sein. Die Matrix mit der Dimension B*256 wird in MM-Einheit mit den geladenen Gewichten 256*256 multipliziert werden. Die Ausgabe kann dann mit der Größe von B*256 in den Akkumulator gespeichert werden, wobei B Pipeline-Zyklen abgeschlossen werden. 
@@ -933,28 +961,30 @@ Zwischen convolutional layer und fully-connected layer befindet sich eine \\''fl
 		%\item[\textbf{Steuerwerke:}]
 		%\item[\textbf{Host-Interface:}]
 	\end{description}
-	
-	
+
 	\subsection{Vorteile des Systolic Arrays}
 	Der Hauptvorteil des TPUs mit Systolic Array Architektur ist seine Unkompliziertheit und es ist nur konzentriert auf Matrix Multiplikation.
-	Das TPU Design ist einfach und der Stromverbrauch ist gering gehalten. Unified Buffer und MM-Einheit nimmt die maximale Fläche in dem Chip. Die Control Unit nimmt die geringste Fläche, wobei die sehr schwer zu designen war. 
-	\begin{center}
-		\includegraphics[width=10cm, height=7cm]{Bilder/tpudesign}	
-	\end{center} 
-	Diese Tabelle zeigt ein Vergleich mit anderen ähnlichen Produkten und der Stromverbrauch deutlich geringer als die anderen Geräten. 
-	\begin{center}
+	Das TPU Design \autoref{fig:tpudesign} ist einfach und der Stromverbrauch ist gering gehalten. Unified Buffer und MM-Einheit nimmt die maximale Fläche in dem Chip. Die Control Unit nimmt die geringste Fläche, wobei die sehr schwer zu designen war. 
+	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=10cm, height=7cm]{Bilder/tpudesign}
+		\caption[TPU-Design]{Diese Tabelle zeigt ein Vergleich mit anderen ähnlichen Produkten und der Stromverbrauch ist deutlich geringer als die anderen Geräten.}
+		\label{fig:tpudesign}			
+	\end{figure}
+
+	\begin{figure}[h!]
+		\centering
 		\includegraphics[width=12.5cm, height=5cm]{Bilder/tpuverbrauch}	
-	\end{center} 
+		\caption[TPU-Verbrauch]{Diese Tabelle zeigt ein Vergleich mit anderen ähnlichen Produkten und der Stromverbrauch von TPU ist deutlich geringer als die anderen Geräten.}
+		\label{fig:tpuverbrauch}			
+	\end{figure}
 
 	\subsection{Nachteile des Systolic Arrays}
 	Die Multiplikation aus 2 Matrizen N x N dauert 2*N-1 Taktzyklen. Für einen Batch der Größe B beträgt dann die Latenz N*(B+1)-1 . Die Latenz hängt von den Matrixdimensionen ab. Das ist für Anwendungen mit konstanter Latenz nicht wünschenswert.\\
-	
 	Ein anderes Problem ist, dass die Eingangsmatrix nicht ein Vielfaches von der PE-Array bzw. MACs in MM-Einheit ist. Bei so einem Fall werden nicht alle verfügbaren MACs verwendet und entsteht damit ungenutzte bzw. verschwendeter Arbeitsspeicher bei nicht standardmäßige Matrixdimensionen.\\
-	
 	TPU ist allgemein für Matrixmultiplikationen besser geeignet als Faltungsberechnungen. Die Faltung Operationen können auch ausgeführt werden, indem sie in Matrixmultiplikationen umgewandelt werden. Das ist für große Faltungskerngrößen nicht optimal, da Faltungen spezifische Datenflussmuster aufweisen sollen.Ein gutes Beispiel ist der  Eyeriss-Beschleuniger \textbf{(An Energy-Efficient Reconfigurable Accelerator for Deep Convolutional Neural Networks)}, der speziell für die Faltungsoperation entwickelt wurde.
-	
-  
-    
+
     \chapter{Implementierung}
     \label{ch:implementierung} 
     \section{Implementierungsplan} Vorgehensweise
@@ -994,7 +1024,7 @@ Zwischen convolutional layer und fully-connected layer befindet sich eine \\''fl
 	
 	\newpage
 	\subsection{Simulationsergebnisse}\label{subsec:Simulationsergebnisse} 
-	Hier werden zwei gleiche Matrizen \autoref{eq:matrixeqn}  miteinander multipliziert. Bei der Multiplikation wird die in \autoref{sec:Einfuehrung der Systolic Array Architektur} vorgestellte systolic Array Architektur angewendet.  Um die Elemente von Produktmatrix diaganol ausgeben zu können, müssen jeweils die Eingaben diagonal in die MAC-Unit \autoref{subsec:MAC} eingespeist werden. Ausserdem werden \textit{enable-Signale} wie \textbf{to\_C11\_en} gebraucht, um die einzelne Werte der Produktmatrix in RAM speichern zu können.
+	Hier werden zwei gleiche Matrizen siehe \autoref{eq:matrixeqn}  miteinander multipliziert. Bei der Multiplikation wird die in \autoref{sec:Einfuehrung der Systolic Array Architektur} vorgestellte systolic Array Architektur angewendet.  Um die Elemente von Produktmatrix diaganol ausgeben zu können, müssen jeweils die Eingaben diagonal in die MAC-Unit \autoref{subsec:MAC} eingespeist werden. Ausserdem werden \textit{enable-Signale} wie \textbf{to\_C11\_en} gebraucht, um die einzelne Werte der Produktmatrix in RAM speichern zu können.
 	
 	
 	\begin{equation}\label{eq:matrixeqn}
@@ -1034,18 +1064,23 @@ Zwischen convolutional layer und fully-connected layer befindet sich eine \\''fl
 
 
 	\subsection{Zusammenfassung}\label{subsec:Zusammenfassung}
-	In diesem Projekt wurde ein systolisches Array zur Berechnung der Matrixmultiplikation entworfen und implementiert. Die Vorteile des systolisches Arrays sind einfaches Design und zeitgleiche Operationen (Parallelität). Die Nachteile sind, dass es nicht für allgemeine Anwendungen anwendbar ist, sondern eher für speziale Zwecke geeignet ist, da die Organisation von PE (Processing element) zur Berechnung der Matrixelementen anpassen muss. Außerdem die Implementierung des systolichen Arrays ist beschränkt auf 3x3-Matrizen und die Dimension der Matrizen war nicht dynamisch, dass man am Anfang der Berechnung beliebig groß wählen darf. 
+	In diesem Projekt wurde ein systolisches Array zur Berechnung der Matrixmultiplikation entworfen und implementiert. Die Vorteile des systolisches Arrays sind einfaches Design und zeitgleiche Operationen (Parallelität). Einige Nachteile sind, dass es nicht für allgemeine Anwendungen anwendbar ist, sondern eher für spezielle Zwecke geeignet ist, da die Organisation von PE (Processing element) zur Berechnung der Matrixelementen anpassen muss. Außerdem die Implementierung des systolichen Arrays ist beschränkt auf 3x3-Matrizen und die Dimension der Matrizen war nicht dynamisch, dass man am Anfang der Berechnung beliebig groß wählen darf. 
 
 	
 	
    		
-    \chapter{Bewertung des Gesamtsystems} %evaluation Experimentelle ergebnisse 
-	\label{ch:Bewertung}  
+    \chapter{Evaluation}\label{ch:Evaluation} %evaluation Experimentelle ergebnisse 
+    Das Bildererkennungssystem ist ein sehr breites Forschungsgebiet und es geht nicht nur um Bilder zu erkennen, sondern auch deren Inhalt zu analysieren und verstehen. Heutzutage es ist ein sehr aktives Forschungsgebiet für Anwendungen von \textbf{C}onvolutional \textbf{N}eural \textbf{N}etwork (CNN). Die Aufgaben von solchen Anwendungen sind Klassifizierungen von Bilder, Segmentierung, Erkennung und Analyse von Szenen. \cite{AGuidetoConvolutional}\\
+    Die meisten CNN Architekturen sind eingesetzt, um ein Objekt oder eine Person in einem Bild zu identifizieren oder das Label eines Objekts auszugeben.
+    
+    
+    Die in \autoref{subsec:Beispiele von CNN Architekturen} vorgestellten Architekturen sind rechen- und speicherintensive Architekturen, die für Genauigkeiten von Ergebnissen mehr Energie brauchen. 
+	
 	
   
 
     \chapter{Ausblick}\label{ch:Ausblick}   
-    In meiner Thesis werden zuerst die Grundlagen zum maschinellen Lernen erläuert und im folgenden dann die Strukturen der künstlichen neuronalen Netze betrachtet. Besonders wird die CNN-Architektur \textit{(convolutional neural network)} und ihr Entwicklungstrend betrachtet. Die Gemeinsamkeit von dieser vorgestellten Architekturen sind, dass die erste Entwurf wie z.B. LeNET waren oder die besondere Erfolge in ImageNet Large-Scale Visual Recognition Challenge (ILSVRC) bekommen haben. siehe \autoref{fig:GoogleNet} \autoref{fig:alexnet}
+    In meiner Thesis werden zuerst die Grundlagen zum maschinellen Lernen erläuert und im folgenden die Strukturen der künstlichen neuronalen Netze betrachtet. Besonders wird die CNN-Architektur \textit{(convolutional neural network)} und ihr Entwicklungstrend betrachtet. Die Gemeinsamkeit von dieser vorgestellten Architekturen sind, dass die erste Entwurf in CNN sind wie z.B. LeNET oder die besondere Erfolge in ImageNet Large-Scale Visual Recognition Challenge (ILSVRC) bekommen haben. siehe \autoref{fig:GoogleNet} \autoref{fig:alexnet}
      
  
   
@@ -1075,15 +1110,15 @@ Zwischen convolutional layer und fully-connected layer befindet sich eine \\''fl
 %    \input{95_anhang/anhang}
 		\cleardoublepage
 
-    \listoftables
-    	\cleardoublepage
+%    \listoftables
+    %	\cleardoublepage
     \listoffigures
-    	\cleardoublepage
+    %	\cleardoublepage
     \printindex
-    	\cleardoublepage
+    %	\cleardoublepage
     \printnomenclature
     \renewcommand{\leftmark}{\uppercase{Abkürzungsverzeichnis}}
-    	\cleardoublepage
+    	%\cleardoublepage
 
 \end{document}
 

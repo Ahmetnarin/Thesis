@@ -13,17 +13,25 @@
 \contentsline {figure}{\numberline {2.10}{\ignorespaces Struktur von Convolutional Neural Network CNN\relax }}{16}{figure.caption.13}% 
 \contentsline {figure}{\numberline {2.11}{\ignorespaces Max Pooling}}{17}{figure.caption.14}% 
 \contentsline {figure}{\numberline {2.12}{\ignorespaces Visualisierung von Convolutional Network\relax }}{18}{figure.caption.16}% 
-\contentsline {figure}{\numberline {2.13}{\ignorespaces LeNet-5 Architektur\relax }}{19}{figure.caption.17}% 
-\contentsline {figure}{\numberline {2.14}{\ignorespaces AlexNet Architektur\relax }}{20}{figure.caption.18}% 
-\contentsline {figure}{\numberline {2.15}{\ignorespaces GoogleNet Inception Module\relax }}{20}{figure.caption.19}% 
+\contentsline {figure}{\numberline {2.13}{\ignorespaces LeNet-5 Architektur \cite {lecun1998gradient}\relax }}{19}{figure.caption.17}% 
+\contentsline {figure}{\numberline {2.14}{\ignorespaces AlexNet Architektur \cite {AGuidetoConvolutional}\relax }}{20}{figure.caption.18}% 
+\contentsline {figure}{\numberline {2.15}{\ignorespaces Grundkonzept von GoogleNet Inception Module \cite {szegedy2015going}\relax }}{20}{figure.caption.19}% 
+\contentsline {figure}{\numberline {2.16}{\ignorespaces GoogleNet Inception Module}}{21}{figure.caption.20}% 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Matrix Multiplikation\relax }}{22}{figure.caption.20}% 
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Einzelne Processing Elemente PEs}}{22}{figure.caption.21}% 
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Mehrere Processing Elemente PEs}}{23}{figure.caption.22}% 
-\contentsline {figure}{\numberline {3.5}{\ignorespaces TPU design\relax }}{27}{figure.caption.24}% 
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Pooling}}{29}{figure.caption.25}% 
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Matrix Multiplikation\relax }}{23}{figure.caption.21}% 
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Einzelne Processing Elemente PEs}}{23}{figure.caption.22}% 
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Mehrere Processing Elemente PEs}}{24}{figure.caption.23}% 
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Design1}}{24}{figure.caption.24}% 
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Design2}}{25}{figure.caption.25}% 
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Design3}}{25}{figure.caption.26}% 
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Design4}}{26}{figure.caption.27}% 
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Architektur einer Tensor Processing Unit Design \cite {8192463}\relax }}{28}{figure.caption.29}% 
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Systolischer Datenfluss der Matrix Multiply Unit. Die Gesamtsumme werden in den Akkumulatoren gebildet. \cite {8192463}\relax }}{29}{figure.caption.30}% 
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Pooling}}{30}{figure.caption.31}% 
+\contentsline {figure}{\numberline {3.12}{\ignorespaces TPU-Design}}{31}{figure.caption.32}% 
+\contentsline {figure}{\numberline {3.13}{\ignorespaces TPU-Verbrauch}}{31}{figure.caption.33}% 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces \IeC {\"U}bersicht des Codes f\IeC {\"u}r die Matrixmultiplikation\relax }}{32}{figure.caption.26}% 
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Block Design von Matrixmultiplikation mit Systolic Array Architektur}}{36}{figure.caption.28}% 
+\contentsline {figure}{\numberline {4.1}{\ignorespaces \IeC {\"U}bersicht des Codes f\IeC {\"u}r die Matrixmultiplikation\relax }}{32}{figure.caption.34}% 
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Block Design von Matrixmultiplikation mit Systolic Array Architektur}}{36}{figure.caption.36}% 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
