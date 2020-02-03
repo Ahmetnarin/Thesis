@@ -52,45 +52,45 @@ ptr=1, stack=
 
 ---the literal stack isn't empty for entry Wikipedia
 while executing---line 2205 of file alphadin.bst
-You've used 14 entries,
+You've used 17 entries,
             4793 wiz_defined-function locations,
-            967 strings with 8327 characters,
-and the built_in function-call counts, 8098 in all, are:
-= -- 858
-> -- 219
-< -- 271
-+ -- 301
-- -- 76
-* -- 484
-:= -- 1416
-add.period$ -- 13
-call.type$ -- 14
-change.case$ -- 70
-chr.to.int$ -- 14
-cite$ -- 18
-duplicate$ -- 233
-empty$ -- 534
-format.name$ -- 145
-if$ -- 1564
+            981 strings with 9375 characters,
+and the built_in function-call counts, 12556 in all, are:
+= -- 1318
+> -- 414
+< -- 514
++ -- 584
+- -- 152
+* -- 820
+:= -- 2294
+add.period$ -- 16
+call.type$ -- 17
+change.case$ -- 111
+chr.to.int$ -- 17
+cite$ -- 21
+duplicate$ -- 307
+empty$ -- 674
+format.name$ -- 286
+if$ -- 2280
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 45
-newline$ -- 80
-num.names$ -- 39
-pop$ -- 106
+missing$ -- 51
+newline$ -- 95
+num.names$ -- 48
+pop$ -- 146
 preamble$ -- 1
-purify$ -- 98
+purify$ -- 145
 quote$ -- 0
-skip$ -- 479
+skip$ -- 737
 stack$ -- 0
-substring$ -- 534
-swap$ -- 46
-text.length$ -- 42
+substring$ -- 830
+swap$ -- 84
+text.length$ -- 77
 text.prefix$ -- 6
 top$ -- 0
-type$ -- 128
+type$ -- 158
 warning$ -- 3
-while$ -- 71
-width$ -- 18
-write$ -- 171
+while$ -- 117
+width$ -- 23
+write$ -- 209
 (There were 11 error messages)

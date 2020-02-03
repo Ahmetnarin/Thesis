@@ -326,7 +326,8 @@ EVITA
 	\subsection{Unsupervised Learning}\label{subsec:Unsupervised Learning}
 	Beim Unsupervised Learning soll das ML-Modell aus Daten ''lernen'', die Bedeutungen von denen noch unbekannt sind. Hier wird dem Algorithmus die Daten ohne Zielvorgabe eingespeist und trainiert. Ohne Daten gibt es natürlich nichts zu ''lernen''.
 	Unsupervised Learning wird verwendet, um einen bestimmten Datensatz in verschiedene Gruppen zu gruppieren. Dies wird häufig verwendet, um Kunden für bestimmte Eingriffe in verschiedene Gruppen zu segmentieren.\\
-	%\newpage
+	\newpage
+	
 	\textbf{Anwendungen}
 	\begin{description}
 		\item[Clustering] Ähnliche Daten werden in Cluster bzw. Gruppen eingeteilt, um die Gruppierung für ein Zweck zu nutzen. Dies ist in Forschung und Wissenschaft eingesetzt. 
@@ -592,7 +593,7 @@ EVITA
 	\end{figure}
 
 	\subsection{Mehrschichtiges feedforward-Netz}\label{Mehrschichtiges feedforward-Netz}
-	Das einlagige Perzeptron oder auch Rosenblatts Perzeptron enthält keine versteckten Neuronen somit kann nicht  linear trennbare Eingabemuster klassifizieren. siehe \autoref{fig:Entscheidungsgrenzen} \textit{\textbf{XOR-Problem}} Das XOR-Problem oder allgemeine Beschränkung des einlagigen Perzeptrons konnte mit dem mehrlagigen Perzeptron gelöst werden, bei dem es neben der Ausgabeschicht auch noch weitere Schicht verdeckter Neuronen engl. \textit{hidden layers} gibt.  Beim feedforward-Netz verläuft der Informationsfluss nur in einer Richtung. Ein Rekurrentes neuronales Netz ist auch möglich, falls die Neuronen im Netz, die mit Neuronen der vorangegangenen Schicht verbunden sind.  Es gibt:
+	Das einlagige Perzeptron oder auch Rosenblatts Perzeptron enthält keine versteckten Neuronen somit kann nicht  linear trennbare Eingabemuster klassifizieren. siehe \autoref{fig:Entscheidungsgrenzen} \textit{\textbf{XOR-Problem}} Das XOR-Problem oder allgemeine Beschränkung des einlagigen Perzeptrons konnte mit dem mehrlagigen Perzeptron gelöst werden, bei dem es neben der Ausgabeschicht auch noch weitere Schicht verdeckter Neuronen engl. \textit{hidden layers} gibt.  Beim feedforward-Netz verläuft der Informationsfluss nur in einer Richtung. Ein rekurrentes neuronales Netz ist auch möglich, falls die Neuronen im Netz, die mit Neuronen der vorangegangenen Schicht verbunden sind.  Es gibt:
 	
 	\begin{description}
 		\item[Fully connected]\label{item:fully connected} Die Neuronen einer Schicht werden mit allen Neuronen der nächsten folgenden Schicht verbunden. \autoref{fig:MLP}
@@ -712,7 +713,7 @@ Zwischen convolutional layer und fully-connected layer befindet sich eine \\''fl
 	\begin{figure}[h!]
 		\centering
 		\includegraphics[width=15 cm , height=17cm]{Bilder/layer}
-		\caption{Visualisierung von Convolutional Network}
+		\caption{Visualisierung von Convolutional Network \cite{zeiler2014visualizing}}
 		\label{fig:layer} 	
 	\end{figure}
 
@@ -749,7 +750,7 @@ Zwischen convolutional layer und fully-connected layer befindet sich eine \\''fl
 	
 	\item[GoogleNet] Bisher diskutierten Netzwerke bestehen aus einer sequentiellen Architektur in  einer Richtung. Entlang dieser Richtung befinden sich nach Reihen geordnet Schichten wie convolution layer , Max-pooling, ReLu und Fully-connected layer etc. Die GoogleNet-Architektur \cite{szegedy2015going} ist eine komplexe Architektur mit mehreren Netzwerkzweigen und gewann den ILSVRC (Large Scale Visual Recognition Challenge) im Jahr 2014 mit der Fehlerquote von 6,7\% bei der Klassifizierungsaufgabe. 
 	GoogleNet \autoref{fig:GoogleNet} besteht aus insgesamt 22 Gewichtsschichten und das Grundkonzept ist das ''Inception-Module''.
-	Die Verarbeitung dieses Moduls erfolgt im Vergleich bisher vorgestellten Architekturen nicht sequentiell, sondern parallel. Eine einfache Version dieses Moduls ist in \autoref{fig:GoogleNet} dargestellt. \\ Die Hauptidee von GoogleNet ist, alle grundlegenden Verarbeitungsblöcke, die in einem regulären sequentiellen CNN auftreten, parallel zu platzieren und die Ausgaben davon kombinieren. Der Vorteil von GoogleNet ist, dass mehrere ''Inception-Module''  zusammen gestapelt werden, um ein riesigen Netzwerk zu erstellen. 
+	Die Verarbeitung dieses Moduls erfolgt im Vergleich bisher vorgestellten Architekturen nicht sequentiell, sondern parallel. Eine einfache Version dieses Moduls ist in \autoref{fig:GoogleNet} dargestellt. \\ Die Hauptidee von GoogleNet ist, alle grundlegenden Verarbeitungsblöcke, die in einem regulären sequentiellen CNN auftreten, parallel zu platzieren und die Ausgaben davon kombinieren. \cite{szegedy2015going} Der Vorteil von GoogleNet ist, dass mehrere ''Inception-Module''  zusammen gestapelt werden, um ein riesigen Netzwerk zu erstellen. 
 	
 	\begin{figure}[h!]
 		\centering
@@ -892,7 +893,7 @@ Zwischen convolutional layer und fully-connected layer befindet sich eine \\''fl
 
 
 	\subsection{Systolic Array Matrix Multiplikation}
-	Bei der Matrix Multiplikation sind mehrere PEs (Processing elements) \autoref{fig:systolicArray} nötig, die miteinander verbunden sind. Der Datenfluss erfolgt von links z.B. Matrix A-Werte und von oben transponierte Matrix B-Werte. Die Aufgabe von PEs sind Multiplikationen von Eingangswerten und Akkumulation der Teilsumme in ihren eingebauten Register. Abschließend werden dann die Eingangswerte (Matrix A - Wert) nach rechts  und (Matrix B - Wert) nach unten zur Weiterberechnung gesendet. Mehr Details über PEs finden Sie in Kapitel $Implementierung$. 
+	Bei der Matrix Multiplikation sind mehrere PEs (Processing elements) \autoref{fig:systolicArray} nötig, die miteinander verbunden sind. Der Datenfluss erfolgt von links z.B. Matrix A-Werte und von oben transponierte Matrix B-Werte. Die Aufgabe von PEs sind Multiplikationen von Eingangswerten und Akkumulation der Teilsumme in ihren eingebauten Register. Abschließend werden dann die Eingangswerte (Matrix A - Wert) nach rechts  und (Matrix B - Wert) nach unten zur Weiterberechnung gesendet. Mehr Details über PEs finden Sie in Kapitel \autoref{ch:implementierung} $Implementierung$ . 
 %	\begin{center}
 %		\input{Design/systolicArray.tex}\\ 
 %		%\input{Design/pe.tex}
@@ -1070,11 +1071,37 @@ Zwischen convolutional layer und fully-connected layer befindet sich eine \\''fl
 	
    		
     \chapter{Evaluation}\label{ch:Evaluation} %evaluation Experimentelle ergebnisse 
-    Das Bildererkennungssystem ist ein sehr breites Forschungsgebiet und es geht nicht nur um Bilder zu erkennen, sondern auch deren Inhalt zu analysieren und verstehen. Heutzutage es ist ein sehr aktives Forschungsgebiet für Anwendungen von \textbf{C}onvolutional \textbf{N}eural \textbf{N}etwork (CNN). Die Aufgaben von solchen Anwendungen sind Klassifizierungen von Bilder, Segmentierung, Erkennung und Analyse von Szenen. \cite{AGuidetoConvolutional}\\
+    Das Bildererkennungssystem ist ein sehr breites Forschungsgebiet und es geht nicht nur um Bilder zu erkennen, sondern auch deren Inhalt zu analysieren und zu verstehen. Heutzutage es ist ein sehr aktives Forschungsgebiet für Anwendungen von\\ {\large \textbf{C}}onvolutional {\large \textbf{N}}eural {\large \textbf{N}}etwork \textbf{(CNN)}. Die Aufgaben von solchen Anwendungen sind Klassifizierungen von Bilder, Segmentierung, Erkennung und Analyse von Szenen etc. \cite{AGuidetoConvolutional}\\
     Die meisten CNN Architekturen sind eingesetzt, um ein Objekt oder eine Person in einem Bild zu identifizieren oder das Label eines Objekts auszugeben.
+    Die in \autoref{subsec:Beispiele von CNN Architekturen} vorgestellten Architekturen und auch andere verbesserten Versionen sind rechen- und speicherintensiv. Die Größe der CNN nehmen ständig zu. Dabei ist es wichtig, die Energieeffizienz und die Leistung bei gleichzeitiger Bewahrung der Genauigkeit zu verbessern.  \cite{ding2017circnn} Die ähnliche Arbeiten werden hier vorgestellt, die Matrixmultiplikationen in CNN beschleunigen.
+    
+  
+    
+%    \cite{genc2019gemmini}
+
     
     
-    Die in \autoref{subsec:Beispiele von CNN Architekturen} vorgestellten Architekturen sind rechen- und speicherintensive Architekturen, die für Genauigkeiten von Ergebnissen mehr Energie brauchen. 
+%    \section{Aehnliche Arbeiten}\label{sec:Aehnliche Arbeiten} 
+    
+     \subsection{Gemmini: Ein agiles systolic Array Generator}\label{subsec:Gemmini}
+     Gemini ist ein agiles systolic Array Generator, der systematische Auswertungen von Deep-Learning Architekturen ermöglicht. Das ist ein Open-Source-Code und ist in Github \footnote{https://github.com/ucb-bar/gemmini} veröffentlicht. Das Gemini-Projekt ist ein Matrix-Multiplikation-Beschleuniger und basiert auf systolic Array Architektur, der einen benutzerdefinierten ASIC-Beschleuniger generiert. \\
+     Gemini ist in der Chisel\footnote{Chisel ist eine Hardware-Design-Sprache basiert auf Scala, die die Erzeugung und Wiederverwendung von Schaltkreisen für digitale ASIC- und FPGA-Logikdesigns erleichtert.}-Programiersprache  geschrieben. Eine Systemübersicht ist in \autoref{fig:gemini} dargestellt. Im Bereich von Systolic Array wird eine 2D-Array Matrixmultiplikation durchgeführt und das Innenleben von Gemini Systolic Array \autoref{fig:geminisystolicArray}
+     
+ 
+   
+      \begin{figure}[h!]
+    	\centering
+    	\includegraphics[width=12 cm , height= 8 cm]{Bilder/gemini}
+    	\caption[Geminmi]{Eine Systemübersicht der Gemmini-basierten Systolic Array Generator \cite{genc2019gemmini}}
+    	\label{fig:gemini}
+    \end{figure}
+
+      \begin{figure}[h!]
+		\centering
+		\includegraphics[width=15 cm , height=8 cm]{Bilder/geminisystolicArray}
+		\caption[Gemini  Systolic Array (PEs)]{Hier sieht man das Innenleben von Gemini Systolic-Array mit seinen Verarbeitungseinheiten (PEs) \cite{genc2019gemmini}}
+		\label{fig:geminisystolicArray}
+	\end{figure}
 	
 	
   

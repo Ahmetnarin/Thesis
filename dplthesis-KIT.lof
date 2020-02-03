@@ -12,7 +12,7 @@
 \contentsline {figure}{\numberline {2.9}{\ignorespaces Was der Computer sieht\relax }}{16}{figure.caption.12}% 
 \contentsline {figure}{\numberline {2.10}{\ignorespaces Struktur von Convolutional Neural Network CNN\relax }}{16}{figure.caption.13}% 
 \contentsline {figure}{\numberline {2.11}{\ignorespaces Max Pooling}}{17}{figure.caption.14}% 
-\contentsline {figure}{\numberline {2.12}{\ignorespaces Visualisierung von Convolutional Network\relax }}{18}{figure.caption.16}% 
+\contentsline {figure}{\numberline {2.12}{\ignorespaces Visualisierung von Convolutional Network \cite {zeiler2014visualizing}\relax }}{18}{figure.caption.16}% 
 \contentsline {figure}{\numberline {2.13}{\ignorespaces LeNet-5 Architektur \cite {lecun1998gradient}\relax }}{19}{figure.caption.17}% 
 \contentsline {figure}{\numberline {2.14}{\ignorespaces AlexNet Architektur \cite {AGuidetoConvolutional}\relax }}{20}{figure.caption.18}% 
 \contentsline {figure}{\numberline {2.15}{\ignorespaces Grundkonzept von GoogleNet Inception Module \cite {szegedy2015going}\relax }}{20}{figure.caption.19}% 
@@ -34,4 +34,6 @@
 \contentsline {figure}{\numberline {4.1}{\ignorespaces \IeC {\"U}bersicht des Codes f\IeC {\"u}r die Matrixmultiplikation\relax }}{32}{figure.caption.34}% 
 \contentsline {figure}{\numberline {4.3}{\ignorespaces Block Design von Matrixmultiplikation mit Systolic Array Architektur}}{36}{figure.caption.36}% 
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Geminmi}}{38}{figure.caption.37}% 
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Gemini Systolic Array (PEs)}}{38}{figure.caption.38}% 
 \addvspace {10\p@ }
