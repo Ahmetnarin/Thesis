@@ -206,7 +206,7 @@ EVITA
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=12.5cm, height=8cm]{Bilder/Moore's_Law_Transistor_Count_1971-2018}		
-	\caption{Mooresches Gesetz von 1971-2018} 
+	\caption{Mooresches Gesetz von 1971-2018 \cite{Wikipedia}} 
 	\label{fig:moor}
 \end{figure}
  
@@ -615,7 +615,7 @@ EVITA
 	
 	
 	\begin{description}
-		\item[Ein-und Ausgänge] Wenn ein Computer ein Bild sieht, dann sieht er nicht wie Menschen \autoref{fig:hunde}, sondern einer Reihe von Pixelwerten und zwar eine Matrix. \autoref{fig:hunde_matrix} Jede dieser Zahlen von Matrix erhält einen Wert zwischen 0 und 255. Die einzelne Zahlen beschreiben die Intensität des Pixels. Diese Zahlen haben keine Bedeutung bei der Bildklassifizierung. Wofür werden dann Pixelwerte gebraucht? Die Idee ist, dass der Computer aus den Pixelwerten die Wahrscheinlichkeit berechnet und entscheidet mithilfe von Wahrscheinlichkeitswert, was in dem Bild zu sehen ist. (z.B. 0.80 Hund, 0.15 Katzen 0.05 Vogel) In diesem Beispiel die Wahrscheinichkeit bei Hunden ist größer als die anderen und entscheidet das CNN für ''Hunden''.
+		\item[Ein-und Ausgänge] Wenn ein Computer ein Bild sieht, dann sieht er nicht wie Menschen \autoref{fig:hunde}, sondern einer Reihe von Pixelwerten und zwar eine Matrix. \autoref{fig:hunde_matrix} Jede dieser Zahlen von Matrix erhält einen Wert zwischen 0 und 255. Die einzelne Zahlen beschreiben die Intensität des Pixels. Diese Zahlen haben keine Bedeutung bei der Bildklassifizierung. Wofür werden dann Pixelwerte gebraucht? Die Idee ist, dass der Computer aus den Pixelwerten die Wahrscheinlichkeit berechnet und entscheidet mithilfe von Wahrscheinlichkeitswert, was in dem Bild zu sehen ist. (z.B. 0.80 Hund, 0.15 Katzen 0.05 Vogel) In diesem Beispiel die Wahrscheinlichkeit bei Hunden ist größer als die anderen und entscheidet das CNN für ''Hunden''.
 	\end{description}
 
 %\begin{minipage}[t]{0.3\textwidth}
@@ -635,13 +635,13 @@ EVITA
 \begin{figure}
 	\begin{minipage}[b]{.4\linewidth} % [b] => Ausrichtung an \caption
 		\includegraphics[width=\textwidth]{Bilder/hunde}
-		\caption{Was wir sehen}
+		\caption{Was wir sehen \cite{github}}
 		\label{fig:hunde}
 	\end{minipage}
 	\hspace{.1\linewidth}% Abstand zwischen Bilder
 	\begin{minipage}[b]{.4\linewidth} % [b] => Ausrichtung an \caption
 		\includegraphics[width=\textwidth]{Bilder/hunde_matrix}
-		\caption{Was der Computer sieht}
+		\caption{Was der Computer sieht \cite{github}}
 		\label{fig:hunde_matrix}
 	\end{minipage}
 \end{figure}
@@ -668,7 +668,7 @@ EVITA
 	\begin{figure}[h!]
 		\centering
 		\includegraphics[width=10 cm , height=5cm]{Bilder/cnn}
-		\caption{Struktur von Convolutional Neural Network CNN}
+		\caption{Struktur von Convolutional Neural Network CNN \cite{ConvolutionalNeuralNetwork}}
 		\label{fig:cnn}		
 	\end{figure}
 
@@ -964,7 +964,7 @@ Zwischen convolutional layer und fully-connected layer befindet sich eine \\''fl
 	\end{description}
 
 	\subsection{Vorteile des Systolic Arrays}
-	Der Hauptvorteil des TPUs mit Systolic Array Architektur ist seine Unkompliziertheit und es ist nur konzentriert auf Matrix Multiplikation.
+	Der Hauptvorteil des TPUs mit Systolic Array Architektur ist seine Unkompliziertheit und es ist nur konzentriert auf Matrix Multiplikation. \cite{telesens}
 	Das TPU Design \autoref{fig:tpudesign} ist einfach und der Stromverbrauch ist gering gehalten. Unified Buffer und MM-Einheit nimmt die maximale Fläche in dem Chip. Die Control Unit nimmt die geringste Fläche, wobei die sehr schwer zu designen war. 
 	
 	\begin{figure}[h!]
@@ -1001,10 +1001,17 @@ Zwischen convolutional layer und fully-connected layer befindet sich eine \\''fl
 \end{figure}
 
 	\subsection{MAC}\label{subsec:MAC}
-	In dem Block MACs befinden mehrere PE (Processing Elements) und sie sind miteinander verbunden, sodass die Daten systolisch durch die Elemente bewegen. Ein PE hat zwei Eingänge und zwei enable Signale. Es findet die Berechnung dann statt, wenn enable Signale auf HIGH gesetz sind. Das Ergebnis wird in dem Akkumulator von PE zur Teilsumme addiert. Dabei wird die Berechnungen durch ein Zähler bis zu einem bestimmten Wert gezählt. Wenn der Zähler fertig ist, dann wird die Gesamtsumme zum Speicher gesendet.
-	 \begin{center}
-		\input{Design/pe.tex}
-	\end{center}
+	In dem Block MACs befinden mehrere PE (Processing Elements) \autoref{fig:PE} und sie sind miteinander verbunden, sodass die Daten systolisch durch die Elemente bewegen. Ein PE hat zwei Eingänge und zwei enable Signale. Es findet die Berechnung dann statt, wenn enable Signale auf HIGH gesetz sind. Das Ergebnis wird in dem Akkumulator von PE zur Teilsumme addiert. Dabei wird die Berechnungen durch ein Zähler bis zu einem bestimmten Wert gezählt. Wenn der Zähler fertig ist, dann wird die Gesamtsumme zum Speicher gesendet.
+%	 \begin{center}
+%		\input{Design/pe.tex}
+%	\end{center}
+
+\begin{figure}[h!]
+	\centering
+	\input{Design/pe.tex}
+	\caption[Innenleben der einzelnen Verarbeitungseinheit (PE)]{ Innenleben der einzelnen Verarbeitungseinheit (PE)}
+	\label{fig:PE}
+\end{figure}
 
 	\subsection{RAM} \label{subsec:RAM}
 	In RAM werden die Eingangsmatrizen A-und B-Matrix gespeichert und fließen die Matrixelemente in die PE rein. Damit die richtige Matrixelemente in die richtige PE fließen kann, wird hier die logische Signale wie A\_enable und B\_enable genutzt.
@@ -1017,10 +1024,17 @@ Zwischen convolutional layer und fully-connected layer befindet sich eine \\''fl
 	Innerhalb der MACs-Komponente in Register von PEs werden die Teilsumme zur Gesamtsumme akkumuliert, sobald die Gesamtsumme bereit sind, werden sie dann zu Delay Controller gesendet. Jede Elemente der Produktmatrix hat eigenen Eingang und die Elemente werden dann zu RAM Adresse zugewiesen. Innerhalb der Delay Controller werden dann jede Elemente von Produktmatrix verzögert abgebildet und zum RAM zum speichern gesendet.
 
 	\subsection{Register in MAC} 
-	Die Register Blöcke verzögern die Daten für einen Taktzyklus. Dies ist entscheidend für die Implementierung des systolischen Architektur. Ohne die Register wäre es nicht möglich den Datenfluss in MM-Unit zu kontrollieren.
-	\begin{center}
-		\input{Design/mac_complett.tex}
-	\end{center}
+	Die Register Blöcke siehe \autoref{fig:mac} verzögern die Daten für einen Taktzyklus. Dies ist entscheidend für die Implementierung des systolischen Architektur. Ohne die Register wäre es nicht möglich den Datenfluss in MM-Unit zu kontrollieren.
+%	\begin{center}
+%		\input{Design/mac_complett.tex}
+%	\end{center}
+
+\begin{figure}[h!]
+	\centering
+	\input{Design/mac_complett.tex}
+	\caption[Innenleben der MAC]{Innenleben der MAC}
+	\label{fig:mac}
+\end{figure}
 	
 	
 	\newpage
@@ -1073,7 +1087,7 @@ Zwischen convolutional layer und fully-connected layer befindet sich eine \\''fl
     \chapter{Evaluation}\label{ch:Evaluation} %evaluation Experimentelle ergebnisse 
     Das Bildererkennungssystem ist ein sehr breites Forschungsgebiet und es geht nicht nur um Bilder zu erkennen, sondern auch deren Inhalt zu analysieren und zu verstehen. Heutzutage es ist ein sehr aktives Forschungsgebiet für Anwendungen von\\ {\large \textbf{C}}onvolutional {\large \textbf{N}}eural {\large \textbf{N}}etwork \textbf{(CNN)}. Die Aufgaben von solchen Anwendungen sind Klassifizierungen von Bilder, Segmentierung, Erkennung und Analyse von Szenen etc. \cite{AGuidetoConvolutional}\\
     Die meisten CNN Architekturen sind eingesetzt, um ein Objekt oder eine Person in einem Bild zu identifizieren oder das Label eines Objekts auszugeben.
-    Die in \autoref{subsec:Beispiele von CNN Architekturen} vorgestellten Architekturen und auch andere verbesserten Versionen sind rechen- und speicherintensiv. Die Größe der CNN nehmen ständig zu. Dabei ist es wichtig, die Energieeffizienz und die Leistung bei gleichzeitiger Bewahrung der Genauigkeit zu verbessern.  \cite{ding2017circnn} Die ähnliche Arbeiten werden hier vorgestellt, die Matrixmultiplikationen in CNN beschleunigen.
+    Die in \autoref{subsec:Beispiele von CNN Architekturen} vorgestellten Architekturen und auch andere verbesserten Versionen sind rechen- und speicherintensiv. Die Größe der CNN nehmen ständig zu. Dabei ist es wichtig, die Energieeffizienz und die Leistung bei gleichzeitiger Bewahrung der Genauigkeit zu verbessern.  \cite{ding2017circnn} Die ähnliche Arbeiten werden hier vorgestellt, die die Matrixmultiplikationen in CNN beschleunigen.
     
   
     
@@ -1084,30 +1098,80 @@ Zwischen convolutional layer und fully-connected layer befindet sich eine \\''fl
 %    \section{Aehnliche Arbeiten}\label{sec:Aehnliche Arbeiten} 
     
      \subsection{Gemmini: Ein agiles systolic Array Generator}\label{subsec:Gemmini}
-     Gemini ist ein agiles systolic Array Generator, der systematische Auswertungen von Deep-Learning Architekturen ermöglicht. Das ist ein Open-Source-Code und ist in Github \footnote{https://github.com/ucb-bar/gemmini} veröffentlicht. Das Gemini-Projekt ist ein Matrix-Multiplikation-Beschleuniger und basiert auf systolic Array Architektur, der einen benutzerdefinierten ASIC-Beschleuniger generiert. \\
-     Gemini ist in der Chisel\footnote{Chisel ist eine Hardware-Design-Sprache basiert auf Scala, die die Erzeugung und Wiederverwendung von Schaltkreisen für digitale ASIC- und FPGA-Logikdesigns erleichtert.}-Programiersprache  geschrieben. Eine Systemübersicht ist in \autoref{fig:gemini} dargestellt. Im Bereich von Systolic Array wird eine 2D-Array Matrixmultiplikation durchgeführt und das Innenleben von Gemini Systolic Array \autoref{fig:geminisystolicArray}
-     
- 
-   
+     Gemini ist ein agiles systolic Array Generator, der systematische Auswertungen von Deep-Learning Architekturen ermöglicht. Das ist ein Open-Source-Code und ist in Github \footnote{https://github.com/ucb-bar/gemmini} veröffentlicht. \\ \textbf{Funktion:}Das Gemini-Projekt ist ein Matrix-Multiplikation-Beschleuniger und basiert auf Systolic Array Architektur, der einen benutzerdefinierten ASIC-Beschleuniger generiert. 
+     Gemini ist in der Chisel-Programiersprache \footnote{Chisel ist eine Hardware-Design-Sprache basiert auf Scala, die die Erzeugung und Wiederverwendung von Schaltkreisen für digitale ASIC- und FPGA-Logikdesigns erleichtert.} geschrieben. Eine Systemübersicht ist in \autoref{fig:gemini} dargestellt. Im Bereich von Systolic Array wird eine 2D-Array Matrixmultiplikation \autoref{eqn : mat_mult} durchgeführt und das Innenleben von Gemini-Systolic Array ist in  \autoref{fig:geminisystolicArray} dargestellt.
+     \begin{equation} \label{eqn : mat_mult}
+     	C = A \ast B + D 	
+     \end{equation}
+     A und B sind Matrizen, die miteinander multipliziert werden. D ist ein Bias-Vektor
       \begin{figure}[h!]
-    	\centering
-    	\includegraphics[width=12 cm , height= 8 cm]{Bilder/gemini}
+    	\centering 
+    	\includegraphics[width=18 cm , height= 7 cm]{Bilder/gemini}
     	\caption[Geminmi]{Eine Systemübersicht der Gemmini-basierten Systolic Array Generator \cite{genc2019gemmini}}
     	\label{fig:gemini}
     \end{figure}
 
       \begin{figure}[h!]
 		\centering
-		\includegraphics[width=15 cm , height=8 cm]{Bilder/geminisystolicArray}
-		\caption[Gemini  Systolic Array (PEs)]{Hier sieht man das Innenleben von Gemini Systolic-Array mit seinen Verarbeitungseinheiten (PEs) \cite{genc2019gemmini}}
+		\includegraphics[width=18 cm , height=7 cm]{Bilder/geminisystolicArray}
+		\caption[Gemini  Systolic Array (PEs)]{Hier sieht man das Innenleben von Gemini Systolic-Array mit seinen Verarbeitungseinheiten (PEs). \textit{WS} steht für \textit{weight-stationary} (d.h. die Matrizen B und D schon vorgeladen.)  und \textit{OS} für \textit{output-stationary} \cite{genc2019gemmini}}
 		\label{fig:geminisystolicArray}
 	\end{figure}
+	\newpage
+
+
+	\subsection{Die Fl\"{a}che und der Stromverbrauch von Gemini-Design}\label{subsec:Die Flaeche und der Stromverbrauch von Gemini-Design}
+	Die Fl\"{a}che und der Stromverbrauch sind stark korreliert. Die Evaluation erfolgte mit der Taktfrequenz von 500 MHz. In diesem Design wird 0.467 $mm^{2}$ F\"{a}che gebraucht und der Stromverbrauch war 611mW . Die andere Evaluation erfolgte mit der Taktfrequenz von 1GHz und dafür wird 0.541 $mm^{2}$ F\"{a}che gebraucht und 1.4W nötig. \autoref{fig:areapower}
+	
+	 \begin{figure}[h!]
+		\centering
+		\includegraphics[width=16 cm , height=3 cm]{Bilder/areapower}
+		\caption[Fl\"{a}che und der Stromverbrauch von Gemini-Design]{Fl\"{a}che und der Stromverbrauch von Gemini-Design \cite{genc2019gemmini}}
+		\label{fig:areapower}
+	\end{figure}
+
+%\newpage
+	Es wird nicht nur auf die Fläche und dafür benötigten Stromverbrauch untersucht, sondern auch mit unterschiedlichen physikalischen Designs \textit{siehe} \autoref{fig:sub1},b untersucht.
+	
+	\begin{figure}[h!]
+		\begin{subfigure}{.5\textwidth}
+			\centering
+			\includegraphics[width=0.9\linewidth]{Bilder/blockfloorplan}
+			\caption[Block-floorplan]{Block-floorplan-Design für Systolic-Array 16x16. Die gelbe Seite ist für I/O, clock, reset und Zugriff auf externe Dateien.}
+			\label{fig:sub1}
+		\end{subfigure}
+		\begin{subfigure}{.5\textwidth}
+			\centering
+			\includegraphics[width=0.9\linewidth]{Bilder/semiringfloorplan}
+			\caption[Semi-ring floorplan]{Semi-Ring-floorplan für Systolic-Array 16x16. Die gelbe Seite ist für I/O, clock, reset und Zugriff auf externe Dateien.}
+			\label{fig:sub2}
+		\end{subfigure}	
+	\end{figure}
+
+	Die 16x16-Arrays mit der Frequenz 500 MHz und 1GHz verglichen. Man kann mithilfe der Tabelle feststellen, dass allgemein bei 1GHz Frequenz mehr Strom verbraucht wird. Außerdem Semi-Ring-floorplan im Vergleich zum Block-Floorplan verbraucht weniger Strom aber dafür benötigt mehr Fläche als Block-Floorplan. Die Tabelle \autoref{fig:table} zeigt, dass Semi-Ring Floorplan bei höchsten Taktfrequenz 1GHz deutlich weniger Strom als Block-Floorplan verbraucht.
+	
+
+	
+
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=12 cm , height=7 cm]{Bilder/table}
+		\caption[Tabelle für Fl\"{a}che und der Stromverbrauch ]{Tabelle für Fl\"{a}che und der Stromverbrauch von Block- und semi-ring floorplan \cite{genc2019gemmini}}
+		\label{fig:table}
+\end{figure}
+
+
+	 
+	
+
+
 	
 	
   
 
     \chapter{Ausblick}\label{ch:Ausblick}   
-    In meiner Thesis werden zuerst die Grundlagen zum maschinellen Lernen erläuert und im folgenden die Strukturen der künstlichen neuronalen Netze betrachtet. Besonders wird die CNN-Architektur \textit{(convolutional neural network)} und ihr Entwicklungstrend betrachtet. Die Gemeinsamkeit von dieser vorgestellten Architekturen sind, dass die erste Entwurf in CNN sind wie z.B. LeNET oder die besondere Erfolge in ImageNet Large-Scale Visual Recognition Challenge (ILSVRC) bekommen haben. siehe \autoref{fig:GoogleNet} \autoref{fig:alexnet}
+    In meiner Thesis werden zuerst die Grundlagen zum maschinellen Lernen erläuert und im folgenden die Strukturen der künstlichen neuronalen Netze betrachtet. Besonders wird die CNN-Architektur \textit{(convolutional neural network)} und ihr Entwicklungstrend betrachtet. Die Gemeinsamkeit von dieser vorgestellten Architekturen sind, dass die erste Entwurf in CNN sind wie z.B. LeNET oder die besondere Erfolge in ImageNet Large-Scale Visual Recognition Challenge (ILSVRC) bekommen haben. siehe \autoref{fig:GoogleNet} \autoref{fig:alexnet}\\
+    In solchen ML-und Deep-Learning Anwendungen finden ständig Berechnungen (Faltung, Matrixmultiplikation etc.) statt, um von eingespeisten Daten sinnvolle Ausgabewerten zu erhalten. Im Jahr 1982 veröffentlichte Idee \textit{Systolic-Array Architektur}  wird eingesetzt, um die Berechnungen zu beschleunigen. Das Ziel dieser Arbeit ist die Umsetzung diese Idee in der Praxis. Um das Ziel zu erreichen, wird eine Programmiersprache VHDL für die Implementierung dieser Idee benutzt.
      
  
   
@@ -1128,14 +1192,14 @@ Zwischen convolutional layer und fully-connected layer befindet sich eine \\''fl
     % use external Bib-File, 
 		\bibliography{99_bib/standardbib}	
 		%https://www.rle.mit.edu/eems/wp-content/uploads/2016/02/eyeriss_isscc_2016_slides.pdf	
-		\cleardoublepage
+		%\cleardoublepage
 % =====================================================
 % Appendix
 % ===================================================== 
     \appendix
 
 %    \input{95_anhang/anhang}
-		\cleardoublepage
+		%\cleardoublepage
 
 %    \listoftables
     %	\cleardoublepage

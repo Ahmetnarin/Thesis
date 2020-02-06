@@ -19,6 +19,11 @@
   ANWENDUNGSGEBIETE.
 \newblock   (Februar, 2019)
 
+\bibitem[Des]{github}
+\textsc{Deshpande}, Adit:
+\newblock \emph{A Beginner's Guide To Understanding Convolutional Neural
+  Networks}
+
 \bibitem[DLW{\etalchar{+}}17]{ding2017circnn}
 \textsc{Ding}, Caiwen ; \textsc{Liao}, Siyu ; \textsc{Wang}, Yanzhi ;
   \textsc{Li}, Zhe ; \textsc{Liu}, Ning ; \textsc{Zhuo}, Youwei ;
@@ -107,8 +112,14 @@
 \newblock Design of Systolic Architecture Using Evolutionary Computation.
 \newblock   (Mai, 2018), S. 1--17
 
-\bibitem[Wik]{Wikipedia}
+\bibitem[tel]{telesens}
+\textsc{telesens}:
+\newblock \emph{Understanding Matrix Multiplication on a Weight-Stationary
+  Systolic Architecture}
 
+\bibitem[Wik]{Wikipedia}
+\textsc{Wikipedia}:
+\newblock \emph{Mooresches Gesetz}
 
 \bibitem[ZF14]{zeiler2014visualizing}
 \textsc{Zeiler}, Matthew~D. ; \textsc{Fergus}, Rob:

@@ -18,28 +18,36 @@ You're missing a field name---line 137 of file 99_bib/standardbib.bib
  :  %pages = {1-17},
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-You're missing a field name---line 151 of file 99_bib/standardbib.bib
+You're missing a field name---line 155 of file 99_bib/standardbib.bib
  :  
  :  %booktitle = {booktitle},
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-You're missing a field name---line 237 of file 99_bib/standardbib.bib
+You're missing a field name---line 241 of file 99_bib/standardbib.bib
  :  
  :  %pages = {84-90},
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-Warning--entry type for "Wikipedia" isn't style-file defined
---line 247 of file 99_bib/standardbib.bib
-You're missing a field name---line 249 of file 99_bib/standardbib.bib
- :  
- :  %author = {Mooresches Gesetz},
+You're missing a field name---line 261 of file 99_bib/standardbib.bib
+ : 
+ : % month = may,
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-Warning--to sort, need author or key in Wikipedia
+You're missing a field name---line 279 of file 99_bib/standardbib.bib
+ :  
+ :  % month = may,
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 299 of file 99_bib/standardbib.bib
+ :  
+ :  % month = may,
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
 Name 1 in "Salman Khan, Hossein Rahmani, Syed Afaq Ali Shah, and Mohammed Bennamoun" has a comma at the end for entry AGuidetoConvolutional
 while executing---line 2132 of file alphadin.bst
 Name 1 in "Salman Khan, Hossein Rahmani, Syed Afaq Ali Shah, and Mohammed Bennamoun" has a comma at the end for entry AGuidetoConvolutional
 while executing---line 2132 of file alphadin.bst
+Warning--empty year in github
 Warning--there's no year in RosenblattsPerceptron
 Name 1 in "Salman Khan, Hossein Rahmani, Syed Afaq Ali Shah, and Mohammed Bennamoun" has a comma at the end for entry AGuidetoConvolutional
 while executing---line 2205 of file alphadin.bst
@@ -47,50 +55,47 @@ Name 1 in "Salman Khan, Hossein Rahmani, Syed Afaq Ali Shah, and Mohammed Bennam
 while executing---line 2205 of file alphadin.bst
 Name 1 in "Salman Khan, Hossein Rahmani, Syed Afaq Ali Shah, and Mohammed Bennamoun" has a comma at the end for entry AGuidetoConvolutional
 while executing---line 2205 of file alphadin.bst
-Warning--Wikipedia
-ptr=1, stack=
-
----the literal stack isn't empty for entry Wikipedia
-while executing---line 2205 of file alphadin.bst
-You've used 17 entries,
+Warning--empty year in telesens
+Warning--empty year in Wikipedia
+You've used 19 entries,
             4793 wiz_defined-function locations,
-            981 strings with 9375 characters,
-and the built_in function-call counts, 12556 in all, are:
-= -- 1318
-> -- 414
-< -- 514
-+ -- 584
-- -- 152
-* -- 820
-:= -- 2294
+            987 strings with 9565 characters,
+and the built_in function-call counts, 13388 in all, are:
+= -- 1393
+> -- 437
+< -- 525
++ -- 596
+- -- 158
+* -- 867
+:= -- 2447
 add.period$ -- 16
-call.type$ -- 17
-change.case$ -- 111
-chr.to.int$ -- 17
-cite$ -- 21
-duplicate$ -- 307
-empty$ -- 674
-format.name$ -- 286
-if$ -- 2280
+call.type$ -- 19
+change.case$ -- 120
+chr.to.int$ -- 19
+cite$ -- 23
+duplicate$ -- 341
+empty$ -- 741
+format.name$ -- 304
+if$ -- 2449
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 51
-newline$ -- 95
-num.names$ -- 48
-pop$ -- 146
+missing$ -- 62
+newline$ -- 104
+num.names$ -- 57
+pop$ -- 171
 preamble$ -- 1
-purify$ -- 145
+purify$ -- 158
 quote$ -- 0
-skip$ -- 737
+skip$ -- 775
 stack$ -- 0
-substring$ -- 830
-swap$ -- 84
-text.length$ -- 77
-text.prefix$ -- 6
+substring$ -- 859
+swap$ -- 90
+text.length$ -- 83
+text.prefix$ -- 9
 top$ -- 0
-type$ -- 158
-warning$ -- 3
-while$ -- 117
-width$ -- 23
-write$ -- 209
-(There were 11 error messages)
+type$ -- 178
+warning$ -- 4
+while$ -- 126
+width$ -- 25
+write$ -- 230
+(There were 12 error messages)
