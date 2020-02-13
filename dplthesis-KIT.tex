@@ -28,7 +28,9 @@
 \usepackage{caption}
 \usepackage{wrapfig}
 \usepackage{subcaption}
-%\graphicspath{{./Bilder/}}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -155,9 +157,8 @@ EVITA
 % =====================================================     
 	\begin{abstract}
 		\input{00_special_pages/zusammenfassung}
-		
 	\end{abstract}
-	\cleardoublepage
+	%\cleardoublepage
 % =====================================================
 % Signaturepage
 % ===================================================== 
@@ -186,599 +187,521 @@ EVITA
     \section{Motivation}\label{sec:?}   
     
     %\cleardoublepage   
-    Neue innovative Projekte wie autonomes Fahren oder auch kommenden neue Technologien in der Zukunft und industrielle Automatisierung  müssen immer mehr mit umfangreicher Datenmenge umgehen. ML-Methoden werden in solchen Anwendungen häufig verwendet, damit die Daten analysiert werden können bzw. die Maschinen etwas neues aus den Daten ohne explizite Programmierung lernen. Insbesondere im Kontext von Echtzeitsystemen stellt sich die Latenz während der Datenverarbeitung als Flaschenhals dar.\\
+    Neue innovative Projekte wie autonomes Fahren oder auch kommenden neue Technologien in der Zukunft und industrielle Automatisierung  müssen mit immer umfangreicheren Datenmengen umgehen. ML-Methoden werden in solchen Anwendungen häufig verwendet, damit die Daten analysiert werden können bzw. die Maschinen etwas neues aus den Daten ohne explizite Programmierung lernen. Insbesondere im Kontext von Echtzeitsystemen stellt sich die Latenz während der Datenverarbeitung als Flaschenhals dar.\\
     \\
-    Die CPU-Hardwarearchitektur kann dieses Problem leider nicht lösen, da CPUs für allgemeinen Gebrauch vorgesehen sind. GPU (graphics processing unit) ist für solchen rechenintensiven Anwendungen besser geeignet, um die Datenverarbeitung zu beschleunigen. Aber sie verbrauchen viel Energie und für mobile Geräte und Embedded Systems nicht einsetzbar. Eine spezielle Hardwarearchitektur soll für diesen Zweck eingesetzt werden. Es soll wenig Strom verbrauchen und trotz dieser Anforderung auch schnell und mehrfache vorkommende Multiplikation-und Addition Operationen bearbeiten. \\
+    Die CPU-Hardwarearchitektur kann dieses Problem leider nicht lösen, da CPUs für allgemeinen Gebrauch vorgesehen sind. GPU (graphics processing unit) ist für solchen rechenintensiven Anwendungen besser geeignet, um die Datenverarbeitung zu beschleunigen. Aber sie verbrauchen viel Energie und sind deshalb mobile Geräte und Embedded Systems nicht einsetzbar. Es bezeichnet sich ab, dass vermehrt spezielle Hardware eingesetzt wird die wenig Strom verbrauchen soll und trotz dieser Anforderung auch schnell und mehrfache vorkommende Multiplikation-und Addition Operationen bearbeiten. \\
     \\
-	Das \textbf{FPGA} (field-programable gate array) kann diese Anforderungen erfüllen. Das FPGA besteht aus internen Hardware-Blöcken, die mit anderen von einer Fachperson programiert werden können, um eine spezielle Anforderungen zu erfüllen. Der Hauptvorteil von FPGA im Gegensatz zu den anderen Hardwarearchiteckturen ist, dass die Verbindungen von internen Hardware-Blöcken leicht umprogrammiert und während dem Einsatz Änderungen oder Verbesserungen vorgenommen werden. Verschiedene ML-Algorithmen können damit implementiert und evaluiert werden.  
+	Ein \textbf{FPGA} (field-programable gate array) kann diese Anforderungen erfüllen. Ein FPGA besteht aus internen Hardware-Blöcken, die untereinander programiert werden können, um eine spezielle Anforderungen zu erfüllen. Der Hauptvorteil von \textbf{FPGAs} im Gegensatz zu den anderen Hardwarearchiteckturen ist, dass die Verbindungen von internen Hardware-Blöcken leicht umprogrammiert und während dem Einsatz Änderungen oder Verbesserungen vorgenommen werden. Verschiedene ML-Algorithmen können damit implementiert und evaluiert werden.  
+	
+		\section{Das Mooresche Gesetz}\label{sec:Das Mooresche Gesetz}
+	Das Mooresche Gesetz besagt, dass sich die Anzahl der Transistoren, die auf eine integrierte Schaltung gedrückt werden können ungefähr alle 18 Monate verdoppelt. \cite{ourworldindata} siehe \autoref{fig:moor}
+	Das ist kein Naturgesetz, sondern eine Faustregel, die auf eine empirische Beobachtung zurückgeht. Milliarden von Transistoren auf den neusten Chips sind jetzt schon unsichtbar für das menschliche Augen. Wenn man das Mooresche Gesetz ins unendliche betrachten möchte, dann müssen die Transistoren ca. im Jahr 2050 aus Bauteilen hergestellt werden, die kleiner als ein einziges Wasserstoffatom sind. Die Herstellung von solchen Transistoren ist physikalisch unmöglich. Die Investitionskosten für Unternehmen werden immer teurer, um mehr Transistoren auf winzig kleinen Flächen. Unterzubringen muss einen Ausweg gefunden werden, der ohne großen Investitionsbedarf dieses Problem löst. In dieser Arbeit wird evaluiert, wie man Hardware für ML-Methoden beschleunigen kann.    
+	%    \begin{center}
+	%    	\includegraphics[width=10cm, height=7.5cm]{Bilder/Moore's_Law_Transistor_Count_1971-2018}  
+	%    \end{center}
+	%
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=12.5cm, height=8cm]{Bilder/Moore's_Law_Transistor_Count_1971-2018}		
+		\caption{Mooresches Gesetz von 1971-2018 \cite{OURWORLDUINDATA}}
+		\label{fig:moor}
+	\end{figure}
+	
+	\section{Zielsetzung}\label{sec:Zielsetzung}
+	In der vorliegenden Arbeit geht es um die Entwicklung von Systolic Array Architektur, die auf einem FPGA implementiert wird. Der FPGA ist klein, verbraucht wenig Energie und ermöglicht dem ML-Modell eine höhere Rechenleistung und somit eine schnelle Ausführung. Abschließend wird die Anwendung von Systolic Arrays wie die der Google TPU \cite{8192463} und ihre Implementierung untersucht und verglichen. 
+	
+
     
     
-    \section{Zielsetzung}\label{sec:Zielsetzung}
-    In der vorliegenden Arbeit geht es um eine Entwicklung von Systolic Array Architektur, die auf einem FPGA implementiert wird. Das FPGA ist klein, verbraucht wenig Energie und ermöglicht dem ML-Modell eine höhere Rechenleistung und somit eine schnelle Ausführung. Außerdem wird Anwendungen von Systolic Array wie TPU \cite{8192463} und ihre Implementierung untersucht. 
     
-    \section{Das Mooresche Gesetz}\label{sec:Das Mooresche Gesetz}
-   	Das Mooresche Gesetz besagt, dass sich die Anzahl der Transistoren, die auf eine integrierte Schaltung gedrückt werden können ungefähr alle 18 Monate verdoppelt. \cite{Wikipedia} siehe \autoref{fig:moor}
-    Das ist kein Naturgesetz, sondern eine Faustregel, die auf eine empirische Beobachtung zurückgeht. Milliarden von Transistoren auf den neusten Chips sind jetzt schon unsichtbar für das menschliche Augen. Wenn man das Mooresche Gesetz ins unendliche betrachten möchte, dann müssen die Transistoren ca. im Jahr 2050 aus Bauteilen hergestellt werden, die kleiner als ein einziges Wasserstoffatom sind. Die Herstellung von solchen Transistoren ist physikalisch unmöglich. Die Investitionskosten für Unternehmen wird immer teurer, um mehr Transistoren auf einen winzig kleinen Flächen zu drücken. Es muss einen Ausweg gefunden werden, der ohne großen Investitionsbedarf dieses Problem löst. In dieser Arbeit wird bemüht, wie man Hardware für ML-Methoden beschleunigen kann.    
-%    \begin{center}
-%    	\includegraphics[width=10cm, height=7.5cm]{Bilder/Moore's_Law_Transistor_Count_1971-2018}  
-%    \end{center}
-%
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=12.5cm, height=8cm]{Bilder/Moore's_Law_Transistor_Count_1971-2018}		
-	\caption{Mooresches Gesetz von 1971-2018 \cite{Wikipedia}} 
-	\label{fig:moor}
-\end{figure}
  
     
     \chapter{Grundlagen}\label{ch:Grundlagen} 
-    \section{Matrix-Matrix Multiplikation}\label{sec:Matrix Multiplikation}
-    Bei der Matrix-Matrix Multiplikation geht es um zwei Matrizen, die miteinander multipliziert werden. Aber nicht jede Matrizen sind miteinander multiplizierbar. D.h die Spaltenmatrix der ersten Matrix muss mit der Zeilenzahl der zweiten Matrix übereinstimmen. Das Ergebnis ist auch eine Matrix, die als Produktmatrix genannt wird.\\
-    Gegeben seien zwei Matrizen.
-    A ist eine  m$\times$n-Matrix.\\
-    B ist eine  n$\times$p-Matrix.\\
-    
-   \textbf{ A}=$\begin{pmatrix}
-    	a_{11} & a_{12} &  \ldots & a_{1n} \\
-    	a_{21} & a_{22} &  \ldots & a_{2n} \\ 
-    	\vdots & \vdots &  \ddots & \vdots \\
-    	a_{m1} & a_{m2} &  \ldots & a_{mn} \\
-    \end{pmatrix}$ , \textbf{B} = 
-    $\begin{pmatrix}
-    b_{11} & b_{12} &  \ldots & b_{1p} \\
-    b_{21} & b_{22} &  \ldots & b_{2p} \\ 
-    \vdots & \vdots &  \ddots & \vdots \\
-    b_{n1} & b_{n2} &  \ldots & b_{np} \\
-    \end{pmatrix}$\\
-    
-    Die Produktmatrix C ergibt sich:\\ \textbf{C} = 
-    $\begin{pmatrix}
-    c_{11} & c_{12} &  \ldots & c_{1p} \\
-    c_{21} & c_{22} &  \ldots & c_{2p} \\ 
-    \vdots & \vdots &  \ddots & \vdots \\
-    c_{m1} & c_{m2} &  \ldots & c_{mp} \\
-    \end{pmatrix}$\\
-    
-    Bei einer MM-Multiplikation finden $mpn$-Multiplikationen und $mp(n-1)$-Additionen statt.\\
-    $c_{ij}=a_{i1}b_{1j}+a_{i2}b_{2j}+\ldots+a_{in}b_{nj}=\sum_{k-1}^{n} a_{ik}b_{kj}$\\
+    	\section{Maschinelles Lernen}\label{sec:Maschinelles Lernen}
+    Beim ML wird das System so programmiert, damit das aus eingegebenen Daten automatisch lernt und sich mit der Erfahrung verbessert. Das heißt, das System wird mit Trainingsdaten trainiert. Hier bedeutet das Lernen: die eingegebenen Daten zu erkennen, verstehen und auf der Grundlage der gelieferten Daten eine sinnvolle Entscheidung zu treffen.
+    Aber nicht alle Entscheidungen können auf der Grundlage aller möglichen Eingaben berücksichtigt werden. Um dieses Problem  zu lösen, werden hier Algorithmen 	entwickelt, die das maschinelles Lernen optimieren und schneller machen.
     
     
-    \textbf{C}=$\begin{pmatrix}
-    a_{11}b_{11}+ \ldots +a_{1n}b_{n1} & a_{11}b_{12}+\ldots +a_{1n}b_{n2} & \ldots & a_{11}b_{1p}+ \ldots +a_{1n}b_{np}  \\
-    a_{21}b_{11}+ \ldots +a_{2n}b_{n1} & a_{21}b_{12}+\ldots +a_{2n}b_{n2} & \ldots & a_{21}b_{1p}+ \ldots +a_{2n}b_{np}  \\
-    \vdots & \vdots &  \ddots & \vdots \\
-    a_{m1}b_{11}+ \ldots +a_{mn}b_{n1} & a_{m1}b_{12}+\ldots +a_{mn}b_{n2} & \ldots & a_{m1}b_{1p}+ \ldots +a_{mn}b_{np}  
-    \end{pmatrix}$\\
+    \section{Lernphase}\label{sec:Lernphase}
+    \subsection{Supervised Learning}\label{subsec:Supervised Learning}
+    Beim supervised Learning brauchen die Trainingsdaten Label (Lösungen).
+    D.h. man muss als Entwickler dem Modell vorher sagen, was die Lösung ist.
+    Wenn man beispielsweise einem Bildererkenner beibringen will, Hunde-und Katzenbilder 
+    zu unterscheiden, muss vorher ein Mensch alle Trainingsbilder anschauen und notieren 
+    was zu sehen ist. Hier ist der Entwickler als ''Lehrer'' vorgesehen, der das ML-Modell beibringt. Ansonsten weiss der Algorithmus nicht, ob er falsch oder richtig entscheidet.\\
+    \textbf{Anwendungen}
+    \begin{description}
+    	\item[Bildklasifizierung] In der Zukunft wird von dem System erwartet, dass es ein neu gegebenes Bild erkennt. siehe \autoref{fig:clasreg}
+    	\item[Marktvorhersage] Das System wird von Werten aus der vergangenen Marktdaten trainiert und wird erwartet, dass es den Preis für die Zukunft vorhersagt.\autoref{fig:clasreg}
+    	\begin{figure}[h!]
+    		\centering
+    		\includegraphics[width=12.5cm, height=8cm]{Bilder/clasreg}		
+    		\caption[Bildklasifizierung und Regression]{\textbf{Klassifizierung} von Werten, die gemeinsame Eigenschaften besitzen.\\ \textbf{Regression}, um die Zusammenhänge von Daten zu beschreiben. \cite{GITBOOK} } 
+    		\label{fig:clasreg}
+    	\end{figure}
+    	
+    \end{description}
+
+
     
     
+    
+    \subsection{Unsupervised Learning}\label{subsec:Unsupervised Learning}
+    Beim Unsupervised Learning soll das ML-Modell aus Daten ''lernen'', die Bedeutungen von denen noch unbekannt sind. Hier wird dem Algorithmus die Daten ohne Zielvorgabe eingespeist und trainiert. Ohne Daten gibt es natürlich nichts zu ''lernen''.
+    Unsupervised Learning wird verwendet, um einen bestimmten Datensatz in verschiedene Gruppen zu gruppieren. Dies wird häufig verwendet, um Kunden für bestimmte Eingriffe in verschiedene Gruppen zu segmentieren.
+
+    \begin{description}
+    	\item[Clustering] Ähnliche Daten werden in Cluster bzw. Gruppen eingeteilt;\\ siehe \autoref{fig:clustering} um die Gruppierung für ein Zweck zu nutzen. Dies ist in Forschung und Wissenschaft eingesetzt. 
+    	
+    \begin{figure}[h!]
+    	\centering
+    	\includegraphics[width=12.5cm, height=8cm]{Bilder/clustering}		
+    	\caption[Clustering]{Aufteilen nach Wahrscheinlichkeiten} 
+    	\label{fig:clustering}
+    \end{figure} 
+    \end{description}
+
+    \subsection{Reinforcement Learning}\label{subsec:Reinforcement Learning}
+    Bei der reinforcement Learning geht es darum, dass der Agent (hier: Software-Bot) in einer unbekannten und komplexen Umgebung sein Ziel erreicht. Dabei wird der Agent für richtiges Aktion belohnt und für falsches Aktion bestraft. Sein Ziel ist es, die Gesamtbelohnung zu maximieren bzw. Strafen zu minimieren. Der Unterschied zwischen Supervised-und Reinforcement Learning ist es, dass der Agent keine Hinweise oder Vorschläge zur Lösung bekommt. Die Lösung ist unbekannt und er versteht nur aus seiner Aktion, ob er falsch oder richtig liegt. 
+    
+    
+    \section{Kuenstliche neuronale Netze} \label{sec:Kuenstliche neuronale Netze}
+    Kuenstliche neuronale Netze sind eine Methode des ML, die den Mechanismus des Lernens in biologischen Organismen simulieren. \cite{haykin1994neural} Das menschliche Nervensystem enthält Zellen, die als Neuron bezeichnet wird.  Jedes Neuron besteht aus drei Teile: Es sind die Dendriten, der Zellkörper und das Axon. siehe \autoref{fig:neuron} Aus dem Zellkörper verzweigen sich eine Reihe von Fasern ab, die Dendritte genannt werden. Die lange Faser wird Axon genannt. Es kann von 1cm bis 1 Meter lang sein.\\
+    Ein Neuron kann mit anderen Neuronen ca. 10 bis 100.000 Verbindungen herstellen, die als Synapsen bezeichnet werden. Die Kommunikationen zwischen Neuronen erfolgen mit elektrochemischen Signalen.  
+    
+    
+    
+    
+    %	 elektrochemische Signale von anderen Neuronen zum Zellkörper übertragen.  Das Axon erstreckt sich über eine lange Strecke, um das Signal von einem Neuron zu einem Anderen zu übertragen.
+    
+    %	\begin{center}
+    %		\includegraphics[width=10 cm , height= 5 cm]{Bilder/neuron}
+    %	\end{center}
+    
+    \begin{figure}
+    	\centering
+    	\includegraphics[width=10 cm , height= 5 cm]{Bilder/neuron}
+    	\caption{Aufbau eines Neurons}
+    	\label{fig:neuron}
+    \end{figure}
+    
+    
+    
+    Dieser biologische Mechanismus wird in kuenstlichen neuronalen Netzen übertragen. Ein Neuron ist eine Einheit für die Informationsverarbeitung, das sich die Grundlage einer neuronaler Netze bildet.
+    
+    %hier kommt neuron
+    \begin{figure}
+    	\centering
+    	\includegraphics[width=10 cm , height= 5 cm]{Bilder/artneuron}
+    	\caption[Künstliches Neuron]{Die Eingänge $x_{1},x_{2}, \ldots , x_{m}$ sind mit Gewichten $w_{1},w_{2}, \ldots , w_{m}$ multipliziert und diese Werte werden durch Übertragungsfunktion summiert und Bias hinzugefügt. Die Aktivierungsfunktion hat dann den Ausgangswert bestimmt.}
+    	\label{fig:artneuron}
+    \end{figure}
+    
+    
+    \begin{description}
+    	\item[\textbf{Gewichtung $w_{i}$ :}] Sie bestimmen den Grad, wie stark die Eingänge der Entscheidung des Neurons beeinflusst. Ein Gewicht mit dem Wert 0 bedeutet, dass es keine Verbindung zwischen Neuronen existiert.
+    	\item[\textbf{Übertragungsfunktion:}] Die Netzeingabe wird durch die Übertragungsfunktion $\sum$ der einzelnen Einganswerte, die mit Gewichte multipliziert werden, berechnet.
+    	
+    	\item[\textbf{Bias}]: Die Übertragungsfunktion enthält noch einen externen Wert, mit Bias $b$ bezeichnet ist. Das kann auch positive und negative Werte einnehmen und hat Einfluss auf den Eingangswert der Aktivierungsfunktion. Damit wird dieser Wert erhöht oder auch gesenkt werden.
+    	
+    	
+    	\item[\textbf{Aktivierungsfunktionen:}]
+    	%{Aktivierungsfunktionen}\label{subsec:Aktivierungsfunktionen}
+    	Eine Aktivierungsfunktion ist eine mathematische Funktion und entscheidet, ob ein Neuron aktiviert werden soll oder nicht, indem sie die gewichtete Summe berechnet und eine Bias hinzufügt. 
+    	
+    	\subsection{Aktivierungsfunktionen}\label{Aktivierungsfunktionen}
+    	
+    	\subsubsection{Schwellenwertfunktion}%\label{subsubsec:Schwellenwertfunktion}
+    	Die Schwellenwertfunktion (engl. heaviside step function oder auch binary step function) nimmt nur die Werte 0 und 1 an. Liegt der Eingabewert über oder unter einem bestimmten Schwellenwert, wird das Neuron 
+    	
+    	\begin{minipage}{.5\linewidth}
+    		\begin{eqnarray*}
+    			\varphi (e) = 
+    			\begin{cases}
+    				0 & \text{wenn $e<0$} \\
+    				1 & \text{wenn $e\geq0$} \\
+    			\end{cases}
+    		\end{eqnarray*}
+    	\end{minipage}
+    	\begin{minipage}{.5\linewidth}
+    		\includegraphics[width=5 cm , height= 5 cm]{Bilder/step}
+    		%				
+    	\end{minipage}
+	    %\newpage    	
+    	\subsubsection{Stückweise lineare Funktion}%\label{subsubsec:Stückweise lineare Funktion}
+    	Stückweise lineare Funktion  läuft in einem begrenzten Intervall linear ab. Außerhalb des Intervalls besitzt die Funktion einen konstanten Wert.  	
+    	
+    	\begin{minipage}{.5\linewidth}
+    		\begin{eqnarray*}
+    			\varphi (e) = 
+    			\begin{cases}
+    				0 & \text{wenn $e\leq -\dfrac{1}{2}$} \\
+    				e + 1/2 & \text{wenn  $-\dfrac{1}{2} < e < \dfrac{1}{2} $ }\\
+    				1 & \text{wenn $e\geq \dfrac{1}{2}$} 
+    				
+    			\end{cases}
+    		\end{eqnarray*}
+    	\end{minipage}
+    	\begin{minipage}{.5\linewidth}
+    		\includegraphics[width=7 cm , height= 5 cm]{Bilder/stf}
+    		
+    	\end{minipage}
+        	
+    	\subsubsection{Sigmoidfunktion}\label{subsubsec:Sigmoidfunktion}
+    	Sigmoide Funktionen sind sehr häufig verwendete Funktionen in neuronalen Netzwerken. Sie besitzen ein variables Steigungsmaß $\alpha $ , dass die Krümmung des Funktionsgraphen beeinflusst. Differenzierbarkeit der Sigmoidfunktion ist für einige ML-Verfahren wie Backpropagation-Algorithmus ein Vorteil.
+    	Sie ist definiert durch: 
+    	
+    	\begin{figure}[h!]
+    		\centering
+    		\begin{tikzpicture} 
+    		\begin{axis}[legend pos=north west,
+    		axis x line=middle,
+    		axis y line=middle,
+    		x tick label style={/pgf/number format/fixed,
+    			/pgf/number format/fixed zerofill,
+    			/pgf/number format/precision=1},
+    		y tick label style={/pgf/number format/fixed,
+    			/pgf/number format/fixed zerofill,
+    			/pgf/number format/precision=1},
+    		grid = major,
+    		width=16cm,
+    		height=8cm,
+    		grid style={dashed, gray!30},
+    		xmin=-1,     % start the diagram at this x-coordinate
+    		xmax= 1,    % end   the diagram at this x-coordinate
+    		ymin= 0,     % start the diagram at this y-coordinate
+    		ymax= 1,   % end   the diagram at this y-coordinate
+    		%axis background/.style={fill=white},
+    		xlabel=x,
+    		ylabel=y,
+    		tick align=outside,
+    		enlargelimits=false]
+    		% plot the stirling-formulae
+    		$\addplot[domain=-1:1, red, ultra thick,samples=500] {1/(1+exp(-5*x))};$
+    		$\addplot[domain=-1:1, blue, ultra thick,samples=500] {1/(1+exp(-10*x))};$
+    		$\addlegendentry{$f(x)=\frac{1}{1+e^{-5x}}$}$
+    		$\addlegendentry{$g(x)=\frac{1}{1+e^{-10x}}$}$
+    		\end{axis}
+    		\end{tikzpicture}
+    		\caption[Sigmoid Funktion]{Sigmoid Funktion}    		
+    	\end{figure}
+
+    
+    	
+    	\begin{center}
+    		$\varphi_{\alpha}^{sig} (e) = \dfrac{1}{1+\exp (-\alpha e)}$
+    	\end{center}    	
+    	\subsubsection{Rectifier (ReLU)}%\label{subsubsec:Rectifier (ReLU)}
+    	Es wird besonders in Deep-Learning Modellen wie CNN( Convolutional Neural Networks) eingesetzt. Dies ist auch als Rampenfunktion bekannt. ReLU Funktion ist definiert durch:
+    	
+    	
+    	\begin{minipage}{.5\linewidth}
+    		\begin{eqnarray*}
+    			\varphi (e) = \max (0,e)
+    		\end{eqnarray*}
+    	\end{minipage}
+    	\begin{minipage}{.5\linewidth}
+    		\includegraphics[width=7 cm , height= 5 cm]{Bilder/ReLu}
+    	\end{minipage}
+    \end{description}
+
+    \textbf{Kurze Zusammenfassung:} Ein Neuron \autoref{fig:simple_neuron} besitzt viele Eingaben und jede Eingabe des Neurons wird mit einem Gewicht versehen. Die gewichteten Eingaben werden dann durch eine Übertragungsfunktion akkumuliert und daraus resultierende Netzeingabe in eine Aktivierungsfunktion gegeben, die die Ausgabe $a_{j} = g(\sum_{i=0}^{n} w_{m,j}a_{i})$ bestimmt.
+    
+    
+    \begin{figure}[h!]
+    	\centering
+    	\includegraphics[width=16.5 cm , height= 5 cm]{Bilder/simple_neuron}
+    	\caption{Ein vereinfachtes mathematisches Modell für ein künstliches Neuron \cite{haykin1994neural}}
+    	\label{fig:simple_neuron}	
+    \end{figure}
+
+    
+	\subsubsection{Matrix-Matrix Multiplikation}\label{sec:Matrix Multiplikation}
+	Bei der Matrix-Matrix Multiplikation werden zwei Matrizen miteinander multipliziert. Aber nicht jede Matrix ist miteinander multiplizierbar. D.h die Spaltenmatrix der ersten Matrix muss mit der Zeilenzahl der zweiten Matrix übereinstimmen. Das Ergebnis ist auch eine Matrix, die als Produktmatrix genannt wird.\\
+	Gegeben seien zwei Matrizen.
+	A ist eine  m$\times$n-Matrix. B ist eine  n$\times$p-Matrix. \autoref{eqn:MM} Bei einer MM-Multiplikation finden $mpn$-Multiplikationen und $mp(n-1)$-Additionen statt.
+	\begin{equation}
+		\centering
+		c_{ij}=a_{i1}b_{1j}+a_{i2}b_{2j}+\ldots+a_{in}b_{nj}=\sum_{k-1}^{n} a_{ik}b_{kj}
+		\label{eqn:MM}
+	\end{equation}
+		
 	
-    
-   
-    \section{1D-Faltung und 2D-Faltung}\label{sec:Faltungsmatrix}
-    
-    \subsection{1D-Faltung bzw. Faltung}\label{subsec:1D-Faltung}
-    Die Faltung mit eindimensionalen Signalen wird als 1D-Faltung oder nur Faltung bezeichnet. 1D-Faltung ist gut geeignet für Analyse einer Zeitreihe von Sensordaten oder von Signaldaten wie Tonaufnahme über einen Zeitraum fester Länge.  In der digitalen Bildverarbeitung und Signalverarbeitung findet meistens diskrete Faltung statt. Die Faltung von zwei diskreten Funktionen wird  durch folgende Formel berechnet:
-    
-    \begin{center}
-    	$f[n]=a[n]\ast b[n] = \sum_{k=-\infty}^{\infty}a[k]  b[n-k]$
-    \end{center}
+%	\section{1D-Faltung und 2D-Faltung}\label{sec:Faltungsmatrix}
+	
+	\subsubsection{1D-Faltung bzw. Faltung}\label{subsec:1D-Faltung}
+	Die Faltung mit eindimensionalen Signalen wird als 1D-Faltung oder nur Faltung bezeichnet. 1D-Faltung ist gut geeignet für Analyse einer Zeitreihe von Sensordaten oder von Signaldaten wie Tonaufnahme über einen Zeitraum fester Länge.  In der digitalen Bildverarbeitung und Signalverarbeitung findet meistens diskrete Faltung statt. Die Faltung von zwei diskreten Funktionen wird  durch folgende Formel \autoref{eqn:faltung} berechnet:
+	\begin{equation}
+		\centering
+		f[n]=a[n]\ast b[n] = \sum_{k=-\infty}^{\infty}a[k]  b[n-k]
+		\label{eqn:faltung}
+	\end{equation}
 	Die Faltung erfolgt durch Multiplizieren und Akkumulieren der Momentanwerte der überlappenden Abtastwerte. Dabei soll ein Signal umgedreht sein.
 	
 	
 	
-
-	\subsection{2D-Faltung}\label{subsec:2D-Faltung}
-	Dieses Grundkonzept für 1D-Faltung gilt auch für die 2D-Faltung, wenn die Signale 2 Dimensionen haben. 	
-	Analog kann die Faltung in 2D definiert werden.
 	
-	\begin{center}
-		$f[x,y] = a[x,y]\ast b[x,y] = \sum_{j=-\infty}^{\infty}\sum_{k=-\infty}^{\infty} a[j,k] b[x-j , y-k]$
-	\end{center}
-
-%	 \begin{center}
-%		$g\left( x,y\right) =\omega\ast f\left( x,y\right) = %\sum_{s=-a}^{a}\sum_{t=-b}^{b}\omega(s,t)f(x-s,y-t)$
-%	\end{center}
-
-	2D-Faltung ist ähnlich wie eine Matrix-Multiplikation und ziemlich eine einfache Operation. Hier wird ein Kernel gebraucht. Dieser Kernel ist eine Matrix von Gewichten und gleitet über die 2D-Eingangsmatrix. Dabei wird eine elementweise Multiplikation mit dem Teil der Eingabe durchgeführt, auf dem der Kernel sich befindet. siehe \autoref{fig:2DFaltung} Alle Ergebnisse nach der Multiplikation akkumuliert bzw. addiert  zu einem einzelnen Ausgabepixel.
-
-	\subsubsection{Beispiel für 2D-Faltung}
+	\subsubsection{2D-Faltung}\label{subsubsec:2D-Faltung}
+	Dieses Grundkonzept für 1D-Faltung gilt auch für die 2D-Faltung, wenn die Signale 2 Dimensionen haben. \cite{SIGNALVERARBEITUNG} Analog kann die Faltung in 2D definiert werden. \autoref{eqn:2dfaltung}	
+	\begin{equation}
+		\centering
+		f[x,y] = a[x,y]\ast b[x,y] = \sum_{j=-\infty}^{\infty}\sum_{k=-\infty}^{\infty} a[j,k] b[x-j , y-k]
+		\label{eqn:2dfaltung}
+	\end{equation}
 	
-	Hier ist ein Beispiel für 2D-Faltung. Es gibt ein 7x7 Eingangsmatrix I (inputmatrix) und eine Filtermatrix K (kernel) 3x3. Die Werte der Ausgangsmatrix werden durch Multiplikation und Addition von entsprechenden Pixelwerte von I und K berechnet. Siehe \autoref{fig:2DFaltung} 
-	\newpage
-	
-\begin{figure}
-	\centering
-	\input{Design/Faltung_2D.tex}
-	\caption{Visualisierung von 2D Faltung}
-	\label{fig:2DFaltung}
-\end{figure}
-	%\cleardoublepage
-	
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-				
-
-	\section{Maschinelles Lernen}\label{sec:Maschinelles Lernen}
-	Beim ML wird das System so programmiert, damit das aus eingegebenen Daten automatisch lernt und sich mit der \grqq Erfahrung\grqq  verbessert. Das heißt, das System wird mit Trainingsdaten trainiert. Hier bedeutet das Lernen: die eingegebenen Daten zu erkennen, verstehen und auf der Grundlage der gelieferten Daten eine sinnvolle Entscheidung zu treffen.
-	Aber nicht alle Entscheidungen können auf der Grundlage aller möglichen Eingaben berücksichtigt werden. Um dieses Problem  zu lösen, werden hier Algorithmen 	entwickelt, die das maschinelles Lernen optimieren und schneller machen.
-
-	
-	\section{Lernphase}\label{sec:Lernphase}
-	\subsection{Supervised Learning}\label{subsec:Supervised Learning}
-	Beim supervised Learning brauchen die Trainingsdaten Label (Lösungen).
-	D.h. man muss als Entwickler dem Modell vorher sagen, was die Lösung ist.
-	Wenn man beispielsweise einem Bildererkenner beibringen will, Hunde-und Katzenbilder 
-	zu unterscheiden, muss vorher ein Mensch alle Trainingsbilder anschauen und notieren 
-	was zu sehen ist. Hier ist der Entwickler als ''Lehrer'' vorgesehen, der das ML-Modell beibringt. Ansonsten weiss der Algorithmus nicht, ob er falsch oder richtig entscheidet.\\
-	\textbf{Anwendungen}
-	\begin{description}
-		\item[Bildklasifizierung] In der Zukunft wird von dem System erwartet, dass es ein neu gegebenes Bild erkennt.
-		\item[Marktvorhersage] Das System wird von Werten aus der vergangenen Marktdaten trainiert und wird erwartet, dass es den Preis für die Zukunft vorhersagt.
-		\begin{center}
-			\includegraphics[width=15 cm , height= 7 cm]{Bilder/clasreg}
-		\end{center}  
-	\end{description}
-	
-	
-
-	\subsection{Unsupervised Learning}\label{subsec:Unsupervised Learning}
-	Beim Unsupervised Learning soll das ML-Modell aus Daten ''lernen'', die Bedeutungen von denen noch unbekannt sind. Hier wird dem Algorithmus die Daten ohne Zielvorgabe eingespeist und trainiert. Ohne Daten gibt es natürlich nichts zu ''lernen''.
-	Unsupervised Learning wird verwendet, um einen bestimmten Datensatz in verschiedene Gruppen zu gruppieren. Dies wird häufig verwendet, um Kunden für bestimmte Eingriffe in verschiedene Gruppen zu segmentieren.\\
-	\newpage
-	
-	\textbf{Anwendungen}
-	\begin{description}
-		\item[Clustering] Ähnliche Daten werden in Cluster bzw. Gruppen eingeteilt, um die Gruppierung für ein Zweck zu nutzen. Dies ist in Forschung und Wissenschaft eingesetzt. 
-		\begin{center}
-			\includegraphics[width=15 cm , height= 7 cm]{Bilder/clustering}
-		\end{center}  
-	\end{description}
-	
-
-
-	\subsection{Reinforcement Learning}\label{subsec:Reinforcement Learning}
-	Bei der reinforcement Learning geht es darum, dass der Agent (hier: Software-Bot) in einer unbekannten und komplexen Umgebung sein Ziel erreicht. Dabei wird der Agent für richtiges Aktion belohnt und für falsches Aktion bestraft. Sein Ziel ist es, die Gesamtbelohnung zu maximieren bzw. Strafen zu minimieren. Der Unterschied zwischen Supervised-und Reinforcement Learning ist es, dass der Agent keine Hinweise oder Vorschläge zur Lösung bekommt. Die Lösung ist unbekannt und er versteht nur aus seiner Aktion, ob er falsch oder richtig liegt. 
-	%\newpage
-	
-		\section{Kuenstliche neuronale Netze} \label{sec:Kuenstliche neuronale Netze}
-	Kuenstliche neuronale Netze sind ein Technik des ML, die den Mechanismus des Lernens in biologischen Organismen simulieren. \cite{haykin1994neural} Das menschliche Nervensystem enthält Zellen, die als Neuron bezeichnet wird.  Jedes Neuron besteht aus drei Teile: Es sind die Dendriten, der Zellkörper und das Axon. \autoref{fig:neuron} Aus dem Zellkörper verzweigen sich eine Reihe von Fasern ab, die Dendritte genannt werden. Die Lange Faser wird Axon genannt und streckt sich nach große Entfernungen. Es kann von 1cm bis 1 Meter lang sein.\\
-	Ein Neuron kann mit anderen Neuronen 10 bis 100.000 Verbindungen herstellen, die als Synapsen bezeichnet werden. Die Kommunikationen zwischen Neuronen erfolgen mit elektrochemischen Signalen.  
-	
-	
-	
-	
-	%	 elektrochemische Signale von anderen Neuronen zum Zellkörper übertragen.  Das Axon erstreckt sich über eine lange Strecke, um das Signal von einem Neuron zu einem Anderen zu übertragen.
-	
-	%	\begin{center}
-	%		\includegraphics[width=10 cm , height= 5 cm]{Bilder/neuron}
+	%	 \begin{center}
+	%		$g\left( x,y\right) =\omega\ast f\left( x,y\right) = %\sum_{s=-a}^{a}\sum_{t=-b}^{b}\omega(s,t)f(x-s,y-t)$
 	%	\end{center}
 	
+	2D-Faltung ist ähnlich wie eine Matrix-Multiplikation und ziemlich eine einfache Operation. Hier wird ein Kernel gebraucht. Dieser Kernel ist eine Matrix von Gewichten und gleitet über die 2D-Eingangsmatrix. Dabei wird eine elementweise Multiplikation mit dem Teil der Eingabe durchgeführt, auf dem der Kernel sich befindet. siehe \autoref{fig:2DFaltung} Alle Ergebnisse nach der Multiplikation akkumuliert bzw. addiert  zu einem einzelnen Ausgabepixel.
+	
+	\subsubsection{Pseudocode für 2D-Faltung}
+ 	Das Pseudocode für eine 2D-Faltung eines Bildes $f(x,y)$ mit einem Kernel $k(x,y)$ ($2w+1$ Spalten und $2h+1$ Zeilen), um die Matrix $g(x,y)$  zu bekommen.
+ 	
+ 	\begin{algorithm}[H]
+ 		\For{y=0 to ImageHeight}{\For{x=0 to ImageWeight}{sum=0\\ \For{i=-h to h}{\For{j= -w to w}{sum = sum + k(j,i)*f(x-j,y-i))}}g(x,y) = sum}}
+ 		\caption{Pseudocode für 2D-Faltung}
+ 	\end{algorithm}
+ \newpage
+ 
+	
 	\begin{figure}
 		\centering
-		\includegraphics[width=10 cm , height= 5 cm]{Bilder/neuron}
-		\caption{Aufbau eines Neurons}
-		\label{fig:neuron}
+		\input{Design/Faltung_2D.tex}
+		\caption{Visualisierung von 2D Faltung}
+		\label{fig:2DFaltung}
 	\end{figure}
-	
-	
-	
-	Dieser biologische Mechanismus wird in kuenstlichen neuronalen Netzen übertragen. Ein Neuron ist eine Einheit für die Informationsverarbeitung, das sich die Grundlage einer neuronaler Netze bildet.
-	
-	%hier kommt neuron
-	\begin{figure}
-		\centering
-		\includegraphics[width=10 cm , height= 5 cm]{Bilder/artneuron}
-		\caption[Künstliches Neuron]{Die Eingänge $x_{1},x_{2}, \ldots , x_{m}$ sind mit Gewichten $w_{1},w_{2}, \ldots , w_{m}$ multipliziert und diese Werte werden durch Übertragungsfunktion summiert und Bias hinzugefügt. Die Aktivierungsfunktion hat dann den Ausgangswert bestimmt.}
-		\label{fig:artneuron}
-	\end{figure}
-	
-	
-	\begin{description}
-		\item[\textbf{Gewichtung $w_{i}$ :}] Sie bestimmen den Grad, wie stark die Eingänge der Entscheidung des Neurons beeinflusst. Ein Gewicht mit dem Wert 0 bedeutet, dass es keine Verbindung zwischen Neuronen existiert.
-		\item[\textbf{Übertragungsfunktion:}] Die Netzeingabe wird durch die Übertragungsfunktion $\sum$ von einzelnen Einganswerte, die mit Gewichte multipliziert sind, berechnet.
-		
-		\item[\textbf{Bias}]: Die Übertragungsfunktion enthält noch ein externer Wert, die mit Bias $b$ bezeichnet ist. Das kann auch positive und negative Werte einnehmen und hat Einfluss auf den Eingangswert der Aktivierungsfunktion. Damit wird dieser Wert erhöht oder auch gesenkt werden.
-		
-		
-		\item[\textbf{Aktivierungsfunktionen:}]
-		%{Aktivierungsfunktionen}\label{subsec:Aktivierungsfunktionen}
-		Eine Aktivierungsfunktion ist eine mathematische Funktion und entscheidet, ob ein Neuron aktiviert werden soll oder nicht, indem sie die gewichtete Summe berechnet und eine Bias hinzufügt. Diese Funktionen sind:	
-		
-		\subsection{Schwellenwertfunktion}\label{subsec:Schwellenwertfunktion}
-		Die Schwellenwertfunktion (engl. heaviside step function oder auch binary step function) nimmt nur die Werte 0 und 1 an. Liegt der Eingabewert über oder unter einem bestimmten Schwellenwert, wird das Neuron aktiviert und sendet das Eingangssignal. Für die Eingabe e$\geq$ {0} nimmt der Ausgangswert 1, ansonsten 0.\\
-		
-		
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		
-		\begin{minipage}{.5\linewidth}
-			\begin{eqnarray*}
-				\varphi (e) = 
-				\begin{cases}
-					0 & \text{wenn $e<0$} \\
-					1 & \text{wenn $e\geq0$} \\
-				\end{cases}
-			\end{eqnarray*}
-		\end{minipage}
-		\begin{minipage}{.5\linewidth}
-			\includegraphics[width=5 cm , height= 5 cm]{Bilder/step}
-			%				
-		\end{minipage}
-		
-		
-		
-		
-		
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
-		
-		
-		
-		
-		
-		
-		\subsection{Stückweise lineare Funktion}
-		Stückweise lineare Funktion  läuft in einem begrenzten Intervall linear ab. Außerhalb des Intervalls besitzt die Funktion einen konstanten Wert.\\
-		%$\varphi (e) = 
-		%	\begin{cases}
-		%	0 & \text{wenn $e\leq -\dfrac{1}{2}$} \\
-		%	1 & \text{wenn $e\geq \dfrac{1}{2}$} \\
-		%	e + 1/2 & \text{wenn  $-\dfrac{1}{2} < e < \dfrac{1}{2} $ }
-		%\end{cases}$\\
-		
-		
-		
-		\begin{minipage}{.5\linewidth}
-			\begin{eqnarray*}
-				\varphi (e) = 
-				\begin{cases}
-					0 & \text{wenn $e\leq -\dfrac{1}{2}$} \\
-					e + 1/2 & \text{wenn  $-\dfrac{1}{2} < e < \dfrac{1}{2} $ }\\
-					1 & \text{wenn $e\geq \dfrac{1}{2}$} 
-					
-				\end{cases}
-			\end{eqnarray*}
-		\end{minipage}
-		\begin{minipage}{.5\linewidth}
-			\includegraphics[width=7 cm , height= 5 cm]{Bilder/stf}
-			
-		\end{minipage}
-		%				
-		\newpage
-		
-		\subsection{Sigmoidfunktion}
-		Sigmoide Funktionen sind sehr häufig verwendete Funktionen. Sie besitzen ein variables Steigungsmaß $\alpha $ , dass die Krümmung des Funktionsgraphen beeinflusst. Differenzierbarkeit der Sigmoidfunktion ist für einige ML-Verfahren wie Backpropagation-Algorithmus ein Vorteil. Der Nachteil ist ein starker negativer Eingangssignal, damit kann es während des Trainings hängen bleiben.\\Sie ist definiert durch: 
-		
-		
-		
-		
-		
-		
-		%\includegraphics[width=7 cm , height= 5 cm]{Bilder/sigmoid}
-		\begin{tikzpicture}
-		\begin{axis}[legend pos=north west,
-		axis x line=middle,
-		axis y line=middle,
-		x tick label style={/pgf/number format/fixed,
-			/pgf/number format/fixed zerofill,
-			/pgf/number format/precision=1},
-		y tick label style={/pgf/number format/fixed,
-			/pgf/number format/fixed zerofill,
-			/pgf/number format/precision=1},
-		grid = major,
-		width=16cm,
-		height=8cm,
-		grid style={dashed, gray!30},
-		xmin=-1,     % start the diagram at this x-coordinate
-		xmax= 1,    % end   the diagram at this x-coordinate
-		ymin= 0,     % start the diagram at this y-coordinate
-		ymax= 1,   % end   the diagram at this y-coordinate
-		%axis background/.style={fill=white},
-		xlabel=x,
-		ylabel=y,
-		tick align=outside,
-		enlargelimits=false]
-		% plot the stirling-formulae
-		$\addplot[domain=-1:1, red, ultra thick,samples=500] {1/(1+exp(-5*x))};$
-		$\addplot[domain=-1:1, blue, ultra thick,samples=500] {1/(1+exp(-10*x))};$
-		$\addlegendentry{$f(x)=\frac{1}{1+e^{-5x}}$}$
-		$\addlegendentry{$g(x)=\frac{1}{1+e^{-10x}}$}$
-		\end{axis}
-		
-		\end{tikzpicture}
-		
-		\begin{center}
-			$\varphi_{\alpha}^{sig} (e) = \dfrac{1}{1+\exp (-\alpha e)}$
-		\end{center}
-		
-		\subsection{Rectifier (ReLU)}
-		Es wird besonders in Deep-Learning Modellen wie CNN( Convolutional Neural Networks) eingesetzt. Dies ist auch als Rampenfunktion bekannt. ReLU Funktion ist definiert durch:
-		
-		
-		\begin{minipage}{.5\linewidth}
-			\begin{eqnarray*}
-				\varphi (e) = \max (0,e)
-			\end{eqnarray*}
-		\end{minipage}
-		\begin{minipage}{.5\linewidth}
-			\includegraphics[width=7 cm , height= 5 cm]{Bilder/ReLu}
-		\end{minipage}
-	\end{description}
-	
-	
-	\newpage
-	
-	
-	\textbf{Kurze Zusammenfassung:} Ein Neuron \autoref{fig:simple_neuron} besitzt viele Eingaben und jede Eingabe des Neurons wird mit einem Gewicht versehen. Die gewichteten Eingaben werden dann durch eine Übertragungsfunktion akkumuliert und daraus resultierende Netzeingabe in eine Aktivierungsfunktion gegeben, die die Ausgabe $a_{j} = g(\sum_{i=0}^{n} w_{m,j}a_{i})$ bestimmt.
-	
-	
-	\begin{figure}[h!]
-		\centering
-		\includegraphics[width=16.5 cm , height= 5 cm]{Bilder/simple_neuron}
-		\caption{Ein vereinfachtes mathematisches Modell für ein künstliches Neuron}
-		\label{fig:simple_neuron}	
-			
-	\end{figure}
-
-	\section{Strukturen der kuenstlichen neuronalen Netzwerke}\label{sec:Strukturen der kuenstlichen neuronalen Netzwerke}
-	Modelle der künstlichen neuronalen Netzwerke können als eine Reihe von grundlegenden Verarbeitungseinheiten verstanden werden, die miteinander eng verbunden sind. Das Ziel ist, die eingegebenen Daten ins neuronale Netz so verarbeiten, um gewüschten Ausgaben zu erzeugen.\\
-	In diesem Abschnitt wird die grundlegende Architektur von neuronalen Netzwerken diskutiert. Es gibt einschichtiges- \textbf{(single-layer)} und mehrschichtiges \textbf{(multi-layer)} neuronales Netz. In einem einschichtigen Netz wird der Ausgang direkt über die Aktivierungsfunktion mit den Eingängen verbunden. Dies wird in der Fachsprache auch als Perzeptron genannt. Das mehrschichtige Netz besteht aus Eingangs- und Ausgangsschicht\\ engl. \textbf{(input- and output layers)} und zwischen diesen Schichten befinden sich die versteckte Schichten engl. \textbf{(hidden-layer)}. 
-	Die Informationen, die im neuronalen Netz verbreiten, können in zwei Kategorien eingeteilt werden. 
-	
-	\begin{description}
-		\item[feedforward-Netze] Der Informationsfluss in einem feedforward-Netz erfolgt nur in eine Richtung. Wenn man das Netz als Graph und Neuronen als Knoten betrachtet, dann das Graph darf keine Schleifen oder Zyklen enthalten. Mehrschichtiges Netz und convolutional neural Network (CNN) sind gute Beispiele für feedforward-Netze. \cite{AGuidetoConvolutional}
-		\newpage
-		\item[feedback-Netze] Die feedback-Netze können Zyklen oder auch Schleifen enthalten. Die Auszeichnung des feedback-Netzes ist die Errinerungsfähigkeit und kann Informationen und Daten speichern. Beiscpiele für solche Architekturen sind Recurrent neural Network und Long-Short-Term-Memory (LSTM). 
- 	\end{description}
-	
-	
-	
-%	Diese schichtweise Architektur des neuronalen Netzwerk wird auch als feedforward Netzwerk bezeichnet. 
-	
-	
-%	Zuerst wird die single-layer neuronale Netzwerk vorgestellt, die auch in der Literatur Perceptron genannt wird.
-	
-	\subsection{Einlagiges Perzeptron}
-
-	\begin{minipage}[t]{.6\textwidth}%
-		Ein einlagiges Perzeptron enthält eine einzelne Eingabeebene und einen Ausgabeknoten. Die Eingabewerte $x_{1},x_{2},x_{3}, \ldots ,x_{n} $ werden mit ihren jeweiligen Gewichten $w_{1},w_{2},w_{3}, \ldots ,w_{n} $ multipliziert. Dieser gesamte Ausdruck wird innerhalb des Neurons summiert. Nach der Berechnung der Gesamtsumme kann auch ein Biaswert $b$ addiert werden. Der Ausgangswert ist $ y= \left[ \sum_{i=1}^{n} w_{i}x_{i} + b\right]  , y \in (-1 , +1) $ . \cite{aggrawal2018neural}
-	
-	\end{minipage}%
-	\begin{minipage}[t]{.4\textwidth}%
-		\vspace{-\ht\strutbox}
-		\includegraphics[width=\textwidth]{Bilder/perceptron_ohne_bias}
-		%\caption{Perzeptron ohne Bias}
-		%\label{fig:perceptron_ohne_bias}	
-	\end{minipage}
-
-	%\newpage
-	
-	
-	
-		Das Ziel eines Perzeptrons ist es , mit den extern angelegten Werte $x_{1},x_{2},x_{3}, \ldots ,x_{n}$ in eine von zwei Klassen, $c1$ oder $c2$, richtig zu klassifizieren. Die Entscheidungsregel für die Klassifizierung erfolgt bei eingegebenen Werten $x_{1},x_{2},x_{3}, \ldots ,x_{n}$ dann, wenn der Ausgangswert $y=1$ ist, Klasse C1 einordnen, wenn aber $y=-1$ ist , dann Klasse C2 einordnen. Die Entscheidungsregionen werden durch Hyperebene eng. \textit{hyperplane} getrennt, die mit $\sum_{i=1}^{n}w_{i}x_{i} + b = 0$ \autoref{fig:classc1_c2} definiert ist. \cite{haykin1994neural}
-		
-		\begin{wrapfigure}{l}{0.5\textwidth}
-			\includegraphics[width=1\linewidth]{Bilder/classc1_c2} 
-			\caption{Entscheidungsregionen}
-			\label{fig:classc1_c2}
-		\end{wrapfigure}
-		
-		
-		Einschichtige Netze sind die einfachsten Strukturen der künstlichen neuronaler Netze, die auch als Rosenblatts Perzeptron bezeichnet wird. Die Arbeit von Frank Rosenblatt \cite{RosenblattsPerceptron} wurde im Jahr 1958 veröffentlicht und sein Ziel war den Prognosefehler des Perzeptrons zu minimieren. Der Algorithmus wurde heuristisch entworfen, um die Anzahl von der falschen Klassifizierung zu minimieren.\\
-	
-	\begin{minipage}{.5\linewidth}
-		\centering
-		\begin{tabular}{|c|c|c|c|}
-			\hline
-			$x_{1}$ & $x_{2}$ & $y_{3}$ (carry) & $y_{4}$ (sum) \\ \hline
-			0 & 0 & 0 & 1 \\ \hline
-			0 & 1 & 0 & 1 \\ \hline
-			1 & 0 & 0 & 1 \\ \hline
-			1 & 1 & 1 & 0 \\ \hline
-		\end{tabular}
-	\end{minipage}
-	\begin{minipage}[h!]{.5\linewidth}
-		\centering
-		\input{Design/perceptron_2ein_2aus.tex}
-%		\caption[Perceptron mit 2 Eingänge und 2 Ausgänge ]{Ein Perceptron Netzwerk mit 2 Eingänge und 2 Ausgänge}
-	\end{minipage}\\
-
-	Wir wollen jetz ein Perzeptron ''beibringen'', dass das 2-Bit addieren lernt. Oben links steht die Wertetabelle für ein Halbaddierer. Es gibt zwei Eingänge und 2 Ausgänge. Ein Ausgang steht für \textbf{\textit{carry}} und der zweite Ausgang für Summe \textbf{\textit{sum}}. Auf der rechten Seite sieht man die Einheiten. Die Einheit \textbf{3} ist für \textbf{\textit{carry}} und die \textbf{4.} Einheit ist für die Summe \textbf{\textit{sum}}. Die \textbf{Einheit 3} lernt die carry-Funktion leicht, weil es hier lediglich um \textbf{AND}-Operator geht. Aber die \textbf{Einheit 4} scheint nicht zu funktionieren. Die Einheit soll \textbf{XOR} \textit{(exklusive ODER)} lernen. Das Perzeptron kann aber \textbf{XOR} \textit{(exklusive ODER)} nicht lernen, weil die nicht linear trennbar ist. \autoref{fig:Entscheidungsgrenzen} \cite{russell2016artificial}
-	
-	\begin{figure}[h!]
-		\centering
-		\includegraphics[width=12cm , height= 3.5 cm]{Bilder/entscheidungsgrenzen}
-		\caption{Entscheidungsgrenzen von logischen Gattern}
-		\label{fig:Entscheidungsgrenzen}	
-	\end{figure}
-
-	\subsection{Mehrschichtiges feedforward-Netz}\label{Mehrschichtiges feedforward-Netz}
-	Das einlagige Perzeptron oder auch Rosenblatts Perzeptron enthält keine versteckten Neuronen somit kann nicht  linear trennbare Eingabemuster klassifizieren. siehe \autoref{fig:Entscheidungsgrenzen} \textit{\textbf{XOR-Problem}} Das XOR-Problem oder allgemeine Beschränkung des einlagigen Perzeptrons konnte mit dem mehrlagigen Perzeptron gelöst werden, bei dem es neben der Ausgabeschicht auch noch weitere Schicht verdeckter Neuronen engl. \textit{hidden layers} gibt.  Beim feedforward-Netz verläuft der Informationsfluss nur in einer Richtung. Ein rekurrentes neuronales Netz ist auch möglich, falls die Neuronen im Netz, die mit Neuronen der vorangegangenen Schicht verbunden sind.  Es gibt:
-	
-	\begin{description}
-		\item[Fully connected]\label{item:fully connected} Die Neuronen einer Schicht werden mit allen Neuronen der nächsten folgenden Schicht verbunden. \autoref{fig:MLP}
-		
-		\item[Short-Cuts] Einige Neuronen einer Schicht werden nicht mit allen Neuronen der nächsten folgenden Schicht verbunden, sondern mit Neuronen im übernächsten Schichten. 
-		
-	\end{description}
-	\begin{figure}[h!]
-		\centering
-		\includegraphics[width=10 cm , height=5cm]{Bilder/MLP}
-		\caption{Struktur eines mehrschichtigen feedforward-Netzes}
-		\label{fig:MLP}		
-	\end{figure}
-\newpage
-	\subsection{Convolutional Neural Network}
-	
-	Convolutional Neural Network (\textbf{CNN} oder \textbf{ConvNet}) ist eine beliebteste Technik der künstlichen neuronalen Netzwerke (KNN) für hochdimensionale Daten wie z.B. Bilder und Videos. Ein wesenticher Unterschied zwischen CNN und allgemeine neuronalen Netzen besteht darin, dass jede Einheit in einer CNN-Schicht ein 2-dimensionales oder hoch-dimensionales Filter gibt, das mit der Eingabe dieser Schicht gefaltet wird. D.h. ein CNN kann als Eingang in Form einer Matrix verarbeiten, aber MLP siehe \autoref{Mehrschichtiges feedforward-Netz} ist nicht in der Lage eine eingegebene Matrix zu verarbeiten, da MLP einen Vektor als Input benötigt, um die Matrix zu verarbeiten. Außerdem die Pixelwerte des Bildes müssen hintereinander ausgerollt werden (Flattening). Dadurch sind normale neuronale Netze sind nicht in der Lage, Objekte in einem Bild unabhängig von der Position zu erkennen. \cite{AGuidetoConvolutional} 
-	%Es gibt auch Studienarbeiten, die zeigen, dass CNN nicht nur bei der Bildverarbeitung eingesetz, sondern auch bei der Textverarbeitung. 
-	
-	
-	\begin{description}
-		\item[Ein-und Ausgänge] Wenn ein Computer ein Bild sieht, dann sieht er nicht wie Menschen \autoref{fig:hunde}, sondern einer Reihe von Pixelwerten und zwar eine Matrix. \autoref{fig:hunde_matrix} Jede dieser Zahlen von Matrix erhält einen Wert zwischen 0 und 255. Die einzelne Zahlen beschreiben die Intensität des Pixels. Diese Zahlen haben keine Bedeutung bei der Bildklassifizierung. Wofür werden dann Pixelwerte gebraucht? Die Idee ist, dass der Computer aus den Pixelwerten die Wahrscheinlichkeit berechnet und entscheidet mithilfe von Wahrscheinlichkeitswert, was in dem Bild zu sehen ist. (z.B. 0.80 Hund, 0.15 Katzen 0.05 Vogel) In diesem Beispiel die Wahrscheinlichkeit bei Hunden ist größer als die anderen und entscheidet das CNN für ''Hunden''.
-	\end{description}
-
-%\begin{minipage}[t]{0.3\textwidth}
-%	\centering
-%	\includegraphics[width=\textwidth]{Bilder/hunde}
-%	\caption{Was wir sehen}
-%	\label{fig:hunde}
-%\end{minipage}
-%\begin{minipage}[t]{0.3\textwidth}
-%	\centering
-%	\includegraphics[width=\textwidth]{Bilder/hunde_matrix}
-%	\caption{Was der Computer sieht}
-%	\label{fig:hunde_matrix}
-%	
-%\end{minipage}
-
-\begin{figure}
-	\begin{minipage}[b]{.4\linewidth} % [b] => Ausrichtung an \caption
-		\includegraphics[width=\textwidth]{Bilder/hunde}
-		\caption{Was wir sehen \cite{github}}
-		\label{fig:hunde}
-	\end{minipage}
-	\hspace{.1\linewidth}% Abstand zwischen Bilder
-	\begin{minipage}[b]{.4\linewidth} % [b] => Ausrichtung an \caption
-		\includegraphics[width=\textwidth]{Bilder/hunde_matrix}
-		\caption{Was der Computer sieht \cite{github}}
-		\label{fig:hunde_matrix}
-	\end{minipage}
-\end{figure}
+	\clearpage
 
 
-%\begin{figure}[h!]
-%	\centering
-%	\includegraphics[width=3 cm , height=3cm]{Bilder/hunde}
-%	\caption{Was wir sehen}
-%	\label{fig:hunde}
-%\end{figure}
-%\begin{figure}
-%	\centering
-%	\includegraphics[width=3 cm , height=3cm]{Bilder/hunde_matrix}
-%	\caption{Was der Computer sieht}
-%	\label{fig:hunde_matrix}
-%\end{figure}
-\newpage
+    
+    \section{Strukturen der kuenstlichen neuronalen Netzwerke}\label{sec:Strukturen der kuenstlichen neuronalen Netzwerke}
+    Modelle der künstlichen neuronalen Netzwerke können als eine Reihe von grundlegenden Verarbeitungseinheiten verstanden werden, die miteinander eng verbunden sind. Das Ziel ist, die eingegebenen Daten so zu verarbeiten, dass die gewüschten Ausgaben erzeugt werden.\\
+    In diesem Abschnitt wird die grundlegende Architektur von neuronalen Netzwerken diskutiert. Es gibt einschichtige- \textbf{(single-layer)} und mehrschichtige \textbf{(multi-layer)} neuronale Netze. In einem einschichtigen Netz wird der Ausgang direkt über die Aktivierungsfunktion mit den Eingängen verbunden. Dies wird in der Fachsprache auch als Perzeptron bezeichnet. Das mehrschichtige Netz besteht aus einer Eingangs- und Ausgangsschicht\\ engl. \textbf{(input- and output layer)} und zwischen diesen Schichten befinden sich die versteckten Schichten engl. \textbf{(hidden-layer)}. 
+    Dabei wird unterschieden, wie die Ausgangssignale von Neuronen im Netzwerk weitergeleitet werden. Es gibt zwei Kategorien
+%    Die Informationen, die im neuronalen Netz verbreiten, können in zwei Kategorien eingeteilt werden. 
+    
+    \begin{description}
+    	\item[feedforward-Netze] Der Informationsfluss in einem feedforward-Netz erfolgt nur in eine Richtung. Wenn man das Netz als Graph und Neuronen als Knoten betrachtet, dann das Graph darf keine Schleifen oder Zyklen enthalten. Mehrschichtige Netze und convolutional neural Network (CNN) sind gute Beispiele für feedforward-Netze. \cite{AGuidetoConvolutional}
+    	%\newpage
+    	\item[feedback-Netze] Die feedback-Netze können Zyklen oder auch Schleifen enthalten. Die Auszeichnung des feedback-Netzes ist die Errinerungsfähigkeit und kann Informationen und Daten speichern. Beiscpiele für solche Architekturen sind Recurrent Neural Network und Long-Short-Term-Memory (LSTM). 
+    \end{description}
+    
+    
+    
+    %	Diese schichtweise Architektur des neuronalen Netzwerk wird auch als feedforward Netzwerk bezeichnet. 
+    
+    
+    %	Zuerst wird die single-layer neuronale Netzwerk vorgestellt, die auch in der Literatur Perceptron genannt wird.
+    
+    \subsection{Einlagiges Perzeptron}
+    
+    \begin{minipage}[t]{.6\textwidth}%
+    	Ein einlagiges Perzeptron enthält eine einzelne Eingabeebene und einen Ausgabeknoten. Die Eingabewerte $x_{1},x_{2},x_{3}, \ldots ,x_{n} $ werden mit ihren jeweiligen Gewichten $w_{1},w_{2},w_{3}, \ldots ,w_{n} $ multipliziert. Dieser gesamte Ausdruck wird innerhalb des Neurons summiert. Nach der Berechnung der Gesamtsumme kann auch ein Biaswert $b$ addiert werden. Der Ausgangswert ist $ y= \left[ \sum_{i=1}^{n} w_{i}x_{i} + b\right]  , y \in (-1 , +1) $ . \cite{aggrawal2018neural}
+    	
+    \end{minipage}%
+    \begin{minipage}[t]{.4\textwidth}%
+    	\vspace{-\ht\strutbox}
+    	\includegraphics[width=\textwidth]{Bilder/perceptron_ohne_bias}
+    	%\caption{Perzeptron ohne Bias}
+    	%\label{fig:perceptron_ohne_bias}	
+    \end{minipage}
+    
+    %\newpage
+    
+    
+    
+    Das Ziel eines Perzeptrons ist es , mit den extern angelegten Werte $x_{1},x_{2},x_{3}, \ldots ,x_{n}$ in eine der zwei Klassen, $c1$ oder $c2$, richtig zu klassifizieren. Die Entscheidungsregel für die Klassifizierung erfolgt bei eingegebenen Werten $x_{1},x_{2},x_{3}, \ldots ,x_{n}$, wenn der Ausgangswert $y=1$ ist, dann Klasse C1. Wenn $y=-1$ ist , dann Klasse C2. Die Entscheidungsregionen werden durch Hyperebene eng. \textit{hyperplane} getrennt, die mit $\sum_{i=1}^{n}w_{i}x_{i} + b = 0$ \autoref{fig:classc1_c2} definiert ist. \cite{haykin1994neural}
+    
+    \begin{wrapfigure}{l}{0.5\textwidth}
+    	\includegraphics[width=1\linewidth]{Bilder/classc1_c2} 
+    	\caption{Entscheidungsregionen}
+    	\label{fig:classc1_c2}
+    \end{wrapfigure}
+    
+    
+    Einschichtige Netze sind die einfachsten Strukturen der künstlichen neuronaler Netze, die auch als Rosenblatts Perzeptron bezeichnet wird. Die Arbeit von Frank Rosenblatt \cite{RosenblattsPerceptron} wurde im Jahr 1958 veröffentlicht und sein Ziel war den Prognosefehler des Perzeptrons zu minimieren. Der Algorithmus wurde heuristisch entworfen, um die Anzahl von der falschen Klassifizierung zu minimieren.\\
+    
+    \begin{minipage}{.5\linewidth}
+    	\centering
+    	\begin{tabular}{|c|c|c|c|}
+    		\hline
+    		$x_{1}$ & $x_{2}$ & $y_{3}$ (carry) & $y_{4}$ (sum) \\ \hline
+    		0 & 0 & 0 & 0 \\ \hline
+    		0 & 1 & 0 & 1 \\ \hline
+    		1 & 0 & 0 & 1 \\ \hline
+    		1 & 1 & 1 & 0 \\ \hline
+    	\end{tabular}
+    \end{minipage}
+    \begin{minipage}[h!]{.5\linewidth}
+    	\centering
+    	\input{Design/perceptron_2ein_2aus.tex}
+    	%		\caption[Perceptron mit 2 Eingänge und 2 Ausgänge ]{Ein Perceptron Netzwerk mit 2 Eingänge und 2 Ausgänge}
+    \end{minipage}\\
+    
+    Wir wollen jetzt ein Perzeptron ''beibringen'',2-Bit zu addieren. Oben links steht die Wertetabelle für ein Halbaddierer. Es gibt zwei Eingänge und zwei Ausgänge. Ein Ausgang steht für \textbf{\textit{carry}} und der zweite Ausgang für Summe \textbf{\textit{sum}}. Auf der rechten Seite sieht man die Einheiten. Die Einheit \textbf{3} ist für \textbf{\textit{carry}} und die \textbf{4.} Einheit ist für die Summe \textbf{\textit{sum}}. Die \textbf{Einheit 3} lernt die carry-Funktion leicht, weil es hier lediglich um \textbf{AND}-Operator geht. Aber die \textbf{Einheit 4} scheint nicht zu funktionieren. Die Einheit soll \textbf{XOR} \textit{(exklusive ODER)} lernen. Das Perzeptron kann aber \textbf{XOR} \textit{(exklusive ODER)} nicht lernen, weil die nicht linear trennbar ist. \autoref{fig:Entscheidungsgrenzen} \cite{russell2016artificial}
+    
+    \begin{figure}[h!]
+    	\centering
+    	\includegraphics[width=12cm , height= 3.5 cm]{Bilder/entscheidungsgrenzen}
+    	\caption{Entscheidungsgrenzen von logischen Gattern \cite{russell2016artificial}}
+    	\label{fig:Entscheidungsgrenzen}	
+    \end{figure}
+    
+    \subsection{Mehrschichtiges feedforward-Netz}\label{Mehrschichtiges feedforward-Netz}
+    Das einlagige Perzeptron oder auch Rosenblatts Perzeptron enthält keine versteckten Neuronen somit kann nicht  linear trennbare Eingabemuster klassifizieren. (siehe \autoref{fig:Entscheidungsgrenzen} \textit{\textbf{XOR-Problem}}) Das XOR-Problem oder allgemeine Beschränkung des einlagigen Perzeptrons konnte mit dem mehrlagigen Perzeptron gelöst werden, bei dem es neben der Ausgabeschicht auch noch weitere Schicht verdeckter Neuronen, engl. \textit{hidden layers} gibt.  Beim feedforward-Netz verläuft der Informationsfluss nur in einer Richtung. Ein rekurrentes neuronales Netz ist auch möglich, falls die Neuronen im Netz, die mit Neuronen der vorangegangenen Schicht verbunden sind.  Es gibt:
+    
+    \begin{description}
+    	\item[Fully connected]\label{item:fully connected} Die Neuronen einer Schicht werden mit allen Neuronen der nächsten folgenden Schicht verbunden. \autoref{fig:MLP}
+    	
+    	\item[Short-Cuts] Einige Neuronen einer Schicht werden nicht mit allen Neuronen der nächsten folgenden Schicht verbunden, sondern mit Neuronen im übernächsten Schichten. 
+    	
+    \end{description}
+    \begin{figure}[h!]
+    	\centering
+    	\includegraphics[width=10 cm , height=5cm]{Bilder/MLP}
+    	\caption{Struktur eines mehrschichtigen feedforward-Netzes \cite{haykin1994neural}}
+    	\label{fig:MLP}		
+    \end{figure}
+    %\newpage
+    \subsection{Convolutional Neural Network}
+    Convolutional Neural Network (\textbf{CNN} oder \textbf{ConvNet}) ist eine beliebteste Methode der künstlichen neuronalen Netzwerke (KNN) für hochdimensionale Daten wie z.B. Bilder und Videos. Ein wesentlicher Unterschied zwischen CNN und allgemeine neuronalen Netzen besteht darin, dass jede Einheit in einer CNN-Schicht ein 2-dimensionales oder hoch-dimensionales Filter hat, das mit der Eingabe dieser Schicht gefaltet wird. D.h. ein CNN kann als Eingang in Form einer Matrix verarbeiten. Ein MLP jedoch (siehe \autoref{Mehrschichtiges feedforward-Netz}) ist nicht in der Lage eine eingegebene Matrix zu verarbeiten, da es einen Vektor als Input benötigt, um die Matrix zu verarbeiten. Außer die Pixelwerte des Bildes werden hintereinander ausgerollt (Flattening). Dadurch sind normale neuronale Netze sind nicht in der Lage, Objekte in einem Bild unabhängig von der Position zu erkennen. \cite{AGuidetoConvolutional} 
+    %Es gibt auch Studienarbeiten, die zeigen, dass CNN nicht nur bei der Bildverarbeitung eingesetz, sondern auch bei der Textverarbeitung. 
+    
+    
+    \begin{description}
+    	\item[Ein-und Ausgänge] Wenn ein Computer ein Bild sieht, dann sieht er nicht wie Menschen \autoref{fig:hunde}, sondern einer Reihe von Pixelwerten und zwar eine Matrix. \autoref{fig:hunde_matrix} Jede dieser Zahlen von Matrix erhält einen Wert z.B. zwischen 0 und 255. Die einzelne Zahlen beschreiben die Intensität des Pixels. Diese Zahlen haben keine Bedeutung bei der Bildklassifizierung. Wofür werden dann Pixelwerte gebraucht? Die Idee ist, dass der Computer aus den Pixelwerten die Wahrscheinlichkeit berechnet und entscheidet mithilfe von Wahrscheinlichkeitswert, was in dem Bild zu sehen ist. (z.B. 0.80 Hund, 0.15 Katzen 0.05 Vogel) In diesem Beispiel die Wahrscheinlichkeit für \textbf{Hunde} größer als der anderen und damit entscheidet sich das CNN für \textbf{Hunde}.
+    \end{description}
+        
+    \begin{figure}[h!]
+    	\begin{minipage}[b]{.4\linewidth} % [b] => Ausrichtung an \caption
+    		\includegraphics[width=\textwidth]{Bilder/hunde}
+    		\caption{Was wir sehen \cite{github}}
+    		\label{fig:hunde}
+    	\end{minipage}
+    	\hspace{.1\linewidth}% Abstand zwischen Bilder
+    	\begin{minipage}[b]{.4\linewidth} % [b] => Ausrichtung an \caption
+    		\includegraphics[width=\textwidth]{Bilder/hunde_matrix}
+    		\caption{Was der Computer sieht \cite{github}}
+    		\label{fig:hunde_matrix}
+    	\end{minipage}
+    \end{figure}
+    \newpage   
+    \subsubsection{Struktur von gaengigen Convolutional Neural Network}\label{subsubsec:Struktur von gaengigen Convolutional Neural Network}
+    Ein CNN besteht aus mehreren Schichten \textit{(Convoutional Layer)} (\autoref{fig:cnn}), die grundlegende Funktionen wie Normalisierung, Pooling und Faltung besitzen. Die schichten wiederholen sich abwechselnd und am Ende der CNN-Schichten befindet sich ein fully connected Neuronen siehe (\autoref{item:fully connected})
+    \begin{figure}[h!]
+    	\centering
+    	\includegraphics[width=10 cm , height=5cm]{Bilder/cnn}
+    	\caption{Struktur von Convolutional Neural Network CNN \cite{ConvolutionalNeuralNetwork}}
+    	\label{fig:cnn}		
+    \end{figure}
+    
+    \subsubsection{Filter in Convolutional Layer}\label{subsubsec:Convolutional Layer}
+    Eine Convolution Layer ist die wichtigste Komponente eines CNN. Die Eingabe einer Matrix (Array von Pixelwerte eines Bildes) wird zunächst von Filter in Convolutional Layers analysiert, die eine feste Pixelgröße \textit{(Kernel-size)} besitzen. Über die Pixelwerte des Bildes bzw. Matrix wandern die Filter mit einem konstanten Schrittweite von Links nach Rechts. Am Rand der Zeile von Pixelwerte springen die Filter in die nächste tiefere Zeile. Mit dem sogenannten \textit{Padding} wird festgelegt, wie sich die Filter am Rand der Matrix verhalten soll. Im \autoref{subsec:2D-Faltung} wird die Berechnungsmethode von Faltung erläutert. \\
+    
+    In der ersten Ebene eines CNN befindet sich eine Anzahl von Filtern und nach der Faltung entsteht eine neue Matrix als Output. Danach folgt in der Regel ein Pooling layer.
+    
+%    die auch in TPU \autoref{subsec:Architektur der Tensor Processing Unit} \autoref{fig:pooling_layer} verwendet wird.
+    
+    \subsubsection{Pooling Layer}\label{subsubsec:Pooling Layer}
+    Es gibt zwei Arten von Pooling. Die sind Max-und Average \textit{(Mittelwert)} Pooling. In CNNs wird i.d.R. Max-Pooling angewendet. Der höchste Wert von der Kernel-Matrix weitergegeben und Rest ignoriert. Somit werden die relevantesten Signale für die nächsten Schichten ausgewählt und die Anzahl der Parameter eines Netzes reduziert. \autoref{fig:max_pooling}
+    \\
+    
+    \begin{figure}[h!]
+    	\centering
+    	\input{tikz_code/max_pooling.tex}
+    	\caption[Max Pooling]{Hier ist die Kernel-Matrix 2x2. Es wird der Maximum Wert aus dem Bereich ausgewählt und zur nächste Matrix verschoben.}
+    	\label{fig:max_pooling}		
+    \end{figure}
+    
+    \subsubsection{Fully connected Layer / Dense Layer}\label{subsubsec:Fully connected Layer}
+    Es handelt sich hier um eine normale neuronale Netzstruktur. Die Neuronen sind fully-connnected (siehe \autoref{item:fully connected}). Alle Inputs und Outputs sind mit Neuronen verbunden. Um die Matrix aus dem Pooling Layer ins Netz speisen zu können, müssen sie zunächst ausgerollt werden (flatten). Fully Connected Layer kann die Matrix nicht verarbeiten, sondern nur die Werte der Matrix.
+    %	\begin{figure}[h!]
+    %		\centering
+    %		\includegraphics[width=8 cm , height=4.5cm]{Bilder/flatten}
+    %		\caption[Flatten]{Zwischen convolutional layer und fully-connected layer befindet sich eine ''flatten'-layer. Eine zweidimensionale Eingangsmatrix wird durch Abflachung in einen Vektor umgewandelt, damit sie ins neuronalen Netz eingespeist werden können. }
+    %		\label{fig:flatten}		
+    %	\end{figure}
+    
+    \begin{wrapfigure}{l}{0.5\textwidth}
+    	%\includegraphics[width=1\linewidth]{Bilder/classc1_c2} 
+    	\includegraphics[width=1\linewidth]{Bilder/flatten}
+    	\caption[Flattening]{Flattening \cite{FLATTENING}}
+    \end{wrapfigure}
+    Zwischen convolutional layer und fully-connected layer befindet sich eine \\''flatten''-layer. Eine zweidimensionale Eingangsmatrix wird durch Abflachung in einen Vektor umgewandelt, damit sie ins neuronalen Netz eingespeist werden können.
+    \clearpage
+    
+    \newpage
+    
+    \subsubsection{Zusammenfassung CNN}\label{subsubsec:Zusammenfassung CNN}
+    
+    Ein CNN akzeptiert als Eingang eine Matrix, die reine Intensitätswerten eines Bildes bestehen. Die Verarbeitung verläuft durch mehreren Schichten, um Strukturen, wie Linien, Kanten, Kurven etc. eines eingegebenes Bildes zu erkennen. Die Filter in Schichten von CNN sind nicht vorgegeben, sondern vom Netz gelernt. In jeder höheren Filterebene erhöht sich die Abstraktions-Level des Netzes. Es ist sehr interessant, die Muster zu visualisieren, welche jeweils auf verschiedenen Ebenen zur Aktivierung der Filter führen. \autoref{fig:layer}
+    
+    \begin{figure}[h!]
+    	\centering
+    	\includegraphics[width=15 cm , height=17cm]{Bilder/layer}
+    	\caption{Visualisierung von Convolutional Network \cite{zeiler2014visualizing}}
+    	\label{fig:layer} 	
+    \end{figure}
+    
+    \subsection{Beispiele von CNN Architekturen}\label{subsec:Beispiele von CNN Architekturen}
+    Hier werden einige erfolgreiche CNN-Entwürfe vorgestellt, die unter Grundlagen von CNN erstellt wurden. Die einige Grundlagen sind wie Faltungen, Max-Pooling, Funktion von Fully connected layer, flatening etc. schon oben erläutert. Zuerst möchte ich mit früheren Entwurf vorstellen und anschließend folgen dann die neue davon, sodass man den Trend bei der Entwicklung von CNN-Architekturen einen Überblick bekommt.
+    
+    \begin{description}
+    	\item[LENET] Die LeNet-Architektur \cite{lecun1998gradient} ist eine der frühesten und grundlegendsten Formen von CNNs, die für die handschriftliche Ziffernidentifikation entwickelt wurde. \cite{AGuidetoConvolutional} Die erfolgreichste Variante dieser Architektur ist die LeNet-5 Modell, da es insgesamt 5 Gewichtsschichten umfasst. LeNet besteht aus zwei convolutional layer, denen jeweils eine (Max-Pooling)-Schicht folgt, um Merkmale zu extrahieren. Anschließend folgt eine einzelne convolution layer. Am Ende des Modells befinden sich dann fully-connected layer.
+    	Die Modellarchitektur ist in \autoref{fig:lenet}  dargestellt.
+    	
+    	\begin{figure}[h!]
+    		\centering
+    		\includegraphics[width=13 cm , height=5cm]{Bilder/lenet5}
+    		\caption{LeNet-5 Architektur \cite{lecun1998gradient}}
+    		\label{fig:lenet} 
+    	\end{figure}
+    	
+    	%%fertig
+    	
+    	
+    	\item[AlexNet] Im Jahr 2012 gewann AlexNet \cite{ImageNet} Architektur mit einem besonderen Erfolg im Vergleich zu den anderen Architekturen die ImageNet Large-Scale Visual Recognition Challenge (ILSVRC). \footnote{http://www.image-net.org/} 
+    	AlexNet besteht aus insgesamt acht Parameterschichten, von denen die fünf convolution layer und drei Fully connected Layer sind. Die letzte Fully-connected Layer klassifiziert das Eingangsbild in einer der 1000 Klassen von ImageNet-Dataset. Die Filtergrößen und die Position der Max-Pooling layer sind in \autoref{fig:alexnet} dargestellt.
+    	Die Verwendung der nichtlineare Funktionen nach jeder convolutional layer verbessert die Trainingseffizienz im Vergleich zur traditionell verwendeten $\tanh$-Funktionen.
+    	
+    	
+    	\begin{figure}[h!]
+    		\centering
+    		\includegraphics[width=13 cm , height=5cm]{Bilder/alexnet}
+    		\caption{AlexNet Architektur \cite{AGuidetoConvolutional}}
+    		\label{fig:alexnet} 
+    	\end{figure}
+    	
+    	\newpage
+    	
+    	\item[GoogleNet] Bisher diskutierten Netzwerke bestehen aus einer sequentiellen Architektur in  einer Richtung. Entlang dieser Richtung befinden sich nach Reihen geordnet Schichten wie convolution layer , Max-pooling, ReLu und Fully-connected layer etc. Die GoogleNet-Architektur \cite{szegedy2015going} ist eine komplexe Architektur mit mehreren Netzwerkzweigen und gewann den ILSVRC (Large Scale Visual Recognition Challenge) im Jahr 2014 mit der Fehlerquote von 6,7\% bei der Klassifizierungsaufgabe. 
+    	GoogleNet \autoref{fig:GoogleNet} besteht aus insgesamt 22 Gewichtsschichten und das Grundkonzept ist das ''Inception-Module''.
+    	Die Verarbeitung dieses Moduls erfolgt im Vergleich bisher vorgestellten Architekturen nicht sequentiell, sondern parallel. Eine einfache Version dieses Moduls ist in \autoref{fig:GoogleNet} dargestellt. \\ Die Hauptidee von GoogleNet ist, alle grundlegenden Verarbeitungsblöcke, die in einem regulären sequentiellen CNN auftreten, parallel zu platzieren und die Ausgaben davon kombinieren. \cite{szegedy2015going} Der Vorteil von GoogleNet ist, dass mehrere ''Inception-Module''  zusammen gestapelt werden, um ein riesigen Netzwerk zu erstellen. 
+    	
+    	\begin{figure}[h!]
+    		\centering
+    		\includegraphics[width=10 cm , height=5cm]{Bilder/googleNet}
+    		\caption{Grundkonzept von GoogleNet Inception Module \cite{szegedy2015going}}
+    		\label{fig:GoogleNet} 
+    	\end{figure}
+    	
+    	Ein großes Problem beim ''Inception Module'' ist, dass die Faltungen wie 5x5 auf einer convolutional layer mit einer großen Anzahl von Filtern sehr ineffizient sein kann. Das wird noch deutlicher, wenn dazu Pooling-Einheiten hinzugefügt werden. Die Anzahl der Ausgangsfilter entspricht der Anzahl der Filter in der vorherigen Stufen. Beim Mischen der Ausgabe der pooling-Unit mit den Ausgaben der convolutional layer würde die Anzahl von Ausgaben von Stufe zu Stufe extrem zunehmen. Innerhalb wenige Stufen könnte dies zu einer rechnerischen Explosion führen und die Ausgaben können höhere Dimensionen haben. Um dieses Problem zu überwinden, müssen die Dimension der Ausgaben reduziert werden. \autoref{fig:dimensionred}
+    	siehe mehr Details zur Lösung \cite{szegedy2015going}
+    	
+    	\begin{figure}[h!]
+    		\centering
+    		\includegraphics[width=10 cm , height=6cm]{Bilder/dimensionred}
+    		\caption[GoogleNet Inception Module]{Neues Inception-Modul, um Dimensionen von Ausgaben  zu reduzieren \cite{szegedy2015going}}
+    		\label{fig:dimensionred} 
+    	\end{figure}
+    \end{description}
 
-
-
-	\subsubsection{Struktur von Convolutional Neural Network}\label{subsubsec:Struktur von Convolutional Neural Network}
-	Ein CNN besteht aus mehreren Schichten \textit{(Convoutional Layer)} \autoref{fig:cnn}, die grundlegende Funktionen wie Normalisierung, Pooling und Faltung besitzen. Die schichten wiederholen sich abwechselnd und am Ende der CNN-Schichten befindet sich ein fully connected Neuronen siehe \autoref{item:fully connected} 	
-	\begin{figure}[h!]
-		\centering
-		\includegraphics[width=10 cm , height=5cm]{Bilder/cnn}
-		\caption{Struktur von Convolutional Neural Network CNN \cite{ConvolutionalNeuralNetwork}}
-		\label{fig:cnn}		
-	\end{figure}
-
-	\subsubsection{Filter in Convolutional Layer}\label{subsubsec:Convolutional Layer}
-	Eine Convolution Layer ist die wichtigste Komponente eines CNN. Die Eingabe einer Matrix (Array von Pixelwerte eines Bildes) wird zunächst von Filter in Convolutional Layers analysiert, die eine feste Pixelgröße \textit{(Kernel-size)} besitzen. Über die Pixelwerte des Bildes bzw. Matrix wandern die Filter mit einem konstanten Schrittweite von Links nach Rechts. Am Rand der Zeile von Pixelwerte springen die Filter in die nächste tiefere Zeile. Mit dem sogenannten \textit{Padding} wird festgelegt, wie sich die Filter am Rand der Matrix verhalten soll. Im \autoref{subsec:2D-Faltung} wird die Berechnungsmethode von Faltung erläutert. \\
-	
-	In der ersten Ebene eines CNN befinden sich 16 oder 32  Filter und nach der Faltung entsteht eine neue Matrix als Output. Danach folgt ein Pooling layer, die auch in TPU \autoref{subsec:Architektur der Tensor Processing Unit} \autoref{fig:pooling_layer} verwendet wird.
-	
-	\subsubsection{Pooling Layer}\label{subsubsec:Pooling Layer}
-	Es gibt zwei Arten von Pooling. Die sind Max-und Average \textit{(Mittelwert)} Pooling. In CNN wird Max-Pooling angewendet. Der höchste Wert von der Kernel-Matrix weitergegeben und Rest ignoriert. Somit werden die relevantesten Signale für die nächsten Schichten ausgewählt und die Anzahl der Parameter eines Netzes reduziert. \autoref{fig:max_pooling}
-	\\
-	
-	\begin{figure}[h!]
-		\centering
-		\input{tikz_code/max_pooling.tex}
-		\caption[Max Pooling]{Hier ist die Kernel-Matrix 2x2, wird Maximum Wert aus dem Bereich ausgewählt und zur nächste 2x2-Matrix verschoben.  }
-		\label{fig:max_pooling}		
-	\end{figure}
-
-	\subsubsection{Fully connected Layer / Dense Layer}\label{subsubsec:Fully connected Layer}
-	Es handelt sich hier um eine normale neuronale Netzstruktur. Die Neuronen sind fully-connnected siehe \autoref{item:fully connected}. Alle Inputs und Outputs sind mit Neuronen verbunden. Um die Matrix aus dem Pooling Layer ins Netz speisen zu können, müssen sie zunächst ausgerollt werden (flatten). Fully Connected Layer kann die Matrix nicht verarbeiten, sondern nur die Werte der Matrix.
-%	\begin{figure}[h!]
-%		\centering
-%		\includegraphics[width=8 cm , height=4.5cm]{Bilder/flatten}
-%		\caption[Flatten]{Zwischen convolutional layer und fully-connected layer befindet sich eine ''flatten'-layer. Eine zweidimensionale Eingangsmatrix wird durch Abflachung in einen Vektor umgewandelt, damit sie ins neuronalen Netz eingespeist werden können. }
-%		\label{fig:flatten}		
-%	\end{figure}
-
-\begin{wrapfigure}{l}{0.5\textwidth}
-	%\includegraphics[width=1\linewidth]{Bilder/classc1_c2} 
-	\includegraphics[width=1\linewidth]{Bilder/flatten}
-\end{wrapfigure}
-Zwischen convolutional layer und fully-connected layer befindet sich eine \\''flatten''-layer. Eine zweidimensionale Eingangsmatrix wird durch Abflachung in einen Vektor umgewandelt, damit sie ins neuronalen Netz eingespeist werden können.
-\clearpage
-
-\newpage
-
-	\subsubsection{Zusammenfassung CNN}\label{subsubsec:Zusammenfassung CNN}
-
-	Ein CNN akzeptiert als Eingang eine Matrix, die reine Intensitätswerten eines Bildes bestehen. Die Verarbeitung verläuft durch mehreren Schichten, um Strukturen, wie Linien, Kanten, Kurven etc. eines eingegebenes Bildes zu erkennen. Die Filter in Schichten von CNN sind nicht vorgegeben, sondern vom Netz gelernt. In jeder höheren Filterebene erhöht sich die Abstraktions-Level des Netzes. Es ist sehr interessant, die Muster zu visualisieren, welche jeweils auf verschiedenen Ebenen zur Aktivierung der Filter führen. \autoref{fig:layer}
-	
-	\begin{figure}[h!]
-		\centering
-		\includegraphics[width=15 cm , height=17cm]{Bilder/layer}
-		\caption{Visualisierung von Convolutional Network \cite{zeiler2014visualizing}}
-		\label{fig:layer} 	
-	\end{figure}
-
-	\subsection{Beispiele von CNN Architekturen}\label{subsec:Beispiele von CNN Architekturen}
-	Hier werden einige erfolgreiche CNN-Entwürfe vorgestellt, die unter Grundlagen von CNN erstellt wurden. Die einige Grundlagen sind wie Faltungen, Max-Pooling, Funktion von Fully connected layer, flatening etc. schon oben erläutert. Zuerst möchte ich mit früheren Entwurf vorstellen und anschließend folgen dann die neue davon, sodass man den Trend bei der Entwicklung von CNN-Architekturen einen Überblick bekommt.
-	
-	\begin{description}
-		\item[LENET] Die LeNet-Architektur \cite{lecun1998gradient} ist eine der frühesten und grundlegendsten Formen von CNNs, die für die handschriftliche Ziffernidentifikation entwickelt wurde. \cite{AGuidetoConvolutional} Die erfolgreichste Variante dieser Architektur ist die LeNet-5 Modell, da es insgesamt 5 Gewichtsschichten umfasst. LeNet besteht aus zwei convolutional layer, denen jeweils eine (Max-Pooling)-Schicht folgt, um Merkmale zu extrahieren. Anschließend folgt eine einzelne convolution layer. Am Ende des Modells befinden sich dann fully-connected layer.
-		Die Modellarchitektur ist in \autoref{fig:lenet}  dargestellt.
-		
-		\begin{figure}[h!]
-			\centering
-			\includegraphics[width=15 cm , height=5cm]{Bilder/lenet5}
-			\caption{LeNet-5 Architektur \cite{lecun1998gradient}}
-			\label{fig:lenet} 
-		\end{figure}
-	
-	%%fertig
-
-
-		\item[AlexNet] Im Jahr 2012 gewann AlexNet \cite{ImageNet} Architektur mit einem besonderen Erfolg im Vergleich zu den anderen Architekturen die ImageNet Large-Scale Visual Recognition Challenge (ILSVRC). \footnote{http://www.image-net.org/} 
-		AlexNet besteht aus insgesamt acht Parameterschichten, von denen die fünf convolution layer und drei Fully connected Layer sind. Die letzte Fully-connected Layer klassifiziert das Eingangsbild in einer der 1000 Klassen von ImageNet-Dataset. Die Filtergrößen und die Position der Max-Pooling layer sind in \autoref{fig:alexnet} dargestellt.
-		Die Verwendung der nichtlineare Funktionen nach jeder convolutional layer verbessert die Trainingseffizienz im Vergleich zur traditionell verwendeten $\tanh$-Funktionen.
-	
-		
-		\begin{figure}[h!]
-			\centering
-			\includegraphics[width=15 cm , height=5cm]{Bilder/alexnet}
-			\caption{AlexNet Architektur \cite{AGuidetoConvolutional}}
-			\label{fig:alexnet} 
-		\end{figure}
-	
-	\newpage
-	
-	\item[GoogleNet] Bisher diskutierten Netzwerke bestehen aus einer sequentiellen Architektur in  einer Richtung. Entlang dieser Richtung befinden sich nach Reihen geordnet Schichten wie convolution layer , Max-pooling, ReLu und Fully-connected layer etc. Die GoogleNet-Architektur \cite{szegedy2015going} ist eine komplexe Architektur mit mehreren Netzwerkzweigen und gewann den ILSVRC (Large Scale Visual Recognition Challenge) im Jahr 2014 mit der Fehlerquote von 6,7\% bei der Klassifizierungsaufgabe. 
-	GoogleNet \autoref{fig:GoogleNet} besteht aus insgesamt 22 Gewichtsschichten und das Grundkonzept ist das ''Inception-Module''.
-	Die Verarbeitung dieses Moduls erfolgt im Vergleich bisher vorgestellten Architekturen nicht sequentiell, sondern parallel. Eine einfache Version dieses Moduls ist in \autoref{fig:GoogleNet} dargestellt. \\ Die Hauptidee von GoogleNet ist, alle grundlegenden Verarbeitungsblöcke, die in einem regulären sequentiellen CNN auftreten, parallel zu platzieren und die Ausgaben davon kombinieren. \cite{szegedy2015going} Der Vorteil von GoogleNet ist, dass mehrere ''Inception-Module''  zusammen gestapelt werden, um ein riesigen Netzwerk zu erstellen. 
-	
-	\begin{figure}[h!]
-		\centering
-		\includegraphics[width=10 cm , height=4cm]{Bilder/googleNet}
-		\caption{Grundkonzept von GoogleNet Inception Module \cite{szegedy2015going}}
-		\label{fig:GoogleNet} 
-	\end{figure}
-	
-	Ein großes Problem beim ''Inception Module'' ist, dass die Faltungen wie 5x5 auf einer convolutional layer mit einer großen Anzahl von Filtern sehr ineffizient sein kann. Das wird noch deutlicher, wenn dazu Pooling-Einheiten hinzugefügt werden. Die Anzahl der Ausgangsfilter entspricht der Anzahl der Filter in der vorherigen Stufen. Beim Mischen der Ausgabe der pooling-Unit mit den Ausgaben der convolutional layer würde die Anzahl von Ausgaben von Stufe zu Stufe extrem zunehmen. Innerhalb wenige Stufen könnte dies zu einer rechnerischen Explosion führen und die Ausgaben können höhere Dimensionen haben. Um dieses Problem zu überwinden, müssen die Dimension der Ausgaben reduziert werden. \autoref{fig:dimensionred}
-	siehe mehr Details zur Lösung \cite{szegedy2015going}
-	
-	\begin{figure}[h!]
-		\centering
-		\includegraphics[width=10 cm , height=4cm]{Bilder/dimensionred}
-		\caption[GoogleNet Inception Module]{Neues Inception-Modul, um Dimensionen von Ausgaben  zu reduzieren \cite{szegedy2015going}}
-		\label{fig:dimensionred} 
-	\end{figure}
-
-	
-	
-\end{description}
-	
-	
 
 	\chapter{Konzept}\label{ch:Konzept}  	
 	\section{Einfuehrung der Systolic Array Architektur}\label{sec:Einfuehrung der Systolic Array Architektur}
-	Machine Learning basiert stark auf Berechnungen z.B. von Faltungen, Matrix-Matrix-und Matrix-Vektor Multiplikationen, Berechnung von Verlustfunktionen, Max-Pooling usw. siehe \autoref{ch:Grundlagen} \\Die künstliche neuronale Netze bestehen aus vielen kuenstlichen Neuronen, indem viele Berechnungen stattfinden, die den Ausgabewert des ML-Modells beeinflussen. 
-	Das wesentliche Ziel ist die Entwicklung neuer Rechnerarchitektur und der effizienten Nutzung von modernen Systeme, um solchen komplizierten ML-Anwendungen schneller ausführen zu können. Die wachsende Nachfrage nach mehr Rechenleistung führte in den 80er Jahren zur Entwicklung parallel skalierbaren Multiprocessing-Systemen. Das System soll durch paralleles Rechnen in der Lage sein, dass ein kompliziertes großes Rechenproblem in kleinere Stück unterteilt und diese kleine Rechenprobleme gleichzeitig löst. \cite{DesignofSystolicArchitecture}
+	Machine Learning basiert stark auf Berechnungen z.B. von Faltungen, Matrix-Matrix-und Matrix-Vektor Multiplikationen, Berechnung von Verlustfunktionen, Max-Pooling usw. (siehe \autoref{ch:Grundlagen}) \\Die künstlichen neuronalen Netze bestehen aus vielen kuenstlichen Neuronen, in denen viele Berechnungen stattfinden, die den Ausgabewert des ML-Modells beeinflussen. 
+	Das wesentliche Ziel der Forschung ist die Entwicklung neuer Rechnerarchitektur und der effizienten Nutzung von modernen Systemen, um solchen komplizierten ML-Anwendungen schneller ausführen zu können. Die wachsende Nachfrage nach mehr Rechenleistung führte in den 80er Jahren zur Entwicklung parallel skalierbaren Multiprocessing-Systemen. Das System soll durch paralleles Rechnen in der Lage sein, ein kompliziertes großes Rechenproblem, welches in kleinere Stück unterteilt wurde und gleichzeitig zu lösen. \cite{DesignofSystolicArchitecture}
 	
 	\textbf{Problem der sequentille Berechnungsmethode: }Bei der herkömmlichen Berechnungsmethode der Matrix-Matrix Multiplikationen \autoref{fig:mm} wird zuerst überprüft, ob die Matrizen miteinander multiplizierbar sind. D.h. wenn die Spaltenanzahl von A-Matrix mit der Zeilenanzahl von B-Matrix übereinstimmen, dann sind sie miteinander multiplizierbar. Der Nachteil dieser Berechnungsmethode ist die sequentielle Ausführung von Rechenoperationen, die sehr zeitaufwändig ist. Es findet keine zeitgleiche bzw. parallele Berechnung statt. Das Ziel ist aber ein Algorithmus zu entwickeln, dass parallele Berechnung und sogar mehrere parallele Berechnungen durchführt, sodass die Rechenleistung erhöht wird.
 
@@ -799,14 +722,7 @@ Zwischen convolutional layer und fully-connected layer befindet sich eine \\''fl
 	\subsection{Grundidee}\label{subsec:Grundidee}
 %	Der Begriff ''systolisches Array'' kann nach einer neuen Innovation in der Rechnerarchitektur klingen.Aber es ist fast 40 Jahre alt. H.T. Kung kam auf diese Idee in den 80er Jahren und veröffentlichte seine Idee im Jahr 1982.\footnote{http://www.eecs.harvard.edu/~htk/publication/1982-kung-why-systolic-architecture.pdf}
 	
-	Die Grundidee des systolischen Arrays \cite{kung1982systolic} ist, dass die Daten rhythmisch aus dem Computerspeicher fließen und laufen durch viele PEs (processing elements), bevor sie in den Speicher zurückkehren. Die Idee ist vergleichbar mit dem Blutkreislauf, dass der Herz zur Zellen Blut pumpt.
-	%\newpage
-	
-	
-%	\begin{center}
-%		%\includegraphics[width=12 cm , height= 5 cm]{Bilder/einPE}
-%		\input{Design/SA_1PE.tex}
-%	\end{center}
+	Die Grundidee des systolischen Arrays \cite{kung1982systolic} ist, dass die Daten rhythmisch aus dem Computerspeicher fließen und laufen durch viele PEs (processing elements), bevor sie in den Speicher zurückkehren. Die Idee ist vergleichbar mit dem Blutkreislauf, in dem das Herz Blut zu den Zellen pumpt.
 
 	\begin{figure}
 		\begin{center}
@@ -818,7 +734,7 @@ Zwischen convolutional layer und fully-connected layer befindet sich eine \\''fl
 	Das in \autoref{fig:SA_1PE} Verarbeitungsschema ist ineffizient und zeitaufwändig, wenn es nur ein einziges PE gibt, das aus dem Speicher ein Data holt, verarbeitet und das Ergebnis in den Speicher ablegt. In einer Sekunde werden nur 5 Millionen Operationen \textbf{MOPS} \textit{(Millions of operations per seconds)} durchgeführt.  
 
   
-	Um \textbf{MOPS} zu erhöhen soll mehrere PEs geben, die Daten mehrmals verarbeiten (wie Pipeline System) und am Ende das Ergebnis wird von dem letzten PE in den Speicher abgelegt. \autoref{fig:PEs} Das ist die Idee, die das System beschleunigen soll. Damit werden 30 Millionen Operationen durchgeführt.
+	Um \textbf{MOPS} zu erhöhen soll mehrere PEs zusammengeschaltet werden, die Daten mehrmals verarbeiten (wie Pipeline System) und am Ende das Ergebnis wird von dem letzten PE in den Speicher abgelegt. \autoref{fig:PEs} Das ist die Idee, die das System beschleunigen soll. Damit werden 30 Millionen Operationen durchgeführt.
 
 
 	\begin{figure}
@@ -893,7 +809,7 @@ Zwischen convolutional layer und fully-connected layer befindet sich eine \\''fl
 
 
 	\subsection{Systolic Array Matrix Multiplikation}
-	Bei der Matrix Multiplikation sind mehrere PEs (Processing elements) \autoref{fig:systolicArray} nötig, die miteinander verbunden sind. Der Datenfluss erfolgt von links z.B. Matrix A-Werte und von oben transponierte Matrix B-Werte. Die Aufgabe von PEs sind Multiplikationen von Eingangswerten und Akkumulation der Teilsumme in ihren eingebauten Register. Abschließend werden dann die Eingangswerte (Matrix A - Wert) nach rechts  und (Matrix B - Wert) nach unten zur Weiterberechnung gesendet. Mehr Details über PEs finden Sie in Kapitel \autoref{ch:implementierung} $Implementierung$ . 
+	Bei der Matrix Multiplikation sind mehrere PEs (Processing elements) \autoref{fig:systolicArray} nötig, die miteinander verbunden sind. Der Datenfluss erfolgt von links z.B. Matrix A-Werte und von oben transponierte Matrix B-Werte. Die Aufgabe von PEs sind Multiplikationen von Eingangswerten und Akkumulation der Teilsumme in ihren eingebauten Register. Abschließend werden dann die Eingangswerte (Matrix A - Wert) nach rechts  und (Matrix B - Wert) nach unten zur Weiterberechnung gesendet. Mehr Details über PEs finden Sie in (\autoref{ch:implementierung} $Implementierung$). 
 %	\begin{center}
 %		\input{Design/systolicArray.tex}\\ 
 %		%\input{Design/pe.tex}
@@ -912,7 +828,7 @@ Zwischen convolutional layer und fully-connected layer befindet sich eine \\''fl
 	
 	\subsection{Architektur der Tensor Processing Unit} \label{subsec:Architektur der Tensor Processing Unit}
 	
-	Die Computer-Technologien der 80er Jahren war nicht genug, um die revolutionäre Idee ''Systolic Array'' von H.T. Kung in die Praxis umzusetzen. Von 80er Jahren bis heute (2020) die Computer Technologie hat sich ständig entwickelt und ist nicht mehr vergleichbar mit 80er Jahren. Aber die Idee von damals ist noch nutzbar.\\Tensor Processing Unit  (TPUs) \cite{8192463} \autoref{fig:TPU} sind anwendungsspezifische Chips, die von Google entwickelt wurden, um ML-Anwendungen zu beschleunigen.
+	Die Computer-Technologien der 80er Jahren war nicht ausreichend, um die revolutionäre Idee ''Systolic Array'' von H.T. Kung in die Praxis umzusetzen. Seit den 80er Jahren bis heute (2020) hat sich die Computer Technologie ständig entwickelt und ist nicht mehr vergleichbar mit den 80er Jahren. Aber die Idee von damals ist noch immer aktuell.\\Tensor Processing Unit  (TPUs) \cite{8192463} (\autoref{fig:TPU}) sind z.B. anwendungsspezifische Chips, die von Google entwickelt wurden, um ML-Anwendungen zu beschleunigen.
 	
 	\begin{figure}[h!]
 		\centering
@@ -964,13 +880,13 @@ Zwischen convolutional layer und fully-connected layer befindet sich eine \\''fl
 	\end{description}
 
 	\subsection{Vorteile des Systolic Arrays}
-	Der Hauptvorteil des TPUs mit Systolic Array Architektur ist seine Unkompliziertheit und es ist nur konzentriert auf Matrix Multiplikation. \cite{telesens}
-	Das TPU Design \autoref{fig:tpudesign} ist einfach und der Stromverbrauch ist gering gehalten. Unified Buffer und MM-Einheit nimmt die maximale Fläche in dem Chip. Die Control Unit nimmt die geringste Fläche, wobei die sehr schwer zu designen war. 
+	Der Hauptvorteil des TPUs mit Systolic Array Architektur ist seine Unkompliziertheit und es ist nur auf Matrix Multiplikation ausgerichtet. \cite{telesens}
+	Das TPU Design (\autoref{fig:tpudesign}) ist einfach und der Stromverbrauch ist gering gehalten. Unified Buffer und MM-Einheit nimmt die maximale Fläche in dem Chip. Die Control Unit nimmt die geringste Fläche, wobei die sehr schwer zu designen war. 
 	
 	\begin{figure}[h!]
 		\centering
 		\includegraphics[width=10cm, height=7cm]{Bilder/tpudesign}
-		\caption[TPU-Design]{Diese Tabelle zeigt ein Vergleich mit anderen ähnlichen Produkten und der Stromverbrauch ist deutlich geringer als die anderen Geräten.}
+		\caption[TPU-Design]{Hier ist die Flächenverteilung auf dem TPU-Chip zu sehen. Bemerkenswert ist hier, dass die Daten und Matrixmultiplikation Einheit deutlich mehr Platz brauchen/besitzen.}
 		\label{fig:tpudesign}			
 	\end{figure}
 
@@ -984,13 +900,13 @@ Zwischen convolutional layer und fully-connected layer befindet sich eine \\''fl
 	\subsection{Nachteile des Systolic Arrays}
 	Die Multiplikation aus 2 Matrizen N x N dauert 2*N-1 Taktzyklen. Für einen Batch der Größe B beträgt dann die Latenz N*(B+1)-1 . Die Latenz hängt von den Matrixdimensionen ab. Das ist für Anwendungen mit konstanter Latenz nicht wünschenswert.\\
 	Ein anderes Problem ist, dass die Eingangsmatrix nicht ein Vielfaches von der PE-Array bzw. MACs in MM-Einheit ist. Bei so einem Fall werden nicht alle verfügbaren MACs verwendet und entsteht damit ungenutzte bzw. verschwendeter Arbeitsspeicher bei nicht standardmäßige Matrixdimensionen.\\
-	TPU ist allgemein für Matrixmultiplikationen besser geeignet als Faltungsberechnungen. Die Faltung Operationen können auch ausgeführt werden, indem sie in Matrixmultiplikationen umgewandelt werden. Das ist für große Faltungskerngrößen nicht optimal, da Faltungen spezifische Datenflussmuster aufweisen sollen.Ein gutes Beispiel ist der  Eyeriss-Beschleuniger \textbf{(An Energy-Efficient Reconfigurable Accelerator for Deep Convolutional Neural Networks)}, der speziell für die Faltungsoperation entwickelt wurde.
+	TPU ist allgemein für Matrixmultiplikationen besser geeignet als Faltungsberechnungen. Die Faltung Operationen können auch ausgeführt werden, indem sie in Matrixmultiplikationen umgewandelt werden. Das ist für große Faltungskerngrößen nicht optimal, da Faltungen spezifische Datenflussmuster aufweisen sollen.Ein gutes Beispiel ist der  Eyeriss-Beschleuniger \cite{7738524} , der speziell für die Faltungsoperation entwickelt wurde.
 
     \chapter{Implementierung}
     \label{ch:implementierung} 
-    \section{Implementierungsplan} Vorgehensweise
+    \section{Implementierungsplan}
     Zur Realisierung der Systolic Array Architektur wird die Programmiersprache VHDL genutzt. 
-    Das Kürzel VHDL setzt sich zusammen aus: V steht für VHSIC (\textbf{V}ery \textbf{H}igh \textbf{S}peed \textbf{I}ntegrated \textbf{C}ircuit) und HDL (\textbf{H}ardware \textbf{D}escription \textbf{L}anguage),die im Auftrag der US-Regierung anfangs der 80er entwickelt. Systolic Array Architektur besteht aus RAM (\textbf{R}andom-\textbf{A}ccess \textbf{M}emory), MACs, in dem mehrere Processing Elemente stehen und Delay Control. \autoref{fig:ubersicht} Außerhalb der Block befindet sich ein  Clockgenerator, der mit konstanten Frequenz takten soll.
+    Das Kürzel VHDL setzt sich zusammen aus: V steht für VHSIC (\textbf{V}ery \textbf{H}igh \textbf{S}peed \textbf{I}ntegrated \textbf{C}ircuit) und HDL (\textbf{H}ardware \textbf{D}escription \textbf{L}anguage),die im Auftrag der US-Regierung anfangs der 80er entwickelt. Systolic Array Architektur besteht aus RAM (\textbf{R}andom-\textbf{A}ccess \textbf{M}emory), Array von Processing-Elemente und Delay Control. \autoref{fig:ubersicht} Außerhalb der Block befindet sich ein  Clockgenerator, der mit konstanten Frequenz takten soll.
     
 
 \begin{figure}[h!]
@@ -1000,8 +916,8 @@ Zwischen convolutional layer und fully-connected layer befindet sich eine \\''fl
 	\label{fig:ubersicht}
 \end{figure}
 
-	\subsection{MAC}\label{subsec:MAC}
-	In dem Block MACs befinden mehrere PE (Processing Elements) \autoref{fig:PE} und sie sind miteinander verbunden, sodass die Daten systolisch durch die Elemente bewegen. Ein PE hat zwei Eingänge und zwei enable Signale. Es findet die Berechnung dann statt, wenn enable Signale auf HIGH gesetz sind. Das Ergebnis wird in dem Akkumulator von PE zur Teilsumme addiert. Dabei wird die Berechnungen durch ein Zähler bis zu einem bestimmten Wert gezählt. Wenn der Zähler fertig ist, dann wird die Gesamtsumme zum Speicher gesendet.
+	\subsection{Processing Element}\label{subsec:ProcessingElement}
+	In dem Block PE-Arrays befinden mehrere PE (Processing Elements) (\autoref{fig:PE}) und sie sind miteinander verbunden, sodass die Daten systolisch durch die Elemente bewegen. Ein PE hat zwei Eingänge und zwei enable Signale. Es findet die Berechnung dann statt, wenn enable Signale auf HIGH gesetz sind. Das Ergebnis wird in dem Akkumulator von PE zur Teilsumme addiert. Dabei wird die Berechnungen durch ein Zähler bis zu einem bestimmten Wert gezählt. Wenn der Zähler fertig ist, dann wird die Gesamtsumme zum Speicher gesendet.
 %	 \begin{center}
 %		\input{Design/pe.tex}
 %	\end{center}
@@ -1014,7 +930,7 @@ Zwischen convolutional layer und fully-connected layer befindet sich eine \\''fl
 \end{figure}
 
 	\subsection{RAM} \label{subsec:RAM}
-	In RAM werden die Eingangsmatrizen A-und B-Matrix gespeichert und fließen die Matrixelemente in die PE rein. Damit die richtige Matrixelemente in die richtige PE fließen kann, wird hier die logische Signale wie A\_enable und B\_enable genutzt.
+	Im RAM werden die Eingangsmatrizen A-und B-Matrix gespeichert und es fließen die Matrixelemente in die PE rein. Damit die richtige Matrixelemente in die richtige PE fließen kann, wird hier die logische Signale wie A\_enable und B\_enable genutzt.
 	
 	% BUraya bidaha bak yazmadan önce!!
 	A\_enable bzw. B\_enable sind 3 Bit groß und wird im VHDL-Code so angewendet.\\
@@ -1073,7 +989,7 @@ Zwischen convolutional layer und fully-connected layer befindet sich eine \\''fl
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=15 cm , height= 12 cm]{Bilder/blockdiagram}
-	\caption[Block Design von Matrixmultiplikation mit Systolic Array Architektur]{Es ist wegen Leitungen schwer zu sehen. In dem Design sind die oben vorgestellten Komponenten wie MAC (PE in MAC),RAM und Delay Controller.}
+	\caption[Block Design von Matrixmultiplikation mit Systolic Array Architektur]{Gesamtübersicht vom Design. Es sind die Komponenten Proccessig Element Array,RAM und Delay Controller zu sehen}
 	\label{fig:blockdiagram}
 \end{figure}
 
@@ -1097,7 +1013,7 @@ Zwischen convolutional layer und fully-connected layer befindet sich eine \\''fl
     
 %    \section{Aehnliche Arbeiten}\label{sec:Aehnliche Arbeiten} 
     
-     \subsection{Gemmini: Ein agiles systolic Array Generator}\label{subsec:Gemmini}
+     \section{Gemmini: Ein agiles systolic Array Generator}\label{sec:Gemmini}
      Gemini ist ein agiles systolic Array Generator, der systematische Auswertungen von Deep-Learning Architekturen ermöglicht. Das ist ein Open-Source-Code und ist in Github \footnote{https://github.com/ucb-bar/gemmini} veröffentlicht. \\ \textbf{Funktion:}Das Gemini-Projekt ist ein Matrix-Multiplikation-Beschleuniger und basiert auf Systolic Array Architektur, der einen benutzerdefinierten ASIC-Beschleuniger generiert. 
      Gemini ist in der Chisel-Programiersprache \footnote{Chisel ist eine Hardware-Design-Sprache basiert auf Scala, die die Erzeugung und Wiederverwendung von Schaltkreisen für digitale ASIC- und FPGA-Logikdesigns erleichtert.} geschrieben. Eine Systemübersicht ist in \autoref{fig:gemini} dargestellt. Im Bereich von Systolic Array wird eine 2D-Array Matrixmultiplikation \autoref{eqn : mat_mult} durchgeführt und das Innenleben von Gemini-Systolic Array ist in  \autoref{fig:geminisystolicArray} dargestellt.
      \begin{equation} \label{eqn : mat_mult}
@@ -1149,29 +1065,49 @@ Zwischen convolutional layer und fully-connected layer befindet sich eine \\''fl
 	\end{figure}
 
 	Die 16x16-Arrays mit der Frequenz 500 MHz und 1GHz verglichen. Man kann mithilfe der Tabelle feststellen, dass allgemein bei 1GHz Frequenz mehr Strom verbraucht wird. Außerdem Semi-Ring-floorplan im Vergleich zum Block-Floorplan verbraucht weniger Strom aber dafür benötigt mehr Fläche als Block-Floorplan. Die Tabelle \autoref{fig:table} zeigt, dass Semi-Ring Floorplan bei höchsten Taktfrequenz 1GHz deutlich weniger Strom als Block-Floorplan verbraucht.
-	
-
-	
 
 	\begin{figure}[h!]
 		\centering
 		\includegraphics[width=12 cm , height=7 cm]{Bilder/table}
 		\caption[Tabelle für Fl\"{a}che und der Stromverbrauch ]{Tabelle für Fl\"{a}che und der Stromverbrauch von Block- und semi-ring floorplan \cite{genc2019gemmini}}
 		\label{fig:table}
-\end{figure}
+	\end{figure}
+\newpage
 
-
-	 
+	\section{Die vorliegende Architektur}
+	Mein Design von \autoref{ch:implementierung} ist begrenzt auf $3x3$-Matrixmultiplikation und die wird mit ganzen Zahlen ausgeführt. In VHDL-Code werden sie als \textit{integer} definiert. Das ist leider in der Praxis nicht einsetzbar (siehe \autoref{fig:onchipPower}), da schon die vorgesehene Temperatur überschritten ist. Aber es kann auf dieser Grundlage weiterentwickelt und die leistungshungrige Komponente verbessert werden, in dem man sie optimiert. Ausserdem es lässt sich zu beobachten, dass in der  Einheit \textit{control\_matr\_mult} \autoref{fig:utilization} die Signale und Logik viel Strom verbraucht haben.
+	\clearpage
 	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=15 cm , height=7cm]{Bilder/onchipPower}
+		\caption[On chip Power]{Hier ist die Leistungsverteilung von \autoref{ch:implementierung} zu sehen.}
+		\label{fig:onchipPower}
+	\end{figure}
+
+
+
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=15 cm , height=4cm]{Bilder/utilization}
+		\caption[Utilization]{Die Leistungsverteilungen von eingesetzten Einheiten.}
+		\label{fig:utilization}
+	\end{figure}
 
 
 	
 	
   
 
-    \chapter{Ausblick}\label{ch:Ausblick}   
-    In meiner Thesis werden zuerst die Grundlagen zum maschinellen Lernen erläuert und im folgenden die Strukturen der künstlichen neuronalen Netze betrachtet. Besonders wird die CNN-Architektur \textit{(convolutional neural network)} und ihr Entwicklungstrend betrachtet. Die Gemeinsamkeit von dieser vorgestellten Architekturen sind, dass die erste Entwurf in CNN sind wie z.B. LeNET oder die besondere Erfolge in ImageNet Large-Scale Visual Recognition Challenge (ILSVRC) bekommen haben. siehe \autoref{fig:GoogleNet} \autoref{fig:alexnet}\\
+    \chapter{Zusammenfassung}\label{ch:Zusammenfassung}   
+    In der vorliegenden Thesis werden zuerst die Grundlagen zum maschinellen Lernen erläuert und im folgenden die Strukturen der künstlichen neuronalen Netze betrachtet. Besonders wird die CNN-Architektur \textit{(convolutional neural network)} und ihr Entwicklungstrend betrachtet. Die Gemeinsamkeit von dieser vorgestellten Architektur ist, dass die ersten Entwürfe mit CNN wie z.B. LeNET besondere Erfolge in ImageNet Large-Scale Visual Recognition Challenge (ILSVRC) bekommen haben. (siehe \autoref{fig:GoogleNet}/\autoref{fig:alexnet})\\
     In solchen ML-und Deep-Learning Anwendungen finden ständig Berechnungen (Faltung, Matrixmultiplikation etc.) statt, um von eingespeisten Daten sinnvolle Ausgabewerten zu erhalten. Im Jahr 1982 veröffentlichte Idee \textit{Systolic-Array Architektur}  wird eingesetzt, um die Berechnungen zu beschleunigen. Das Ziel dieser Arbeit ist die Umsetzung diese Idee in der Praxis. Um das Ziel zu erreichen, wird eine Programmiersprache VHDL für die Implementierung dieser Idee benutzt.
+    
+    \section{Ausblick}\label{sec:Ausblick}
+    Die vorgestellten Ergebnisse aus \autoref{ch:implementierung} werfen weiterführende Fragen auf. In \autoref{ch:implementierung} wird die Matrixmultiplikation mit ganzen Zahlen ausgeführt. Das System soll in der Praxis mit Gleitzahlen rechnen. Daher kann es sinnvoll sein, mit den Themen \textit{floating-point-number} und \textit{posit-number} auseinanderzusetzen und die Evaluation von zwei Zahldarstellungen zu vergleichen. Die Matrixdimension spielt genauso wichtige Rolle wie die Zahldarstellung. In der vorliegenden Thesis die Dimension der Matrix war 3x3. Die Matrixdimension soll nicht fest sein, sondern dynamisch sein. Meine Weiterforschung soll in diesen Bereichen sein. 
+    
+    
+    
      
  
   

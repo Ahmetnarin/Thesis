@@ -1,43 +1,49 @@
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1.1}{\ignorespaces Mooresches Gesetz von 1971-2018 \cite {Wikipedia}\relax }}{3}{figure.caption.4}% 
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Mooresches Gesetz von 1971-2018 \cite {OURWORLDUINDATA}\relax }}{3}{figure.caption.3}% 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Visualisierung von 2D Faltung\relax }}{6}{figure.caption.5}% 
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Aufbau eines Neurons\relax }}{9}{figure.caption.6}% 
-\contentsline {figure}{\numberline {2.3}{\ignorespaces K\IeC {\"u}nstliches Neuron}}{9}{figure.caption.7}% 
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Ein vereinfachtes mathematisches Modell f\IeC {\"u}r ein k\IeC {\"u}nstliches Neuron\relax }}{12}{figure.caption.8}% 
-\contentsline {figure}{\numberline {2.5}{\ignorespaces Entscheidungsregionen\relax }}{13}{figure.caption.9}% 
-\contentsline {figure}{\numberline {2.6}{\ignorespaces Entscheidungsgrenzen von logischen Gattern\relax }}{14}{figure.caption.10}% 
-\contentsline {figure}{\numberline {2.7}{\ignorespaces Struktur eines mehrschichtigen feedforward-Netzes\relax }}{15}{figure.caption.11}% 
-\contentsline {figure}{\numberline {2.8}{\ignorespaces Was wir sehen \cite {github}\relax }}{16}{figure.caption.12}% 
-\contentsline {figure}{\numberline {2.9}{\ignorespaces Was der Computer sieht \cite {github}\relax }}{16}{figure.caption.12}% 
-\contentsline {figure}{\numberline {2.10}{\ignorespaces Struktur von Convolutional Neural Network CNN \cite {ConvolutionalNeuralNetwork}\relax }}{16}{figure.caption.13}% 
-\contentsline {figure}{\numberline {2.11}{\ignorespaces Max Pooling}}{17}{figure.caption.14}% 
-\contentsline {figure}{\numberline {2.12}{\ignorespaces Visualisierung von Convolutional Network \cite {zeiler2014visualizing}\relax }}{18}{figure.caption.16}% 
-\contentsline {figure}{\numberline {2.13}{\ignorespaces LeNet-5 Architektur \cite {lecun1998gradient}\relax }}{19}{figure.caption.17}% 
-\contentsline {figure}{\numberline {2.14}{\ignorespaces AlexNet Architektur \cite {AGuidetoConvolutional}\relax }}{20}{figure.caption.18}% 
-\contentsline {figure}{\numberline {2.15}{\ignorespaces Grundkonzept von GoogleNet Inception Module \cite {szegedy2015going}\relax }}{20}{figure.caption.19}% 
-\contentsline {figure}{\numberline {2.16}{\ignorespaces GoogleNet Inception Module}}{21}{figure.caption.20}% 
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Bildklasifizierung und Regression}}{5}{figure.caption.4}% 
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Clustering}}{6}{figure.caption.5}% 
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Aufbau eines Neurons\relax }}{7}{figure.caption.6}% 
+\contentsline {figure}{\numberline {2.4}{\ignorespaces K\IeC {\"u}nstliches Neuron}}{7}{figure.caption.7}% 
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Sigmoid Funktion}}{9}{figure.caption.8}% 
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Ein vereinfachtes mathematisches Modell f\IeC {\"u}r ein k\IeC {\"u}nstliches Neuron \cite {haykin1994neural}\relax }}{10}{figure.caption.9}% 
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Visualisierung von 2D Faltung\relax }}{12}{figure.caption.10}% 
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Entscheidungsregionen\relax }}{14}{figure.caption.11}% 
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Entscheidungsgrenzen von logischen Gattern \cite {russell2016artificial}\relax }}{14}{figure.caption.12}% 
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Struktur eines mehrschichtigen feedforward-Netzes \cite {haykin1994neural}\relax }}{15}{figure.caption.13}% 
+\contentsline {figure}{\numberline {2.11}{\ignorespaces Was wir sehen \cite {github}\relax }}{16}{figure.caption.14}% 
+\contentsline {figure}{\numberline {2.12}{\ignorespaces Was der Computer sieht \cite {github}\relax }}{16}{figure.caption.14}% 
+\contentsline {figure}{\numberline {2.13}{\ignorespaces Struktur von Convolutional Neural Network CNN \cite {ConvolutionalNeuralNetwork}\relax }}{17}{figure.caption.15}% 
+\contentsline {figure}{\numberline {2.14}{\ignorespaces Max Pooling}}{18}{figure.caption.16}% 
+\contentsline {figure}{\numberline {2.15}{\ignorespaces Flattening}}{18}{figure.caption.17}% 
+\contentsline {figure}{\numberline {2.16}{\ignorespaces Visualisierung von Convolutional Network \cite {zeiler2014visualizing}\relax }}{19}{figure.caption.18}% 
+\contentsline {figure}{\numberline {2.17}{\ignorespaces LeNet-5 Architektur \cite {lecun1998gradient}\relax }}{20}{figure.caption.19}% 
+\contentsline {figure}{\numberline {2.18}{\ignorespaces AlexNet Architektur \cite {AGuidetoConvolutional}\relax }}{21}{figure.caption.20}% 
+\contentsline {figure}{\numberline {2.19}{\ignorespaces Grundkonzept von GoogleNet Inception Module \cite {szegedy2015going}\relax }}{21}{figure.caption.21}% 
+\contentsline {figure}{\numberline {2.20}{\ignorespaces GoogleNet Inception Module}}{22}{figure.caption.22}% 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Matrix Multiplikation\relax }}{23}{figure.caption.21}% 
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Einzelne Processing Elemente PEs}}{23}{figure.caption.22}% 
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Mehrere Processing Elemente PEs}}{24}{figure.caption.23}% 
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Design1}}{24}{figure.caption.24}% 
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Design2}}{25}{figure.caption.25}% 
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Design3}}{25}{figure.caption.26}% 
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Design4}}{26}{figure.caption.27}% 
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Architektur einer Tensor Processing Unit Design \cite {8192463}\relax }}{28}{figure.caption.29}% 
-\contentsline {figure}{\numberline {3.10}{\ignorespaces Systolischer Datenfluss der Matrix Multiply Unit. Die Gesamtsumme werden in den Akkumulatoren gebildet. \cite {8192463}\relax }}{29}{figure.caption.30}% 
-\contentsline {figure}{\numberline {3.11}{\ignorespaces Pooling}}{30}{figure.caption.31}% 
-\contentsline {figure}{\numberline {3.12}{\ignorespaces TPU-Design}}{31}{figure.caption.32}% 
-\contentsline {figure}{\numberline {3.13}{\ignorespaces TPU-Verbrauch}}{31}{figure.caption.33}% 
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Matrix Multiplikation\relax }}{24}{figure.caption.23}% 
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Einzelne Processing Elemente PEs}}{24}{figure.caption.24}% 
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Mehrere Processing Elemente PEs}}{25}{figure.caption.25}% 
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Design1}}{25}{figure.caption.26}% 
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Design2}}{26}{figure.caption.27}% 
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Design3}}{26}{figure.caption.28}% 
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Design4}}{27}{figure.caption.29}% 
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Architektur einer Tensor Processing Unit Design \cite {8192463}\relax }}{29}{figure.caption.31}% 
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Systolischer Datenfluss der Matrix Multiply Unit. Die Gesamtsumme werden in den Akkumulatoren gebildet. \cite {8192463}\relax }}{30}{figure.caption.32}% 
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Pooling}}{31}{figure.caption.33}% 
+\contentsline {figure}{\numberline {3.12}{\ignorespaces TPU-Design}}{32}{figure.caption.34}% 
+\contentsline {figure}{\numberline {3.13}{\ignorespaces TPU-Verbrauch}}{32}{figure.caption.35}% 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces \IeC {\"U}bersicht des Codes f\IeC {\"u}r die Matrixmultiplikation\relax }}{32}{figure.caption.34}% 
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Innenleben der einzelnen Verarbeitungseinheit (PE)}}{33}{figure.caption.35}% 
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Innenleben der MAC}}{34}{figure.caption.36}% 
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Block Design von Matrixmultiplikation mit Systolic Array Architektur}}{36}{figure.caption.38}% 
+\contentsline {figure}{\numberline {4.1}{\ignorespaces \IeC {\"U}bersicht des Codes f\IeC {\"u}r die Matrixmultiplikation\relax }}{33}{figure.caption.36}% 
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Innenleben der einzelnen Verarbeitungseinheit (PE)}}{34}{figure.caption.37}% 
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Innenleben der MAC}}{35}{figure.caption.38}% 
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Block Design von Matrixmultiplikation mit Systolic Array Architektur}}{37}{figure.caption.40}% 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Geminmi}}{38}{figure.caption.39}% 
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Gemini Systolic Array (PEs)}}{38}{figure.caption.40}% 
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Fl\"{a}che und der Stromverbrauch von Gemini-Design}}{39}{figure.caption.41}% 
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Tabelle f\IeC {\"u}r Fl\"{a}che und der Stromverbrauch }}{40}{figure.caption.43}% 
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Geminmi}}{39}{figure.caption.41}% 
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Gemini Systolic Array (PEs)}}{39}{figure.caption.42}% 
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Fl\"{a}che und der Stromverbrauch von Gemini-Design}}{40}{figure.caption.43}% 
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Tabelle f\IeC {\"u}r Fl\"{a}che und der Stromverbrauch }}{41}{figure.caption.45}% 
+\contentsline {figure}{\numberline {5.6}{\ignorespaces On chip Power}}{42}{figure.caption.46}% 
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Utilization}}{42}{figure.caption.47}% 
 \addvspace {10\p@ }

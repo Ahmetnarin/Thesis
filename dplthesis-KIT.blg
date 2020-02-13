@@ -38,16 +38,34 @@ You're missing a field name---line 279 of file 99_bib/standardbib.bib
  :  % month = may,
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-You're missing a field name---line 299 of file 99_bib/standardbib.bib
+You're missing a field name---line 325 of file 99_bib/standardbib.bib
  :  
  :  % month = may,
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
+You're missing a field name---line 341 of file 99_bib/standardbib.bib
+ :  
+ :  % month = may,
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 365 of file 99_bib/standardbib.bib
+ :  
+ :  % month = may,
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 389 of file 99_bib/standardbib.bib
+ :  
+ :  % month = may,
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "ourworldindata"
 Name 1 in "Salman Khan, Hossein Rahmani, Syed Afaq Ali Shah, and Mohammed Bennamoun" has a comma at the end for entry AGuidetoConvolutional
 while executing---line 2132 of file alphadin.bst
 Name 1 in "Salman Khan, Hossein Rahmani, Syed Afaq Ali Shah, and Mohammed Bennamoun" has a comma at the end for entry AGuidetoConvolutional
 while executing---line 2132 of file alphadin.bst
+Warning--empty year in GITBOOK
 Warning--empty year in github
+Warning--empty year in OURWORLDUINDATA
 Warning--there's no year in RosenblattsPerceptron
 Name 1 in "Salman Khan, Hossein Rahmani, Syed Afaq Ali Shah, and Mohammed Bennamoun" has a comma at the end for entry AGuidetoConvolutional
 while executing---line 2205 of file alphadin.bst
@@ -55,47 +73,48 @@ Name 1 in "Salman Khan, Hossein Rahmani, Syed Afaq Ali Shah, and Mohammed Bennam
 while executing---line 2205 of file alphadin.bst
 Name 1 in "Salman Khan, Hossein Rahmani, Syed Afaq Ali Shah, and Mohammed Bennamoun" has a comma at the end for entry AGuidetoConvolutional
 while executing---line 2205 of file alphadin.bst
+Warning--empty year in FLATTENING
 Warning--empty year in telesens
-Warning--empty year in Wikipedia
-You've used 19 entries,
+Warning--empty year in SIGNALVERARBEITUNG
+You've used 23 entries,
             4793 wiz_defined-function locations,
-            987 strings with 9565 characters,
-and the built_in function-call counts, 13388 in all, are:
-= -- 1393
-> -- 437
-< -- 525
-+ -- 596
-- -- 158
-* -- 867
-:= -- 2447
-add.period$ -- 16
-call.type$ -- 19
-change.case$ -- 120
-chr.to.int$ -- 19
-cite$ -- 23
-duplicate$ -- 341
-empty$ -- 741
-format.name$ -- 304
-if$ -- 2449
+            1009 strings with 10085 characters,
+and the built_in function-call counts, 15643 in all, are:
+= -- 1625
+> -- 492
+< -- 571
++ -- 647
+- -- 177
+* -- 1035
+:= -- 2822
+add.period$ -- 18
+call.type$ -- 23
+change.case$ -- 139
+chr.to.int$ -- 23
+cite$ -- 30
+duplicate$ -- 404
+empty$ -- 906
+format.name$ -- 343
+if$ -- 2903
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 62
-newline$ -- 104
-num.names$ -- 57
-pop$ -- 171
+missing$ -- 80
+newline$ -- 124
+num.names$ -- 69
+pop$ -- 209
 preamble$ -- 1
-purify$ -- 158
+purify$ -- 185
 quote$ -- 0
-skip$ -- 775
+skip$ -- 864
 stack$ -- 0
-substring$ -- 859
-swap$ -- 90
-text.length$ -- 83
-text.prefix$ -- 9
+substring$ -- 1065
+swap$ -- 105
+text.length$ -- 96
+text.prefix$ -- 12
 top$ -- 0
-type$ -- 178
-warning$ -- 4
-while$ -- 126
-width$ -- 25
-write$ -- 230
-(There were 12 error messages)
+type$ -- 218
+warning$ -- 7
+while$ -- 145
+width$ -- 29
+write$ -- 275
+(There were 15 error messages)

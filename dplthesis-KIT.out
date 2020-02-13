@@ -1,45 +1,40 @@
 \BOOKMARK [0][-]{chapter.1}{Einleitung}{}% 1
 \BOOKMARK [1][-]{section.1.1}{Motivation}{chapter.1}% 2
-\BOOKMARK [1][-]{section.1.2}{Zielsetzung}{chapter.1}% 3
-\BOOKMARK [1][-]{section.1.3}{Das Mooresche Gesetz}{chapter.1}% 4
+\BOOKMARK [1][-]{section.1.2}{Das Mooresche Gesetz}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.3}{Zielsetzung}{chapter.1}% 4
 \BOOKMARK [0][-]{chapter.2}{Grundlagen}{}% 5
-\BOOKMARK [1][-]{section.2.1}{Matrix-Matrix Multiplikation}{chapter.2}% 6
-\BOOKMARK [1][-]{section.2.2}{1D-Faltung und 2D-Faltung}{chapter.2}% 7
-\BOOKMARK [2][-]{subsection.2.2.1}{1D-Faltung bzw. Faltung}{section.2.2}% 8
-\BOOKMARK [2][-]{subsection.2.2.2}{2D-Faltung}{section.2.2}% 9
-\BOOKMARK [1][-]{section.2.3}{Maschinelles Lernen}{chapter.2}% 10
-\BOOKMARK [1][-]{section.2.4}{Lernphase}{chapter.2}% 11
-\BOOKMARK [2][-]{subsection.2.4.1}{Supervised Learning}{section.2.4}% 12
-\BOOKMARK [2][-]{subsection.2.4.2}{Unsupervised Learning}{section.2.4}% 13
-\BOOKMARK [2][-]{subsection.2.4.3}{Reinforcement Learning}{section.2.4}% 14
-\BOOKMARK [1][-]{section.2.5}{Kuenstliche neuronale Netze}{chapter.2}% 15
-\BOOKMARK [2][-]{subsection.2.5.1}{Schwellenwertfunktion}{section.2.5}% 16
-\BOOKMARK [2][-]{subsection.2.5.2}{St\374ckweise lineare Funktion}{section.2.5}% 17
-\BOOKMARK [2][-]{subsection.2.5.3}{Sigmoidfunktion}{section.2.5}% 18
-\BOOKMARK [2][-]{subsection.2.5.4}{Rectifier \(ReLU\)}{section.2.5}% 19
-\BOOKMARK [1][-]{section.2.6}{Strukturen der kuenstlichen neuronalen Netzwerke}{chapter.2}% 20
-\BOOKMARK [2][-]{subsection.2.6.1}{Einlagiges Perzeptron}{section.2.6}% 21
-\BOOKMARK [2][-]{subsection.2.6.2}{Mehrschichtiges feedforward-Netz}{section.2.6}% 22
-\BOOKMARK [2][-]{subsection.2.6.3}{Convolutional Neural Network}{section.2.6}% 23
-\BOOKMARK [2][-]{subsection.2.6.4}{Beispiele von CNN Architekturen}{section.2.6}% 24
-\BOOKMARK [0][-]{chapter.3}{Konzept}{}% 25
-\BOOKMARK [1][-]{section.3.1}{Einfuehrung der Systolic Array Architektur}{chapter.3}% 26
-\BOOKMARK [1][-]{section.3.2}{Why Systolic Architectures?}{chapter.3}% 27
-\BOOKMARK [2][-]{subsection.3.2.1}{Grundidee}{section.3.2}% 28
-\BOOKMARK [2][-]{subsection.3.2.2}{Systolic Array Designs f\374r Faltung Berechnungen}{section.3.2}% 29
-\BOOKMARK [2][-]{subsection.3.2.3}{Systolic Array Matrix Multiplikation}{section.3.2}% 30
-\BOOKMARK [2][-]{subsection.3.2.4}{Architektur der Tensor Processing Unit}{section.3.2}% 31
-\BOOKMARK [2][-]{subsection.3.2.5}{Vorteile des Systolic Arrays}{section.3.2}% 32
-\BOOKMARK [2][-]{subsection.3.2.6}{Nachteile des Systolic Arrays}{section.3.2}% 33
-\BOOKMARK [0][-]{chapter.4}{Implementierung}{}% 34
-\BOOKMARK [1][-]{section.4.1}{Implementierungsplan}{chapter.4}% 35
-\BOOKMARK [2][-]{subsection.4.1.1}{MAC}{section.4.1}% 36
-\BOOKMARK [2][-]{subsection.4.1.2}{RAM}{section.4.1}% 37
-\BOOKMARK [2][-]{subsection.4.1.3}{Delay Controller}{section.4.1}% 38
-\BOOKMARK [2][-]{subsection.4.1.4}{Register in MAC}{section.4.1}% 39
-\BOOKMARK [2][-]{subsection.4.1.5}{Simulationsergebnisse}{section.4.1}% 40
-\BOOKMARK [2][-]{subsection.4.1.6}{Zusammenfassung}{section.4.1}% 41
-\BOOKMARK [0][-]{chapter.5}{Evaluation}{}% 42
-\BOOKMARK [1][-]{subsection.5.0.1}{Gemmini: Ein agiles systolic Array Generator}{chapter.5}% 43
-\BOOKMARK [2][-]{subsection.5.0.2}{Die Fl\344che und der Stromverbrauch von Gemini-Design}{subsection.5.0.1}% 44
-\BOOKMARK [0][-]{chapter.6}{Ausblick}{}% 45
+\BOOKMARK [1][-]{section.2.1}{Maschinelles Lernen}{chapter.2}% 6
+\BOOKMARK [1][-]{section.2.2}{Lernphase}{chapter.2}% 7
+\BOOKMARK [2][-]{subsection.2.2.1}{Supervised Learning}{section.2.2}% 8
+\BOOKMARK [2][-]{subsection.2.2.2}{Unsupervised Learning}{section.2.2}% 9
+\BOOKMARK [2][-]{subsection.2.2.3}{Reinforcement Learning}{section.2.2}% 10
+\BOOKMARK [1][-]{section.2.3}{Kuenstliche neuronale Netze}{chapter.2}% 11
+\BOOKMARK [2][-]{subsection.2.3.1}{Aktivierungsfunktionen}{section.2.3}% 12
+\BOOKMARK [1][-]{section.2.4}{Strukturen der kuenstlichen neuronalen Netzwerke}{chapter.2}% 13
+\BOOKMARK [2][-]{subsection.2.4.1}{Einlagiges Perzeptron}{section.2.4}% 14
+\BOOKMARK [2][-]{subsection.2.4.2}{Mehrschichtiges feedforward-Netz}{section.2.4}% 15
+\BOOKMARK [2][-]{subsection.2.4.3}{Convolutional Neural Network}{section.2.4}% 16
+\BOOKMARK [2][-]{subsection.2.4.4}{Beispiele von CNN Architekturen}{section.2.4}% 17
+\BOOKMARK [0][-]{chapter.3}{Konzept}{}% 18
+\BOOKMARK [1][-]{section.3.1}{Einfuehrung der Systolic Array Architektur}{chapter.3}% 19
+\BOOKMARK [1][-]{section.3.2}{Why Systolic Architectures?}{chapter.3}% 20
+\BOOKMARK [2][-]{subsection.3.2.1}{Grundidee}{section.3.2}% 21
+\BOOKMARK [2][-]{subsection.3.2.2}{Systolic Array Designs f\374r Faltung Berechnungen}{section.3.2}% 22
+\BOOKMARK [2][-]{subsection.3.2.3}{Systolic Array Matrix Multiplikation}{section.3.2}% 23
+\BOOKMARK [2][-]{subsection.3.2.4}{Architektur der Tensor Processing Unit}{section.3.2}% 24
+\BOOKMARK [2][-]{subsection.3.2.5}{Vorteile des Systolic Arrays}{section.3.2}% 25
+\BOOKMARK [2][-]{subsection.3.2.6}{Nachteile des Systolic Arrays}{section.3.2}% 26
+\BOOKMARK [0][-]{chapter.4}{Implementierung}{}% 27
+\BOOKMARK [1][-]{section.4.1}{Implementierungsplan}{chapter.4}% 28
+\BOOKMARK [2][-]{subsection.4.1.1}{Processing Element}{section.4.1}% 29
+\BOOKMARK [2][-]{subsection.4.1.2}{RAM}{section.4.1}% 30
+\BOOKMARK [2][-]{subsection.4.1.3}{Delay Controller}{section.4.1}% 31
+\BOOKMARK [2][-]{subsection.4.1.4}{Register in MAC}{section.4.1}% 32
+\BOOKMARK [2][-]{subsection.4.1.5}{Simulationsergebnisse}{section.4.1}% 33
+\BOOKMARK [2][-]{subsection.4.1.6}{Zusammenfassung}{section.4.1}% 34
+\BOOKMARK [0][-]{chapter.5}{Evaluation}{}% 35
+\BOOKMARK [1][-]{section.5.1}{Gemmini: Ein agiles systolic Array Generator}{chapter.5}% 36
+\BOOKMARK [2][-]{subsection.5.1.1}{Die Fl\344che und der Stromverbrauch von Gemini-Design}{section.5.1}% 37
+\BOOKMARK [1][-]{section.5.2}{Die vorliegende Architektur}{chapter.5}% 38
+\BOOKMARK [0][-]{chapter.6}{Zusammenfassung}{}% 39
+\BOOKMARK [1][-]{section.6.1}{Ausblick}{chapter.6}% 40

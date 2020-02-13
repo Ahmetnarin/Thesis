@@ -13,11 +13,26 @@
 \newblock \emph{Neural Networks and Deep Learning. A Textbook}.
 \newblock 2018
 
+\bibitem[Ara]{GITBOOK}
+\textsc{Araujosantos}, Leonardo:
+\newblock \emph{Artificial Inteligence}
+
 \bibitem[Bec19]{ConvolutionalNeuralNetwork}
 \textsc{Becker}, Roland:
 \newblock CONVOLUTIONAL NEURAL NETWORKS – AUFBAU, FUNKTION UND
   ANWENDUNGSGEBIETE.
 \newblock   (Februar, 2019)
+
+\bibitem[CKES17]{7738524}
+\textsc{{Chen}}, Y. ; \textsc{{Krishna}}, T. ; \textsc{{Emer}}, J.~S.  ;
+  \textsc{{Sze}}, V.:
+\newblock Eyeriss: An Energy-Efficient Reconfigurable Accelerator for Deep
+  Convolutional Neural Networks.
+\newblock {In: }\emph{IEEE Journal of Solid-State Circuits} 52 (2017), Jan, Nr.
+  1, S. 127--138.
+\newblock \url{http://dx.doi.org/10.1109/JSSC.2016.2616357}. --
+\newblock DOI 10.1109/JSSC.2016.2616357. --
+\newblock ISSN 1558--173X
 
 \bibitem[Des]{github}
 \textsc{Deshpande}, Adit:
@@ -72,6 +87,10 @@
 \newblock Gradient-based learning applied to document recognition.
 \newblock {In: }\emph{Proceedings of the IEEE} 86 (1998), Nr. 11, S. 2278--2324
 
+\bibitem[our]{OURWORLDUINDATA}
+\textsc{ourworldindata}:
+\newblock \emph{Moore's Law}
+
 \bibitem[RN16]{russell2016artificial}
 \textsc{Russell}, Stuart~J. ; \textsc{Norvig}, Peter:
 \newblock \emph{Artificial intelligence: a modern approach}.
@@ -107,6 +126,10 @@
 \newblock {In: }\emph{Proceedings of the IEEE conference on computer vision and
   pattern recognition}, 2015, S. 1--9
 
+\bibitem[Sup]{FLATTENING}
+\textsc{SuperDataScience}:
+\newblock \emph{Convolutional Neural Networks (CNN): Step 3 - Flattening}
+
 \bibitem[SV18]{DesignofSystolicArchitecture}
 \textsc{Shilpa~V}, Suma V~S.:
 \newblock Design of Systolic Architecture Using Evolutionary Computation.
@@ -117,9 +140,9 @@
 \newblock \emph{Understanding Matrix Multiplication on a Weight-Stationary
   Systolic Architecture}
 
-\bibitem[Wik]{Wikipedia}
-\textsc{Wikipedia}:
-\newblock \emph{Mooresches Gesetz}
+\bibitem[Tho]{SIGNALVERARBEITUNG}
+\textsc{Thormählen}, Thorsten:
+\newblock \emph{Multimediale Signalverarbeitung Bildverarbeitung: Filter}
 
 \bibitem[ZF14]{zeiler2014visualizing}
 \textsc{Zeiler}, Matthew~D. ; \textsc{Fergus}, Rob:
