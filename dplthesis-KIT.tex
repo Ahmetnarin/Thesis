@@ -754,7 +754,7 @@ EVITA
 	\begin{figure}[h!]
 		\centering
 		\input{Design/design1.tex}
-		\caption[Design1]{In PE gespeicherten Gewichten werden jeweils mit der Eingabe multipliziert und das Ergebnis zur Teilsumme vom vorherigen Element addiert. Beim nächsten Takt wird ein Eingangselement ausgelesen und die Teilsummen von PE wird zum Nachbar PE gesendet. Somit werden alle Daten trotz bei minimaler Bandbreite des Speichers verarbeitet.}
+		\caption[Systolic Array Design1]{In PE gespeicherten Gewichten werden jeweils mit der Eingabe multipliziert und das Ergebnis zur Teilsumme vom vorherigen Element addiert. Beim nächsten Takt wird ein Eingangselement ausgelesen und die Teilsummen von PE wird zum Nachbar PE gesendet. Somit werden alle Daten trotz bei minimaler Bandbreite des Speichers verarbeitet.}
 		\label{fig:design1}
 	\end{figure}
 	
@@ -764,7 +764,7 @@ EVITA
 	\begin{figure}[h!]
 		\centering
 		\input{Design/design2.tex}
-		\caption[Design2]
+		\caption[Systolic Array Design2]
 		{Die Eingangswerte $x_{i}$ verbreiten sich und $y_{i}$ bleiben in Zellen (PE) und die Gewichte bewegen sich systolisch durch jede Zelle.}
 		\label{fig:design2}
 		$y_{out} \leftarrow y + w_{in} \cdot x_{in}$\\
@@ -780,7 +780,7 @@ EVITA
 	\begin{figure}[h!]
 		\centering
 		\input{Design/design3.tex}
-		\caption[Design3]{
+		\caption[Systolic Array Design3]{
 			Die Gewichte $w_{i}$ bleiben in Zellen (PE), die Eingangswerte bewegen sich systolisch durch jede Zelle und $y_{i}$ werden in den Zellen berechnet und in der Komponente Adder akkumuliert.}		
 		$z_{out} \leftarrow w \cdot x_{in}$\\
 		$x_{out} \leftarrow x_{in}$
@@ -796,7 +796,7 @@ EVITA
 	\begin{figure}[h!]
 		\centering
 		\input{Design/design4.tex}
-		\caption[Design4]{$y_{i}$ bleiben in Zellen (PE) und $x_{i} und w_{i}$ bewegen sich systolisch durch die Zellen in entgegengesetzte Richtung}
+		\caption[Systolic Array  Design4]{$y_{i}$ bleiben in Zellen (PE) und $x_{i} und w_{i}$ bewegen sich systolisch durch die Zellen in entgegengesetzte Richtung}
 		\label{fig:design4}
 	\end{figure}
 	\begin{center}
@@ -1022,14 +1022,14 @@ EVITA
      A und B sind Matrizen, die miteinander multipliziert werden. D ist ein Bias-Vektor
       \begin{figure}[h!]
     	\centering 
-    	\includegraphics[width=18 cm , height= 7 cm]{Bilder/gemini}
+    	\includegraphics[width=15 cm , height= 7 cm]{Bilder/gemini}
     	\caption[Geminmi]{Eine Systemübersicht der Gemmini-basierten Systolic Array Generator \cite{genc2019gemmini}}
     	\label{fig:gemini}
     \end{figure}
 
       \begin{figure}[h!]
 		\centering
-		\includegraphics[width=18 cm , height=7 cm]{Bilder/geminisystolicArray}
+		\includegraphics[width=15 cm , height=7 cm]{Bilder/geminisystolicArray}
 		\caption[Gemini  Systolic Array (PEs)]{Hier sieht man das Innenleben von Gemini Systolic-Array mit seinen Verarbeitungseinheiten (PEs). \textit{WS} steht für \textit{weight-stationary} (d.h. die Matrizen B und D schon vorgeladen.)  und \textit{OS} für \textit{output-stationary} \cite{genc2019gemmini}}
 		\label{fig:geminisystolicArray}
 	\end{figure}
